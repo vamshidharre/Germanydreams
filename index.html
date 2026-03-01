@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GermanyDreams | Vamshidhar Reddy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060d18;
+      --bg2: #0a1628;
+      --card: #0f1f35;
+      --card2: #152540;
+      --accent: #0ea5b0;
+      --accent2: #22d3ee;
+      --gold: #f59e0b;
+      --text: #f0f4f8;
+      --muted: #7a90a8;
+      --border: rgba(14,165,176,0.12);
+      --glow: rgba(14,165,176,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(6,13,24,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 7rem 2.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .hero-orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(14,165,176,0.2) 0%, transparent 70%);
+      top: -100px; right: -100px;
+    }
+    .hero-orb-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%);
+      bottom: 0; left: -100px;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(14,165,176,0.1);
+      border: 1px solid rgba(14,165,176,0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .badge-dot {
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero h1 .line2 { color: var(--accent); }
+
+    .hero-sub {
+      margin-top: 1.2rem;
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.7;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-btns {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 30px rgba(14,165,176,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(14,165,176,0.5);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* STATS */
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .stat { }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* HERO RIGHT */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.8s 0.2s ease both;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      width: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #f59e0b);
+    }
+
+    .avatar-ring {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #f59e0b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 auto 1rem;
+      box-shadow: 0 0 40px rgba(14,165,176,0.4);
+    }
+
+    .hero-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .hero-card p { font-size: 0.8rem; color: var(--muted); text-align: center; margin-top: 0.3rem; }
+
+    .card-pills {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .pill {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .live-badge {
+      margin-top: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .live-dot {
+      width: 8px; height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+
+    /* ── FLOATING ICONS ── */
+    .float-icons {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .fi {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0.15;
+      animation: float 6s ease-in-out infinite;
+    }
+    .fi:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+    .fi:nth-child(2) { top: 60%; left: 15%; animation-delay: 1s; }
+    .fi:nth-child(3) { top: 30%; right: 55%; animation-delay: 2s; }
+    .fi:nth-child(4) { top: 70%; right: 52%; animation-delay: 3s; }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2.5rem; }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    .about-facts {
+      display: grid;
+      gap: 1rem;
+    }
+    .fact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: border-color 0.2s;
+    }
+    .fact-card:hover { border-color: rgba(14,165,176,0.3); }
+    .fact-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .fact-content {}
+    .fact-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .fact-desc { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── CONTENT PILLARS ── */
+    #content { }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .pillar-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+      cursor: default;
+    }
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .pillar-card:hover { transform: translateY(-4px); border-color: rgba(14,165,176,0.25); }
+    .pillar-card:hover::before { opacity: 1; }
+    .pillar-emoji { font-size: 2rem; margin-bottom: 1rem; }
+    .pillar-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .pillar-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── RESOURCES ── */
+    #resources { background: var(--bg2); }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .resource-link {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .resource-link:hover {
+      transform: translateY(-3px);
+      border-color: rgba(14,165,176,0.3);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    .resource-icon { font-size: 1.6rem; }
+    .resource-link h3 { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; }
+    .resource-link p { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── JOURNEY TIMELINE ── */
+    #journey { }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+
+    .tl-item {
+      position: relative;
+      padding-left: 2rem;
+      padding-bottom: 2.5rem;
+    }
+    .tl-dot {
+      position: absolute;
+      left: -0.45rem;
+      top: 0.3rem;
+      width: 12px; height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(14,165,176,0.6);
+    }
+    .tl-year {
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .tl-item h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin: 0.3rem 0 0.4rem; }
+    .tl-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── CONNECT ── */
+    #connect { background: var(--bg2); }
+
+    .connect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .connect-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .connect-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(14,165,176,0.3);
+    }
+    .cc-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .cc-yt { background: rgba(255,0,0,0.15); }
+    .cc-li { background: rgba(0,119,181,0.15); }
+    .cc-mail { background: rgba(14,165,176,0.15); }
+    .cc-info h3 { font-size: 0.85rem; font-weight: 600; }
+    .cc-info p { font-size: 0.75rem; color: var(--muted); margin-top: 0.15rem; }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: linear-gradient(135deg, rgba(14,165,176,0.1), rgba(245,158,11,0.07));
+      border: 1px solid rgba(14,165,176,0.2);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      margin-top: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-strip::after {
+      content: '🇩🇪';
+      position: absolute;
+      font-size: 8rem;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.06;
+    }
+    .cta-strip h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+    .cta-strip p { color: var(--muted); margin-bottom: 1.5rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 2.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+    footer a { color: var(--accent2); text-decoration: none; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      section { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#"><span>G</span>ermanyDreams</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#content">Content</a>
+      <a href="#journey">Journey</a>
+      <a href="#connect">Connect</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="float-icons">
+      <div class="fi">🎥</div>
+      <div class="fi">✈️</div>
+      <div class="fi">🏛️</div>
+      <div class="fi">💡</div>
+    </div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <div class="badge-dot"></div>
+          Based in Stuttgart, Germany 🇩🇪
+        </div>
+        <h1>
+          Life in Germany,<br>
+          <span class="line2">Documented.</span>
+        </h1>
+        <p class="hero-sub">
+          Hey, I'm <strong>Vamshidhar Reddy</strong> — Masters student in Computational Engineering at FAU Erlangen-Nürnberg, content creator, and your guide to student life abroad. Join my journey.
+        </p>
+        <div class="hero-btns">
+          <a class="btn-primary" href="https://www.youtube.com/channel/UCIY3viuqfg8BR9ucyCI2e1w" target="_blank">▶ Watch on YouTube</a>
+          <a class="btn-ghost" href="#connect">Let's Connect</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num">FAU<span>.</span></div>
+            <div class="stat-label">University</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">DE<span>.</span></div>
+            <div class="stat-label">Based in</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">100<span>%</span></div>
+            <div class="stat-label">Authentic</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="avatar-ring">VR</div>
+          <h3>Vamshidhar Reddy</h3>
+          <p>Masters Student · YouTuber · Stuttgart 🇩🇪</p>
+          <div class="card-pills">
+            <span class="pill">Computational Eng.</span>
+            <span class="pill">FAU Erlangen</span>
+            <span class="pill">Content Creator</span>
+            <span class="pill">Student Life</span>
+          </div>
+          <div class="live-badge">
+            <div class="live-dot"></div>
+            Currently creating content
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label reveal">About Me</div>
+      <h2 class="section-title reveal">The Person Behind the Camera</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm <strong>Vamshidhar Reddy</strong>, a passionate Masters student specializing in <strong>Computational Engineering</strong> at FAU Erlangen-Nürnberg, currently based in Stuttgart, Germany.
+          </p>
+          <p>
+            I document everything — the <strong>reality of student life in Germany</strong>, navigating universities as an international student, finding housing, learning the culture, and building a career abroad. No fluff, just real experiences.
+          </p>
+          <p>
+            When I'm not studying or working, I'm behind the camera — creating content that helps thousands of students who dream of studying in Germany make informed decisions with confidence.
+          </p>
+          <div style="margin-top:1.5rem;">
+            <a class="btn-primary" href="https://www.linkedin.com/in/vamshidhar-reddy-7180551a2/" target="_blank" style="display:inline-flex;">💼 View LinkedIn</a>
+          </div>
+        </div>
+        <div class="about-facts reveal">
+          <div class="fact-card">
+            <div class="fact-icon">🎓</div>
+            <div class="fact-content">
+              <div class="fact-title">FAU Erlangen-Nürnberg</div>
+              <div class="fact-desc">Masters in Computational Engineering · One of Germany's top technical universities</div>
+            </div>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">🏢</div>
+            <div class="fact-content">
+              <div class="fact-title">Working at Valeo</div>
+              <div class="fact-desc">Gaining real-world industry experience alongside my studies in Stuttgart</div>
+            </div>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">🎥</div>
+            <div class="fact-content">
+              <div class="fact-title">Content Creator</div>
+              <div class="fact-desc">Documenting student life, Germany tips, and the abroad journey on YouTube</div>
+            </div>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">📍</div>
+            <div class="fact-content">
+              <div class="fact-title">Stuttgart, Germany</div>
+              <div class="fact-desc">Home to Mercedes-Benz & Porsche — living the German engineering dream</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT PILLARS -->
+  <section id="content">
+    <div class="section-inner">
+      <div class="section-label reveal">What I Create</div>
+      <h2 class="section-title reveal">Content That Actually Helps</h2>
+      <p class="section-desc reveal">Real stories, practical tips, and honest insights for students planning their journey to Germany.</p>
+      <div class="pillars-grid">
+        <div class="pillar-card reveal">
+          <div class="pillar-emoji">🏛️</div>
+          <h3>University Life in Germany</h3>
+          <p>Lectures, professors, exams, university culture — everything you need to know before you land.</p>
+        </div>
+        <div class="pillar-card reveal">
+          <div class="pillar-emoji">🏠</div>
+          <h3>Housing & Accommodation</h3>
+          <p>Finding a Wohnung, WG tips, costs, and how to write the perfect WG message that gets a reply.</p>
+        </div>
+        <div class="pillar-card reveal">
+          <div class="pillar-emoji">💶</div>
+          <h3>Finances & Cost of Living</h3>
+          <p>Budgeting as a student, blocked accounts, health insurance, banking — breaking down every euro.</p>
+        </div>
+        <div class="pillar-card reveal">
+          <div class="pillar-emoji">✈️</div>
+          <h3>Moving Abroad</h3>
+          <p>Visa applications, what to pack, first week checklist, and everything you wish someone told you.</p>
+        </div>
+        <div class="pillar-card reveal">
+          <div class="pillar-emoji">🌍</div>
+          <h3>Culture & Integration</h3>
+          <p>German culture, language basics, making friends abroad, and adapting to a new life.</p>
+        </div>
+        <div class="pillar-card reveal">
+          <div class="pillar-emoji">💼</div>
+          <h3>Career & Jobs</h3>
+          <p>Working student (Werkstudent) jobs, internships, German job market tips, and career growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <div class="section-inner">
+      <div class="section-label reveal">Helpful Tools</div>
+      <h2 class="section-title reveal">Resources for Aspiring Students</h2>
+      <p class="section-desc reveal">Planning your move to Germany? These resources will save you hours of research.</p>
+      <div class="resources-grid">
+        <a class="resource-link reveal" href="https://www.youtube.com/channel/UCIY3viuqfg8BR9ucyCI2e1w" target="_blank">
+          <div class="resource-icon">▶️</div>
+          <h3>YouTube Channel</h3>
+          <p>Watch my full Germany journey — vlogs, tips & guides.</p>
+        </a>
+        <a class="resource-link reveal" href="https://www.linkedin.com/in/vamshidhar-reddy-7180551a2/" target="_blank">
+          <div class="resource-icon">💼</div>
+          <h3>LinkedIn Profile</h3>
+          <p>Connect professionally & follow my engineering career.</p>
+        </a>
+        <div class="resource-link reveal" style="cursor:default;">
+          <div class="resource-icon">🧮</div>
+          <h3>CGPA → German Grade</h3>
+          <p>Convert your Indian grades to German university scale.</p>
+        </div>
+        <div class="resource-link reveal" style="cursor:default;">
+          <div class="resource-icon">📝</div>
+          <h3>Visa Prep Checklist</h3>
+          <p>Everything you need to prepare before your visa interview.</p>
+        </div>
+        <div class="resource-link reveal" style="cursor:default;">
+          <div class="resource-icon">💰</div>
+          <h3>Cost Estimator</h3>
+          <p>Calculate your monthly budget for student life in Germany.</p>
+        </div>
+        <div class="resource-link reveal" style="cursor:default;">
+          <div class="resource-icon">🏠</div>
+          <h3>WG Message Generator</h3>
+          <p>Auto-generate a compelling room inquiry message in German.</p>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem; font-size:0.8rem; color:var(--muted);">* Tools coming soon — subscribe to stay updated!</p>
+    </div>
+  </section>
+
+  <!-- JOURNEY TIMELINE -->
+  <section id="journey">
+    <div class="section-inner">
+      <div class="section-label reveal">My Story</div>
+      <h2 class="section-title reveal">The Journey So Far</h2>
+      <p class="section-desc reveal">From India to the heart of Germany — every step has been a story worth sharing.</p>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-year">The Beginning</div>
+          <h3>Dream of Studying in Germany 🇩🇪</h3>
+          <p>Like many Indian students, I dreamed of pursuing higher education in Germany — one of the world's best destinations for engineering and technology. The preparation journey began.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Acceptance</div>
+          <h3>Admitted to FAU Erlangen-Nürnberg 🎓</h3>
+          <p>Got accepted to the prestigious Computational Engineering program at FAU Erlangen-Nürnberg — one of Germany's top-ranked technical universities. A dream turned real.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Life Abroad</div>
+          <h3>Navigating Student Life in Germany 🏘️</h3>
+          <p>From finding accommodation and opening a blocked account to attending German lectures — the real learning began. I started documenting every experience to help future students.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Career</div>
+          <h3>Working at Valeo, Stuttgart 💼</h3>
+          <p>Joined Valeo — a global automotive supplier — gaining hands-on industry experience in Germany's heartland of engineering while continuing my studies.</p>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Now</div>
+          <h3>Building a Community of Learners 🎥</h3>
+          <p>Creating YouTube content, connecting with students across India dreaming of Germany, and building a platform that makes the journey less daunting for everyone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section id="connect">
+    <div class="section-inner">
+      <div class="section-label reveal">Get in Touch</div>
+      <h2 class="section-title reveal">Let's Connect & Grow</h2>
+      <p class="section-desc reveal">Whether you're planning your move, need advice, or just want to follow the journey — I'd love to hear from you.</p>
+      <div class="connect-grid">
+        <a class="connect-card reveal" href="https://www.youtube.com/channel/UCIY3viuqfg8BR9ucyCI2e1w" target="_blank">
+          <div class="cc-icon cc-yt">▶️</div>
+          <div class="cc-info">
+            <h3>YouTube Channel</h3>
+            <p>Watch the Germany journey</p>
+          </div>
+        </a>
+        <a class="connect-card reveal" href="https://www.linkedin.com/in/vamshidhar-reddy-7180551a2/" target="_blank">
+          <div class="cc-icon cc-li">💼</div>
+          <div class="cc-info">
+            <h3>LinkedIn</h3>
+            <p>Professional network</p>
+          </div>
+        </a>
+        <a class="connect-card reveal" href="mailto:vamshidharreddy@gmail.com">
+          <div class="cc-icon cc-mail">✉️</div>
+          <div class="cc-info">
+            <h3>Email Me</h3>
+            <p>For collabs & inquiries</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="cta-strip reveal">
+        <h2>Ready to Start Your Germany Journey?</h2>
+        <p>Subscribe to the channel and join thousands of students navigating life in Germany.</p>
+        <a class="btn-primary" href="https://www.youtube.com/channel/UCIY3viuqfg8BR9ucyCI2e1w" target="_blank">▶ Subscribe on YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <a href="#">Vamshidhar Reddy</a>. All rights reserved.</p>
+    <p style="font-size:0.75rem; color:var(--muted);">Made with ❤️ from Stuttgart 🇩🇪</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Nav active link highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      n
