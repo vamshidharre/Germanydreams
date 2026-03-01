@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cost Estimator | GermanyDreams</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #060d18;
@@ -179,9 +179,15 @@
       margin-top: 0.15rem;
     }
     .city-btn .city-range {
-      font-size: 0.72rem;
-      color: var(--accent);
-      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-top: 0.2rem;
     }
 
@@ -233,7 +239,7 @@
     /* TOTAL HERO */
     .total-hero {
       background: var(--card);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(14,165,176,0.2);
       border-radius: 20px;
       padding: 2rem;
       position: relative;
@@ -242,33 +248,90 @@
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
       align-items: center;
+      box-shadow: 0 0 60px rgba(14,165,176,0.07), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    /* animated glow orb behind the number */
+    .total-hero::after {
+      content: '';
+      position: absolute;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(14,165,176,0.13) 0%, transparent 70%);
+      top: -60px; left: -40px;
+      border-radius: 50%;
+      pointer-events: none;
     }
     .total-hero::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--accent));
+      background: linear-gradient(90deg, var(--gold), var(--accent), var(--accent2));
+      z-index: 1;
     }
-    .total-left { }
+    .total-left { position: relative; z-index: 2; }
     .total-label {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.14em;
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
     }
+
+    /* THE MONEY NUMBER — core upgrade */
     .total-amount {
-      font-family: 'Syne', sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--text);
-      line-height: 1.1;
-      margin: 0.2rem 0;
+      display: flex;
+      align-items: baseline;
+      gap: 0.15em;
+      line-height: 1;
+      margin: 0.3rem 0 0.5rem;
     }
-    .total-amount span { color: var(--accent); font-size: 1.6rem; }
-    .total-annual { font-size: 0.82rem; color: var(--muted); }
-    .total-annual b { color: var(--gold); }
+    .total-currency {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.1em;
+    }
+    .total-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      background: linear-gradient(160deg, #ffffff 30%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-variant-numeric: tabular-nums;
+      transition: opacity 0.15s ease;
+    }
+    .total-number.updating {
+      opacity: 0.4;
+    }
+
+    /* ANNUAL LINE */
+    .total-annual {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .total-annual-divider {
+      width: 1px; height: 12px;
+      background: var(--border);
+    }
+    .total-annual-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+    }
 
     .blocked-box {
       background: var(--bg2);
@@ -279,10 +342,15 @@
     }
     .blocked-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; }
     .blocked-amount {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.6rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
       font-weight: 800;
-      color: var(--gold);
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+      background: linear-gradient(135deg, var(--gold), #fde68a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin: 0.3rem 0 0.2rem;
     }
     .status-badge {
@@ -356,12 +424,17 @@
     }
 
     .bi-amount {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.95rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
       font-weight: 800;
-      color: var(--text);
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+      background: linear-gradient(135deg, #ffffff, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       white-space: nowrap;
-      min-width: 60px;
+      min-width: 64px;
       text-align: right;
     }
 
@@ -421,6 +494,26 @@
     .tp-mi { background: rgba(14,165,176,0.1); color: #0ea5b0; }
     .tp-lo { background: rgba(34,197,94,0.1);  color: #22c55e; }
 
+    /* Styled numbers inside table */
+    .num {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+    }
+    .num-total {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+      background: linear-gradient(135deg, #ffffff, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     /* TIPS CARD */
     .tips-card {
       background: var(--card);
@@ -465,10 +558,15 @@
     .pt-text h4 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
     .pt-text p  { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
     .pt-earn {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--success);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      font-variant-numeric: tabular-nums;
+      background: linear-gradient(135deg, var(--success), #86efac);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       white-space: nowrap;
     }
     .pt-earn span { font-size: 0.75rem; color: var(--muted); font-weight: 400; display: block; text-align: center; }
@@ -595,11 +693,18 @@
 
       <!-- TOTAL SUMMARY -->
       <div class="total-hero">
-        <div class="total-left">
+      <div class="total-left">
           <div class="total-label">Estimated Monthly Total</div>
-          <div class="total-amount" id="totalAmount"><span>&#8364;</span><span id="totalNum">1,050</span></div>
-          <div class="total-annual">Annually: <b id="totalAnnual">&#8364;12,600</b></div>
-          <div style="margin-top:0.75rem;">
+          <div class="total-amount">
+            <span class="total-currency">&#8364;</span>
+            <span class="total-number" id="totalNum">1,050</span>
+          </div>
+          <div class="total-annual">
+            <span>Per year</span>
+            <div class="total-annual-divider"></div>
+            <span class="total-annual-val" id="totalAnnual">&#8364;12,600</span>
+          </div>
+          <div style="margin-top:0.9rem;">
             <span class="status-badge status-ok" id="statusBadge">&#10003; Within Blocked Account</span>
           </div>
         </div>
@@ -638,16 +743,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr data-city="munich"><td><span class="city-dot"><span class="dot dot-ex"></span>Munich</span></td><td><span class="tier-pill tp-ex">Most Expensive</span></td><td>&#8364;700</td><td>&#8364;280</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,380</b></td></tr>
-            <tr data-city="frankfurt"><td><span class="city-dot"><span class="dot dot-ex"></span>Frankfurt</span></td><td><span class="tier-pill tp-ex">Very Expensive</span></td><td>&#8364;640</td><td>&#8364;260</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,280</b></td></tr>
-            <tr data-city="stuttgart"><td><span class="city-dot"><span class="dot dot-ex"></span>Stuttgart</span></td><td><span class="tier-pill tp-ex">Very Expensive</span></td><td>&#8364;620</td><td>&#8364;250</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,240</b></td></tr>
-            <tr data-city="hamburg"><td><span class="city-dot"><span class="dot dot-hi"></span>Hamburg</span></td><td><span class="tier-pill tp-hi">Expensive</span></td><td>&#8364;580</td><td>&#8364;250</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,200</b></td></tr>
-            <tr data-city="berlin"><td><span class="city-dot"><span class="dot dot-hi"></span>Berlin</span></td><td><span class="tier-pill tp-hi">Moderate</span></td><td>&#8364;550</td><td>&#8364;240</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,160</b></td></tr>
-            <tr data-city="cologne"><td><span class="city-dot"><span class="dot dot-hi"></span>Cologne</span></td><td><span class="tier-pill tp-hi">Moderate</span></td><td>&#8364;520</td><td>&#8364;235</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,120</b></td></tr>
-            <tr class="active-row" data-city="erlangen"><td><span class="city-dot"><span class="dot dot-mi"></span>Erlangen / FAU &#10024;</span></td><td><span class="tier-pill tp-mi">Affordable</span></td><td>&#8364;480</td><td>&#8364;220</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,050</b></td></tr>
-            <tr data-city="aachen"><td><span class="city-dot"><span class="dot dot-mi"></span>Aachen</span></td><td><span class="tier-pill tp-mi">Affordable</span></td><td>&#8364;460</td><td>&#8364;210</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,020</b></td></tr>
-            <tr data-city="dresden"><td><span class="city-dot"><span class="dot dot-lo"></span>Dresden</span></td><td><span class="tier-pill tp-lo">Budget-Friendly</span></td><td>&#8364;420</td><td>&#8364;200</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;970</b></td></tr>
-            <tr data-city="leipzig"><td><span class="city-dot"><span class="dot dot-lo"></span>Leipzig</span></td><td><span class="tier-pill tp-lo">Cheapest</span></td><td>&#8364;400</td><td>&#8364;190</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;930</b></td></tr>
+            <tr data-city="munich"><td><span class="city-dot"><span class="dot dot-ex"></span>Munich</span></td><td><span class="tier-pill tp-ex">Most Expensive</span></td><td><span class="num">&#8364;700</span></td><td><span class="num">&#8364;280</span></td><td><span class="num">&#8364;150</span></td><td><span class="num">&#8364;63</span></td><td><span class="num-total">&#8364;1,380</span></td></tr>
+            <tr data-city="frankfurt"><td><span class="city-dot"><span class="dot dot-ex"></span>Frankfurt</span></td><td><span class="tier-pill tp-ex">Very Expensive</span></td><td><span class="num">&#8364;640</span></td><td><span class="num">&#8364;260</span></td><td><span class="num">&#8364;150</span></td><td><span class="num">&#8364;63</span></td><td><span class="num-total">&#8364;1,280</span></td></tr>
+            <tr data-city="stuttgart"><td><span class="city-dot"><span class="dot dot-ex"></span>Stuttgart</span></td><td><span class="tier-pill tp-ex">Very Expensive</span></td><td><span class="num">&#8364;620</span></td><td><span class="num">&#8364;250</span></td><td><span class="num">&#8364;150</span></td><td><span class="num">&#8364;63</span></td><td><span class="num-total">&#8364;1,240</span></td></tr>
+            <tr data-city="hamburg"><td><span class="city-dot"><span class="dot dot-hi"></span>Hamburg</span></td><td><span class="tier-pill tp-hi">Expensive</span></td><td><span class="num">&#8364;580</span></td><td><span class="num">&#8364;250</span></td><td><span class="num">&#8364;150</span></td><td><span class="num">&#8364;63</span></td><td><span class="num-total">&#8364;1,200</span></td></tr>
+            <tr data-city="berlin"><td><span class="city-dot"><span class="dot dot-hi"></span>Berlin</span></td><td><span class="tier-pill tp-hi">Moderate</span></td><td><span class="num">&#8364;550</span></td><td><span class="num">&#8364;240</span></td><td><span class="num">&#8364;150</span></td><td><span class="num">&#8364;63</span></td><td><span class="num-total">&#8364;1,160</span></td></tr>
+            <tr data-city="cologne"><td><span class="city-dot"><span class="dot dot-hi"></span>Cologne</span></td><td><span class="tier-pill tp-hi">Moderate</span></td><td><span class="num">&#8364;520</span></td><td><span class="num">&#8364;235</span></td><td><span class="num">&#8364;150</span></td><td><span class="num">&#8364;63</span></td><td><span class="num-total">&#8364;1,120</span></td></tr>
+            <tr class="active-row" data-city="erlangen"><td><span class="city-dot"><span class="dot dot-mi"></span>Erlangen / FAU &#10024;</span></td><td><span class="tier-pill tp-mi">Affordable</span></td><td><span class="num">&#8364;480</span></td><td><span class="num">&#8364;220</span></td><td><span class="num">&#8364;150</span></td><td><span class="num">&#8364;63</span></td><td><span class="num-total">&#8364;1,050</span></td></tr>
+            <tr data-city="aachen"><td><span class="city-dot"><span class="dot dot-mi"></span>Aachen</span></td><td><span class="tier-pill tp-mi">Affordable</span></td><td><span class="num">&#8364;460</span></td><td><span class="num">&#8364;210</span></td><td><span class="num">&#8364;150</span></td><td><span class="num">&#8364;63</span></td><td><span class="num-total">&#8364;1,020</span></td></tr>
+            <tr data-city="dresden"><td><span class="city-dot"><span class="dot dot-lo"></span>Dresden</span></td><td><span class="tier-pill tp-lo">Budget-Friendly</span></td><td><span class="num">&#8364;420</span></td><td><span class="num">&#8364;200</span></td><td><span class="num">&#8364;150</span></td><td><span class="num">&#8364;63</span></td><td><span class="num-total">&#8364;970</span></td></tr>
+            <tr data-city="leipzig"><td><span class="city-dot"><span class="dot dot-lo"></span>Leipzig</span></td><td><span class="tier-pill tp-lo">Cheapest</span></td><td><span class="num">&#8364;400</span></td><td><span class="num">&#8364;190</span></td><td><span class="num">&#8364;150</span></td><td><span class="num">&#8364;63</span></td><td><span class="num-total">&#8364;930</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -737,6 +842,38 @@
       if (row) row.classList.add('active-row');
     }
 
+    // ─── COUNT-UP ANIMATION ─────────────────────────────────────────────────
+    let currentDisplayed = 1050;
+    let animFrame = null;
+
+    function animateTo(target) {
+      if (animFrame) cancelAnimationFrame(animFrame);
+      const el = document.getElementById('totalNum');
+      const start = currentDisplayed;
+      const diff  = target - start;
+      const duration = 380;
+      const startTime = performance.now();
+
+      el.classList.add('updating');
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease-out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const val = Math.round(start + diff * ease);
+        el.textContent = val.toLocaleString();
+        if (progress < 1) {
+          animFrame = requestAnimationFrame(step);
+        } else {
+          el.textContent = target.toLocaleString();
+          currentDisplayed = target;
+          el.classList.remove('updating');
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
     // ─── RENDER ──────────────────────────────────────────────────────────────
     function render() {
       const d    = cityData[selectedCity];
@@ -746,8 +883,8 @@
       const total = rent + food + d.transport + d.insurance + misc;
       const annual = total * 12;
 
-      // Total display
-      document.getElementById('totalNum').textContent    = total.toLocaleString();
+      // Animated number
+      animateTo(total);
       document.getElementById('totalAnnual').textContent = '€' + annual.toLocaleString();
 
       // Status badge
