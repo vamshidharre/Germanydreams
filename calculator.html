@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CGPA Calculator | GermanyDreams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060d18;
+      --bg2: #0a1628;
+      --card: #0f1f35;
+      --card2: #152540;
+      --accent: #0ea5b0;
+      --accent2: #22d3ee;
+      --gold: #f59e0b;
+      --text: #f0f4f8;
+      --muted: #7a90a8;
+      --border: rgba(14,165,176,0.12);
+      --success: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(6,13,24,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    /* HERO BANNER */
+    .page-hero {
+      padding: 8rem 2.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(14,165,176,0.12) 0%, transparent 70%);
+      top: -100px; left: 50%; transform: translateX(-50%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(14,165,176,0.1);
+      border: 1px solid rgba(14,165,176,0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+    .page-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+    .page-hero h1 span { color: var(--accent); }
+    .page-hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* MAIN LAYOUT */
+    .page-body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2.5rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* CALCULATOR CARD */
+    .calc-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .calc-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+    }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .card-subtitle { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    /* PRESETS */
+    .presets {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .preset-btn {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .preset-btn:hover, .preset-btn.active {
+      background: rgba(14,165,176,0.15);
+      border-color: rgba(14,165,176,0.4);
+      color: var(--accent);
+    }
+
+    /* FORM */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
+    }
+    .form-group input {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-size: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(14,165,176,0.1);
+    }
+    .form-group input::placeholder { color: var(--muted); opacity: 0.6; }
+
+    .calc-btn {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.9rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Syne', sans-serif;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 20px rgba(14,165,176,0.3);
+    }
+    .calc-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(14,165,176,0.5);
+    }
+    .calc-btn:active { transform: translateY(0); }
+
+    /* RESULT CARD */
+    .result-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .result-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--accent));
+    }
+
+    .result-main {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--bg2);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+    .result-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .result-grade {
+      font-family: 'Syne', sans-serif;
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      transition: all 0.4s ease;
+    }
+    .result-grade.good  { color: var(--success); }
+    .result-grade.mid   { color: var(--gold); }
+    .result-grade.low   { color: var(--danger); }
+
+    .result-desc {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* GRADE BAR */
+    .grade-bar-wrap {
+      background: var(--bg2);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 1.2rem;
+    }
+    .grade-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .grade-bar-track {
+      height: 10px;
+      background: var(--card2);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .grade-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--success), var(--gold), var(--danger));
+      width: 0%;
+      transition: width 0.6s cubic-bezier(.4,0,.2,1);
+    }
+    .bar-ticks {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.4rem;
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+
+    /* GRADE TABLE */
+    .grade-table-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      grid-column: 1 / -1;
+    }
+    .grade-table-wrap .card-title { margin-bottom: 1rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    thead th {
+      text-align: left;
+      padding: 0.6rem 1rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    tbody tr {
+      border-bottom: 1px solid rgba(14,165,176,0.06);
+      transition: background 0.2s;
+    }
+    tbody tr:hover { background: rgba(14,165,176,0.04); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody td {
+      padding: 0.75rem 1rem;
+      color: var(--text);
+    }
+    .grade-pill {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .g1 { background: rgba(34,197,94,0.15); color: #22c55e; }
+    .g2 { background: rgba(14,165,176,0.15); color: #0ea5b0; }
+    .g3 { background: rgba(245,158,11,0.15); color: #f59e0b; }
+    .g4 { background: rgba(251,146,60,0.15); color: #fb923c; }
+    .g5 { background: rgba(239,68,68,0.15); color: #ef4444; }
+
+    /* FORMULA BOX */
+    .formula-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .formula-box strong { color: var(--accent2); font-family: 'Syne', sans-serif; }
+
+    /* ERROR */
+    .error-msg {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      font-size: 0.82rem;
+      color: #ef4444;
+      display: none;
+      margin-top: 0.75rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .page-body { grid-template-columns: 1fr; padding: 0 1.5rem 4rem; }
+      nav { padding: 1rem 1.5rem; }
+      .page-hero { padding: 7rem 1.5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html"><span>G</span>ermanyDreams</a>
+    <a class="nav-back" href="index.html">&#8592; Back to Home</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-badge">&#129518; Free Tool</div>
+    <h1>CGPA &rarr; <span>German Grade</span> Calculator</h1>
+    <p>Convert your Indian university CGPA or percentage to the German grading scale using the Modified Bavarian Formula.</p>
+  </div>
+
+  <!-- BODY -->
+  <div class="page-body">
+
+    <!-- CALCULATOR -->
+    <div class="calc-card">
+      <div class="card-title">Enter Your Scores</div>
+      <div class="card-subtitle">Select a preset or enter custom values</div>
+
+      <div class="presets">
+        <button class="preset-btn" onclick="applyPreset(10, 4)">CGPA / 10 (Pass: 4)</button>
+        <button class="preset-btn" onclick="applyPreset(10, 5)">CGPA / 10 (Pass: 5)</button>
+        <button class="preset-btn" onclick="applyPreset(4, 2)">CGPA / 4.0</button>
+        <button class="preset-btn" onclick="applyPreset(100, 35)">Percentage (Pass: 35%)</button>
+        <button class="preset-btn" onclick="applyPreset(100, 40)">Percentage (Pass: 40%)</button>
+        <button class="preset-btn" onclick="applyPreset(100, 50)">Percentage (Pass: 50%)</button>
+      </div>
+
+      <div class="form-group">
+        <label>Max Possible Score (N<sub>max</sub>)</label>
+        <input type="number" id="nmax" placeholder="e.g. 10 or 100" step="any" />
+      </div>
+      <div class="form-group">
+        <label>Min Passing Score (N<sub>min</sub>)</label>
+        <input type="number" id="nmin" placeholder="e.g. 4 or 35" step="any" />
+      </div>
+      <div class="form-group">
+        <label>Your Obtained Score (N)</label>
+        <input type="number" id="nobt" placeholder="e.g. 8.5 or 78" step="any" />
+      </div>
+
+      <div class="error-msg" id="errorMsg">&#9888; Please fill in all fields correctly.</div>
+
+      <button class="calc-btn" onclick="calculate()">Calculate German Grade</button>
+
+      <div class="formula-box" style="margin-top:1.2rem;">
+        <strong>Modified Bavarian Formula:</strong><br>
+        Grade = 1 + 3 &times; [(N<sub>max</sub> &minus; N) / (N<sub>max</sub> &minus; N<sub>min</sub>)]
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-card">
+      <div class="card-title">Your Result</div>
+
+      <div class="result-main">
+        <div class="result-label">German Grade Equivalent</div>
+        <div class="result-grade" id="resultGrade">--</div>
+        <div class="result-desc" id="resultDesc">Enter your scores and click Calculate</div>
+      </div>
+
+      <div class="grade-bar-wrap">
+        <div class="grade-bar-label">
+          <span>Excellent (1.0)</span>
+          <span>Fail (5.0)</span>
+        </div>
+        <div class="grade-bar-track">
+          <div class="grade-bar-fill" id="gradeBar"></div>
+        </div>
+        <div class="bar-ticks">
+          <span>1.0</span><span>2.0</span><span>3.0</span><span>4.0</span><span>5.0</span>
+        </div>
+      </div>
+
+      <div class="formula-box" id="formulaDisplay" style="display:none;">
+        <strong>Your Calculation:</strong><br>
+        <span id="formulaText"></span>
+      </div>
+    </div>
+
+    <!-- GRADE REFERENCE TABLE -->
+    <div class="grade-table-wrap">
+      <div class="card-title">German Grade Reference</div>
+      <div class="card-subtitle" style="font-size:0.82rem; color:var(--muted); margin-bottom:1rem;">Understanding the German grading system</div>
+      <table>
+        <thead>
+          <tr>
+            <th>German Grade</th>
+            <th>Description</th>
+            <th>Equivalent (India)</th>
+            <th>CGPA / 10</th>
+            <th>Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="grade-pill g1">1.0 &ndash; 1.5</span></td>
+            <td>Sehr gut (Very Good)</td>
+            <td>Outstanding / O</td>
+            <td>9.0 &ndash; 10.0</td>
+            <td>85% &ndash; 100%</td>
+          </tr>
+          <tr>
+            <td><span class="grade-pill g2">1.6 &ndash; 2.5</span></td>
+            <td>Gut (Good)</td>
+            <td>Excellent / A+</td>
+            <td>7.5 &ndash; 8.9</td>
+            <td>70% &ndash; 84%</td>
+          </tr>
+          <tr>
+            <td><span class="grade-pill g3">2.6 &ndash; 3.5</span></td>
+            <td>Befriedigend (Satisfactory)</td>
+            <td>Good / A / B+</td>
+            <td>6.0 &ndash; 7.4</td>
+            <td>55% &ndash; 69%</td>
+          </tr>
+          <tr>
+            <td><span class="grade-pill g4">3.6 &ndash; 4.0</span></td>
+            <td>Ausreichend (Sufficient)</td>
+            <td>Average / B / C</td>
+            <td>4.0 &ndash; 5.9</td>
+            <td>40% &ndash; 54%</td>
+          </tr>
+          <tr>
+            <td><span class="grade-pill g5">4.1 &ndash; 5.0</span></td>
+            <td>Nicht bestanden (Fail)</td>
+            <td>Fail</td>
+            <td>Below 4.0</td>
+            <td>Below 40%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script>
+    function applyPreset(max, min) {
+      document.getElementById('nmax').value = max;
+      document.getElementById('nmin').value = min;
+      document.getElementById('nobt').value = '';
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('errorMsg').style.display = 'none';
+    }
+
+    function calculate() {
+      const nmax = parseFloat(document.getElementById('nmax').value);
+      const nmin = parseFloat(document.getElementById('nmin').value);
+      const nobt = parseFloat(document.getElementById('nobt').value);
+      const err  = document.getElementById('errorMsg');
+
+      // Validation
+      if (isNaN(nmax) || isNaN(nmin) || isNaN(nobt)) {
+        err.textContent = '⚠ Please fill in all three fields.';
+        err.style.display = 'block'; return;
+      }
+      if (nmax <= nmin) {
+        err.textContent = '⚠ Max score must be greater than min passing score.';
+        err.style.display = 'block'; return;
+      }
+      if (nobt > nmax) {
+        err.textContent = '⚠ Your score cannot exceed the max possible score.';
+        err.style.display = 'block'; return;
+      }
+      if (nobt < 0) {
+        err.textContent = '⚠ Score cannot be negative.';
+        err.style.display = 'block'; return;
+      }
+      err.style.display = 'none';
+
+      // Modified Bavarian Formula
+      let grade = 1 + 3 * ((nmax - nobt) / (nmax - nmin));
+      grade = Math.min(5.0, Math.max(1.0, grade));
+      const rounded = Math.round(grade * 10) / 10;
+
+      // Update grade display
+      const gradeEl = document.getElementById('resultGrade');
+      gradeEl.textContent = rounded.toFixed(1);
+      gradeEl.className = 'result-grade';
+      if (rounded <= 1.5) { gradeEl.classList.add('good'); }
+      else if (rounded <= 3.5) { gradeEl.classList.add('mid'); }
+      else { gradeEl.classList.add('low'); }
+
+      // Description
+      const descEl = document.getElementById('resultDesc');
+      if (rounded <= 1.5) descEl.textContent = 'Sehr gut — Very Good! Excellent result.';
+      else if (rounded <= 2.5) descEl.textContent = 'Gut — Good. Solid academic performance.';
+      else if (rounded <= 3.5) descEl.textContent = 'Befriedigend — Satisfactory performance.';
+      else if (rounded <= 4.0) descEl.textContent = 'Ausreichend — Sufficient. Meets requirements.';
+      else descEl.textContent = 'Nicht bestanden — Does not meet passing threshold.';
+
+      // Bar fill: 1.0 = 0%, 5.0 = 100%
+      const pct = ((rounded - 1.0) / 4.0) * 100;
+      document.getElementById('gradeBar').style.width = pct + '%';
+
+      // Formula display
+      const fDisplay = document.getElementById('formulaDisplay');
+      const fText    = document.getElementById('formulaText');
+      fText.innerHTML = `Grade = 1 + 3 &times; [(${nmax} &minus; ${nobt}) / (${nmax} &minus; ${nmin})]<br>= 1 + 3 &times; [${(nmax - nobt).toFixed(2)} / ${(nmax - nmin).toFixed(2)}]<br>= <strong style="color:var(--accent2)">${rounded.toFixed(1)}</strong>`;
+      fDisplay.style.display = 'block';
+    }
+
+    // Allow Enter key to trigger calculate
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter') calculate();
+    });
+  </script>
+</body>
+</html>
