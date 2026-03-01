@@ -67,7 +67,8 @@
       justify-content: space-between;
       align-items: center;
       background: rgba(6, 13, 24, 0.88);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
     }
 
@@ -191,7 +192,19 @@
     }
 
     .hero h1 .line2 {
+      background: linear-gradient(to right, var(--accent2), var(--accent), var(--gold), var(--accent2));
+      background-size: 300% auto;
       color: var(--accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shine 6s linear infinite;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 300% center;
+      }
     }
 
     .hero-sub {
@@ -229,6 +242,44 @@
     .btn-primary:hover {
       transform: translateY(-2px);
       box-shadow: 0 0 40px rgba(14, 165, 176, 0.5);
+    }
+
+    .btn-youtube {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      color: #fff;
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-youtube::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: skewX(-20deg);
+      transition: all 0.5s ease;
+    }
+
+    .btn-youtube:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(255, 0, 0, 0.45);
+    }
+
+    .btn-youtube:hover::after {
+      left: 150%;
     }
 
     .btn-ghost {
@@ -1042,8 +1093,13 @@
           Erlangen-N&uuml;rnberg, content creator, and your guide to student life abroad. Join my journey.
         </p>
         <div class="hero-btns">
-          <a class="btn-primary" href="https://www.youtube.com/channel/UCIY3viuqfg8BR9ucyCI2e1w" target="_blank">&#9654;
-            Watch on YouTube</a>
+          <a class="btn-youtube" href="https://www.youtube.com/channel/UCIY3viuqfg8BR9ucyCI2e1w" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.057 0 12 0 12s0 3.943.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.943 24 12 24 12s0-3.943-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+            Watch on YouTube
+          </a>
           <a class="btn-ghost" href="#connect">Let's Connect</a>
         </div>
         <div class="hero-stats">
