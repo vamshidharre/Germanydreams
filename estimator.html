@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cost Estimator | GermanyDreams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060d18;
+      --bg2: #0a1628;
+      --card: #0f1f35;
+      --card2: #152540;
+      --accent: #0ea5b0;
+      --accent2: #22d3ee;
+      --gold: #f59e0b;
+      --text: #f0f4f8;
+      --muted: #7a90a8;
+      --border: rgba(14,165,176,0.12);
+      --success: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(6,13,24,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 8rem 2.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 400px;
+      background: radial-gradient(circle, rgba(14,165,176,0.12) 0%, transparent 70%);
+      top: 0; left: 50%; transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(14,165,176,0.1);
+      border: 1px solid rgba(14,165,176,0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+    .page-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+    .page-hero h1 span { color: var(--accent); }
+    .page-hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* LAYOUT */
+    .page-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+    }
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .card-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.4rem; }
+
+    /* CITY GRID */
+    .city-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1.4rem;
+    }
+    .city-btn {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.7rem 0.8rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .city-btn:hover { border-color: rgba(14,165,176,0.3); }
+    .city-btn.active {
+      background: rgba(14,165,176,0.12);
+      border-color: rgba(14,165,176,0.5);
+    }
+    .city-btn .city-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .city-btn.active .city-name { color: var(--accent2); }
+    .city-btn .city-tier {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+    .city-btn .city-range {
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    /* SECTION LABEL */
+    .slabel {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    /* TOGGLE PILLS */
+    .toggle-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+      flex-wrap: wrap;
+    }
+    .toggle-btn {
+      flex: 1;
+      min-width: 80px;
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.55rem 0.5rem;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .toggle-btn:hover { color: var(--text); border-color: rgba(14,165,176,0.3); }
+    .toggle-btn.active {
+      background: rgba(14,165,176,0.12);
+      border-color: var(--accent);
+      color: var(--accent2);
+    }
+
+    /* DIVIDER */
+    .divider { height: 1px; background: var(--border); margin: 1.2rem 0; }
+
+    /* RESULT PANEL */
+    .result-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    /* TOTAL HERO */
+    .total-hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+    .total-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--accent));
+    }
+    .total-left { }
+    .total-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .total-amount {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+      margin: 0.2rem 0;
+    }
+    .total-amount span { color: var(--accent); font-size: 1.6rem; }
+    .total-annual { font-size: 0.82rem; color: var(--muted); }
+    .total-annual b { color: var(--gold); }
+
+    .blocked-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+    .blocked-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; }
+    .blocked-amount {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--gold);
+      margin: 0.3rem 0 0.2rem;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .status-ok   { background: rgba(34,197,94,0.12);  color: var(--success); border: 1px solid rgba(34,197,94,0.2); }
+    .status-warn { background: rgba(245,158,11,0.12); color: var(--warn);    border: 1px solid rgba(245,158,11,0.2); }
+    .status-over { background: rgba(239,68,68,0.12);  color: var(--danger);  border: 1px solid rgba(239,68,68,0.2); }
+
+    /* BREAKDOWN */
+    .breakdown-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .breakdown-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+    }
+
+    .breakdown-list { display: flex; flex-direction: column; gap: 0.8rem; }
+
+    .breakdown-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .bi-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .bi-blue  { background: rgba(14,165,176,0.12); }
+    .bi-green { background: rgba(34,197,94,0.12); }
+    .bi-gold  { background: rgba(245,158,11,0.12); }
+    .bi-pink  { background: rgba(236,72,153,0.12); }
+    .bi-purple{ background: rgba(139,92,246,0.12); }
+    .bi-orange{ background: rgba(249,115,22,0.12); }
+    .bi-teal  { background: rgba(20,184,166,0.12); }
+
+    .bi-info { flex: 1; }
+    .bi-name { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+    .bi-note { font-size: 0.75rem; color: var(--muted); margin-top: 0.05rem; }
+
+    .bi-bar-wrap { flex: 1; }
+    .bi-bar-track {
+      height: 6px;
+      background: var(--card2);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bi-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--accent);
+      transition: width 0.5s cubic-bezier(.4,0,.2,1);
+    }
+
+    .bi-amount {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text);
+      white-space: nowrap;
+      min-width: 60px;
+      text-align: right;
+    }
+
+    /* CITY COMPARISON TABLE */
+    .compare-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      grid-column: 1 / -1;
+    }
+    .compare-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+    }
+    .compare-card { position: relative; overflow: hidden; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+    thead th {
+      text-align: left;
+      padding: 0.6rem 1rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    tbody tr { border-bottom: 1px solid rgba(14,165,176,0.05); transition: background 0.15s; }
+    tbody tr:hover { background: rgba(14,165,176,0.03); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr.active-row { background: rgba(14,165,176,0.07) !important; }
+    tbody td { padding: 0.75rem 1rem; color: var(--text); }
+    .city-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-ex { background: #ef4444; }
+    .dot-hi { background: #f59e0b; }
+    .dot-mi { background: #0ea5b0; }
+    .dot-lo { background: #22c55e; }
+
+    .tier-pill {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+    .tp-ex { background: rgba(239,68,68,0.1); color: #ef4444; }
+    .tp-hi { background: rgba(245,158,11,0.1); color: #f59e0b; }
+    .tp-mi { background: rgba(14,165,176,0.1); color: #0ea5b0; }
+    .tp-lo { background: rgba(34,197,94,0.1);  color: #22c55e; }
+
+    /* TIPS CARD */
+    .tips-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      grid-column: 1 / -1;
+      position: relative;
+      overflow: hidden;
+    }
+    .tips-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--accent));
+    }
+    .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .tip-item {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+    .tip-item .tip-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .tip-item h4 { font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .tip-item p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+    /* PART TIME BANNER */
+    .pt-banner {
+      background: linear-gradient(135deg, rgba(14,165,176,0.08), rgba(245,158,11,0.05));
+      border: 1px solid rgba(14,165,176,0.2);
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .pt-icon { font-size: 2rem; flex-shrink: 0; }
+    .pt-text flex: 1; }
+    .pt-text h4 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .pt-text p  { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    .pt-earn {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--success);
+      white-space: nowrap;
+    }
+    .pt-earn span { font-size: 0.75rem; color: var(--muted); font-weight: 400; display: block; text-align: center; }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .page-body { grid-template-columns: 1fr; padding: 0 1.2rem 5rem; }
+      .compare-card, .tips-card { grid-column: 1; }
+      nav { padding: 1rem 1.5rem; }
+      .page-hero { padding: 7rem 1.5rem 2rem; }
+      .total-hero { grid-template-columns: 1fr; }
+      .city-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-back" href="index.html">&#8592; Back to Home</a>
+    <a class="nav-logo" href="index.html"><span>G</span>ermanyDreams</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-badge">&#128176; 2026 Data</div>
+    <h1>Monthly <span>Cost Estimator</span></h1>
+    <p>Select your city, accommodation type, and lifestyle to get a realistic estimate of what student life in Germany actually costs — based on official 2026 data.</p>
+  </div>
+
+  <div class="page-body">
+
+    <!-- LEFT: CONTROLS -->
+    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+
+      <div class="card">
+        <div class="card-title">&#127968; Choose Your City</div>
+        <div class="card-sub">Costs vary significantly by location</div>
+
+        <div class="city-grid" id="cityGrid">
+          <button class="city-btn" data-city="munich" onclick="selectCity(this)">
+            <div class="city-name">Munich</div>
+            <div class="city-tier">Most Expensive</div>
+            <div class="city-range">&#8364;1,300&ndash;1,800/mo</div>
+          </button>
+          <button class="city-btn" data-city="frankfurt" onclick="selectCity(this)">
+            <div class="city-name">Frankfurt</div>
+            <div class="city-tier">Very Expensive</div>
+            <div class="city-range">&#8364;1,200&ndash;1,600/mo</div>
+          </button>
+          <button class="city-btn" data-city="stuttgart" onclick="selectCity(this)">
+            <div class="city-name">Stuttgart</div>
+            <div class="city-tier">Very Expensive</div>
+            <div class="city-range">&#8364;1,150&ndash;1,550/mo</div>
+          </button>
+          <button class="city-btn" data-city="hamburg" onclick="selectCity(this)">
+            <div class="city-name">Hamburg</div>
+            <div class="city-tier">Expensive</div>
+            <div class="city-range">&#8364;1,100&ndash;1,500/mo</div>
+          </button>
+          <button class="city-btn" data-city="berlin" onclick="selectCity(this)">
+            <div class="city-name">Berlin</div>
+            <div class="city-tier">Moderate</div>
+            <div class="city-range">&#8364;1,050&ndash;1,400/mo</div>
+          </button>
+          <button class="city-btn" data-city="cologne" onclick="selectCity(this)">
+            <div class="city-name">Cologne</div>
+            <div class="city-tier">Moderate</div>
+            <div class="city-range">&#8364;1,000&ndash;1,350/mo</div>
+          </button>
+          <button class="city-btn active" data-city="erlangen" onclick="selectCity(this)">
+            <div class="city-name">Erlangen / FAU</div>
+            <div class="city-tier">Affordable &#10024;</div>
+            <div class="city-range">&#8364;900&ndash;1,200/mo</div>
+          </button>
+          <button class="city-btn" data-city="aachen" onclick="selectCity(this)">
+            <div class="city-name">Aachen</div>
+            <div class="city-tier">Affordable</div>
+            <div class="city-range">&#8364;880&ndash;1,150/mo</div>
+          </button>
+          <button class="city-btn" data-city="dresden" onclick="selectCity(this)">
+            <div class="city-name">Dresden</div>
+            <div class="city-tier">Budget-Friendly</div>
+            <div class="city-range">&#8364;850&ndash;1,100/mo</div>
+          </button>
+          <button class="city-btn" data-city="leipzig" onclick="selectCity(this)">
+            <div class="city-name">Leipzig</div>
+            <div class="city-tier">Cheapest</div>
+            <div class="city-range">&#8364;800&ndash;1,050/mo</div>
+          </button>
+        </div>
+
+        <div class="slabel">Accommodation Type</div>
+        <div class="toggle-group" id="accomGroup">
+          <button class="toggle-btn" data-accom="dorm" onclick="selectToggle('accomGroup', this)">&#127968; Dorm</button>
+          <button class="toggle-btn active" data-accom="wg" onclick="selectToggle('accomGroup', this)">&#128101; WG / Shared</button>
+          <button class="toggle-btn" data-accom="studio" onclick="selectToggle('accomGroup', this)">&#127962; Studio</button>
+        </div>
+
+        <div class="slabel">Lifestyle</div>
+        <div class="toggle-group" id="lifeGroup">
+          <button class="toggle-btn" data-life="frugal" onclick="selectToggle('lifeGroup', this)">&#127808; Frugal</button>
+          <button class="toggle-btn active" data-life="moderate" onclick="selectToggle('lifeGroup', this)">&#9889; Moderate</button>
+          <button class="toggle-btn" data-life="comfortable" onclick="selectToggle('lifeGroup', this)">&#127881; Comfortable</button>
+        </div>
+      </div>
+
+      <!-- PART-TIME EARN BANNER -->
+      <div class="pt-banner">
+        <div class="pt-icon">&#128084;</div>
+        <div class="pt-text" style="flex:1;">
+          <h4>Part-Time Work (Werkstudent)</h4>
+          <p>Students can work up to 20 hrs/week. At &#8364;12&ndash;15/hr, you can earn &#8364;800&ndash;1,200/month &mdash; covering groceries, transport &amp; more.</p>
+        </div>
+        <div>
+          <div class="pt-earn">&#8364;960<span>avg/month</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: RESULTS -->
+    <div class="result-panel">
+
+      <!-- TOTAL SUMMARY -->
+      <div class="total-hero">
+        <div class="total-left">
+          <div class="total-label">Estimated Monthly Total</div>
+          <div class="total-amount" id="totalAmount"><span>&#8364;</span><span id="totalNum">1,050</span></div>
+          <div class="total-annual">Annually: <b id="totalAnnual">&#8364;12,600</b></div>
+          <div style="margin-top:0.75rem;">
+            <span class="status-badge status-ok" id="statusBadge">&#10003; Within Blocked Account</span>
+          </div>
+        </div>
+        <div class="blocked-box">
+          <div class="blocked-label">Monthly Blocked Account Payout</div>
+          <div class="blocked-amount">&#8364;992</div>
+          <div style="font-size:0.72rem; color:var(--muted); margin-top:0.3rem;">&#8364;11,904 / year required (2026)</div>
+        </div>
+      </div>
+
+      <!-- BREAKDOWN -->
+      <div class="breakdown-card">
+        <div class="card-title" style="margin-bottom:1.2rem;">Monthly Breakdown</div>
+        <div class="breakdown-list" id="breakdownList">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CITY COMPARISON TABLE -->
+    <div class="compare-card">
+      <div class="card-title" style="margin-bottom:0.3rem;">City-by-City Comparison</div>
+      <div style="font-size:0.8rem; color:var(--muted); margin-bottom:1.2rem;">Monthly estimates for a student in a shared WG with moderate lifestyle (2026 data)</div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>City</th>
+              <th>Tier</th>
+              <th>Rent (WG)</th>
+              <th>Food</th>
+              <th>Insurance</th>
+              <th>Transport</th>
+              <th>Total Est.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-city="munich"><td><span class="city-dot"><span class="dot dot-ex"></span>Munich</span></td><td><span class="tier-pill tp-ex">Most Expensive</span></td><td>&#8364;700</td><td>&#8364;280</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,380</b></td></tr>
+            <tr data-city="frankfurt"><td><span class="city-dot"><span class="dot dot-ex"></span>Frankfurt</span></td><td><span class="tier-pill tp-ex">Very Expensive</span></td><td>&#8364;640</td><td>&#8364;260</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,280</b></td></tr>
+            <tr data-city="stuttgart"><td><span class="city-dot"><span class="dot dot-ex"></span>Stuttgart</span></td><td><span class="tier-pill tp-ex">Very Expensive</span></td><td>&#8364;620</td><td>&#8364;250</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,240</b></td></tr>
+            <tr data-city="hamburg"><td><span class="city-dot"><span class="dot dot-hi"></span>Hamburg</span></td><td><span class="tier-pill tp-hi">Expensive</span></td><td>&#8364;580</td><td>&#8364;250</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,200</b></td></tr>
+            <tr data-city="berlin"><td><span class="city-dot"><span class="dot dot-hi"></span>Berlin</span></td><td><span class="tier-pill tp-hi">Moderate</span></td><td>&#8364;550</td><td>&#8364;240</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,160</b></td></tr>
+            <tr data-city="cologne"><td><span class="city-dot"><span class="dot dot-hi"></span>Cologne</span></td><td><span class="tier-pill tp-hi">Moderate</span></td><td>&#8364;520</td><td>&#8364;235</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,120</b></td></tr>
+            <tr class="active-row" data-city="erlangen"><td><span class="city-dot"><span class="dot dot-mi"></span>Erlangen / FAU &#10024;</span></td><td><span class="tier-pill tp-mi">Affordable</span></td><td>&#8364;480</td><td>&#8364;220</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,050</b></td></tr>
+            <tr data-city="aachen"><td><span class="city-dot"><span class="dot dot-mi"></span>Aachen</span></td><td><span class="tier-pill tp-mi">Affordable</span></td><td>&#8364;460</td><td>&#8364;210</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;1,020</b></td></tr>
+            <tr data-city="dresden"><td><span class="city-dot"><span class="dot dot-lo"></span>Dresden</span></td><td><span class="tier-pill tp-lo">Budget-Friendly</span></td><td>&#8364;420</td><td>&#8364;200</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;970</b></td></tr>
+            <tr data-city="leipzig"><td><span class="city-dot"><span class="dot dot-lo"></span>Leipzig</span></td><td><span class="tier-pill tp-lo">Cheapest</span></td><td>&#8364;400</td><td>&#8364;190</td><td>&#8364;150</td><td>&#8364;63</td><td><b>&#8364;930</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SAVING TIPS -->
+    <div class="tips-card">
+      <div class="card-title">&#128161; Smart Saving Tips from Stuttgart</div>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <div class="tip-icon">&#128722;</div>
+          <h4>Shop at Aldi &amp; Lidl</h4>
+          <p>Discount supermarkets save you 20&ndash;30% vs REWE or EDEKA. Visit Wochenmarkt near closing time for cheap fresh produce.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">&#127951;</div>
+          <h4>Get the Deutschlandticket</h4>
+          <p>&#8364;63/month for unlimited public transport across all of Germany. The best transport deal in Europe for students.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">&#127869;</div>
+          <h4>Eat at the Mensa</h4>
+          <p>University canteens serve hot meals for &#8364;2&ndash;5. Eating there 3&ndash;4 times a week can save &#8364;60&ndash;80/month vs cooking everything from scratch.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">&#128101;</div>
+          <h4>Choose WG over Studio</h4>
+          <p>A shared flat saves &#8364;200&ndash;400/month vs a private studio and also comes with a built-in social circle &mdash; great for adjusting to life abroad.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">&#128084;</div>
+          <h4>Work as Werkstudent</h4>
+          <p>Up to 20 hrs/week during semester. &#8364;12&ndash;15/hr is standard. Top sectors: IT, engineering, logistics, tutoring, and campus assistants.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">&#127981;</div>
+          <h4>Apply for BAf&#246;G / DAAD</h4>
+          <p>International students may qualify for BAf&#246;G support or DAAD scholarships. Apply early &mdash; it can cover rent entirely.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end page-body -->
+
+  <script>
+    // ─── DATA ────────────────────────────────────────────────────────────────
+    const cityData = {
+      munich:    { name:'Munich',         rent:{dorm:340, wg:700, studio:1050}, food:{frugal:180, moderate:280, comfortable:380}, transport:63, insurance:150, misc:{frugal:60, moderate:120, comfortable:220} },
+      frankfurt: { name:'Frankfurt',      rent:{dorm:320, wg:640, studio:950},  food:{frugal:170, moderate:260, comfortable:360}, transport:63, insurance:150, misc:{frugal:55, moderate:110, comfortable:200} },
+      stuttgart: { name:'Stuttgart',      rent:{dorm:310, wg:620, studio:920},  food:{frugal:165, moderate:250, comfortable:350}, transport:63, insurance:150, misc:{frugal:55, moderate:110, comfortable:200} },
+      hamburg:   { name:'Hamburg',        rent:{dorm:300, wg:580, studio:880},  food:{frugal:160, moderate:250, comfortable:340}, transport:63, insurance:150, misc:{frugal:50, moderate:105, comfortable:190} },
+      berlin:    { name:'Berlin',         rent:{dorm:290, wg:550, studio:840},  food:{frugal:155, moderate:240, comfortable:330}, transport:63, insurance:150, misc:{frugal:50, moderate:100, comfortable:185} },
+      cologne:   { name:'Cologne',        rent:{dorm:280, wg:520, studio:800},  food:{frugal:150, moderate:235, comfortable:320}, transport:63, insurance:150, misc:{frugal:50, moderate:100, comfortable:180} },
+      erlangen:  { name:'Erlangen / FAU', rent:{dorm:260, wg:480, studio:720},  food:{frugal:140, moderate:220, comfortable:300}, transport:63, insurance:150, misc:{frugal:45, moderate:90,  comfortable:170} },
+      aachen:    { name:'Aachen',         rent:{dorm:250, wg:460, studio:700},  food:{frugal:135, moderate:210, comfortable:290}, transport:63, insurance:150, misc:{frugal:45, moderate:90,  comfortable:165} },
+      dresden:   { name:'Dresden',        rent:{dorm:230, wg:420, studio:650},  food:{frugal:130, moderate:200, comfortable:280}, transport:63, insurance:150, misc:{frugal:40, moderate:85,  comfortable:155} },
+      leipzig:   { name:'Leipzig',        rent:{dorm:220, wg:400, studio:620},  food:{frugal:125, moderate:190, comfortable:265}, transport:63, insurance:150, misc:{frugal:40, moderate:80,  comfortable:150} },
+    };
+
+    const accomLabels = { dorm:'Student Dorm', wg:'Shared WG', studio:'Studio Apt' };
+    const lifeLabels  = { frugal:'Frugal', moderate:'Moderate', comfortable:'Comfortable' };
+
+    let selectedCity  = 'erlangen';
+    let selectedAccom = 'wg';
+    let selectedLife  = 'moderate';
+
+    // ─── SELECTORS ──────────────────────────────────────────────────────────
+    function selectCity(btn) {
+      document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedCity = btn.dataset.city;
+      highlightTableRow();
+      render();
+    }
+
+    function selectToggle(groupId, btn) {
+      document.querySelectorAll('#' + groupId + ' .toggle-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (groupId === 'accomGroup') selectedAccom = btn.dataset.accom;
+      if (groupId === 'lifeGroup')  selectedLife  = btn.dataset.life;
+      render();
+    }
+
+    function highlightTableRow() {
+      document.querySelectorAll('tbody tr').forEach(r => r.classList.remove('active-row'));
+      const row = document.querySelector('tbody tr[data-city="' + selectedCity + '"]');
+      if (row) row.classList.add('active-row');
+    }
+
+    // ─── RENDER ──────────────────────────────────────────────────────────────
+    function render() {
+      const d    = cityData[selectedCity];
+      const rent = d.rent[selectedAccom];
+      const food = d.food[selectedLife];
+      const misc = d.misc[selectedLife];
+      const total = rent + food + d.transport + d.insurance + misc;
+      const annual = total * 12;
+
+      // Total display
+      document.getElementById('totalNum').textContent    = total.toLocaleString();
+      document.getElementById('totalAnnual').textContent = '€' + annual.toLocaleString();
+
+      // Status badge
+      const badge = document.getElementById('statusBadge');
+      if (total <= 992) {
+        badge.className = 'status-badge status-ok';
+        badge.textContent = '✓ Within Blocked Account';
+      } else if (total <= 1150) {
+        badge.className = 'status-badge status-warn';
+        badge.textContent = '⚠ Slightly Over Blocked Account';
+      } else {
+        badge.className = 'status-badge status-over';
+        badge.textContent = '✕ Above Blocked Account — Plan Accordingly';
+      }
+
+      // Breakdown
+      const items = [
+        { icon:'🏠', bg:'bi-blue',   label:'Rent (' + accomLabels[selectedAccom] + ')', note: d.name + ' average WG/dorm price', amount: rent   },
+        { icon:'🍔', bg:'bi-green',  label:'Food & Groceries',  note: lifeLabels[selectedLife] + ' — Aldi/Lidl + occasional dining', amount: food },
+        { icon:'❤️', bg:'bi-pink',   label:'Health Insurance',  note: 'Public insurance (TK, AOK) — mandatory for students', amount: d.insurance },
+        { icon:'🚌', bg:'bi-teal',   label:'Transport',         note: 'Deutschlandticket (€63/mo) — unlimited across Germany', amount: d.transport },
+        { icon:'📱', bg:'bi-purple', label:'Internet & Phone',  note: 'SIM card + home wifi (if not included in rent)', amount: Math.round(misc * 0.35) },
+        { icon:'🎭', bg:'bi-gold',   label:'Leisure & Personal',note: 'Clothing, cinema, gym, events, toiletries', amount: Math.round(misc * 0.65) },
+      ];
+
+      const list = document.getElementById('breakdownList');
+      list.innerHTML = '';
+
+      items.forEach(item => {
+        const pct = Math.round((item.amount / total) * 100);
+        list.innerHTML += `
+          <div class="breakdown-item">
+            <div class="bi-icon ${item.bg}">${item.icon}</div>
+            <div class="bi-info">
+              <div class="bi-name">${item.label}</div>
+              <div class="bi-note">${item.note}</div>
+            </div>
+            <div class="bi-bar-wrap">
+              <div class="bi-bar-track">
+                <div class="bi-bar-fill" style="width:${pct}%"></div>
+              </div>
+            </div>
+            <div class="bi-amount">€${item.amount}</div>
+          </div>
+        `;
+      });
+    }
+
+    // ─── INIT ────────────────────────────────────────────────────────────────
+    render();
+    highlightTableRow();
+  </script>
+
+</body>
+</html>
