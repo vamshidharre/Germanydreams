@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GermanyDreams | Vamshidhar Reddy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
     rel="stylesheet">
   <style>
     :root {
@@ -37,11 +38,15 @@
     }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Instrument Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
-      line-height: 1.6;
+      line-height: 1.65;
+      font-size: 17px;
+      letter-spacing: -0.01em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* NOISE OVERLAY */
@@ -213,12 +218,12 @@
     }
 
     .nav-logo {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: var(--text);
       text-decoration: none;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
     .nav-logo span {
@@ -231,10 +236,12 @@
     }
 
     .nav-links a {
+      font-family: 'Instrument Sans', sans-serif;
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
+      letter-spacing: 0.01em;
       transition: color 0.2s;
     }
 
@@ -323,11 +330,11 @@
     }
 
     .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
       font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
       animation: fadeUp 0.6s 0.1s ease both;
     }
 
@@ -348,11 +355,14 @@
     }
 
     .hero-sub {
-      margin-top: 1.2rem;
-      font-size: 1.05rem;
+      margin-top: 1.4rem;
+      font-size: 1.1rem;
+      font-family: 'Instrument Sans', sans-serif;
       color: var(--muted);
       max-width: 480px;
-      line-height: 1.7;
+      line-height: 1.75;
+      font-weight: 400;
+      letter-spacing: -0.01em;
       animation: fadeUp 0.6s 0.2s ease both;
     }
 
@@ -450,9 +460,10 @@
     }
 
     .stat-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.8rem;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.9rem;
       font-weight: 800;
+      letter-spacing: -0.04em;
       color: var(--text);
     }
 
@@ -461,10 +472,13 @@
     }
 
     .stat-label {
-      font-size: 0.75rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.7rem;
       color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      margin-top: 0.1rem;
     }
 
     /* HERO CARD */
@@ -503,7 +517,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 2rem;
       font-weight: 800;
       color: #fff;
@@ -512,17 +526,21 @@
     }
 
     .hero-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.1rem;
       font-weight: 700;
+      letter-spacing: -0.02em;
       text-align: center;
     }
 
     .hero-card p {
-      font-size: 0.8rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
       color: var(--muted);
       text-align: center;
       margin-top: 0.3rem;
+      letter-spacing: 0.01em;
     }
 
     .card-stats-row {
@@ -550,7 +568,7 @@
     }
 
     .card-stat-value {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 1rem;
       font-weight: 800;
       color: var(--text);
@@ -581,9 +599,12 @@
     .pill {
       background: var(--card2);
       border: 1px solid var(--border);
-      padding: 0.3rem 0.75rem;
+      padding: 0.3rem 0.8rem;
       border-radius: 999px;
-      font-size: 0.72rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
       color: var(--muted);
     }
 
@@ -666,27 +687,31 @@
     }
 
     .section-label {
-      font-size: 0.75rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       color: var(--accent);
       font-weight: 600;
       margin-bottom: 0.75rem;
     }
 
     .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
       font-weight: 800;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
       margin-bottom: 1rem;
     }
 
     .section-desc {
       color: var(--muted);
-      font-size: 1rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 1.05rem;
       max-width: 560px;
-      line-height: 1.7;
+      line-height: 1.75;
+      font-weight: 400;
       margin-bottom: 3rem;
     }
 
@@ -704,9 +729,11 @@
 
     .about-text p {
       color: var(--muted);
-      font-size: 1rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 1.05rem;
       line-height: 1.8;
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
+      font-weight: 400;
     }
 
     .about-text p strong {
@@ -795,7 +822,7 @@
     }
 
     .pillar-card h3 {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 1rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
@@ -842,7 +869,7 @@
     }
 
     .resource-link h3 {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 0.9rem;
       font-weight: 700;
     }
@@ -894,7 +921,7 @@
     }
 
     .tl-item h3 {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 700;
       font-size: 1rem;
       margin: 0.3rem 0 0.4rem;
@@ -1008,16 +1035,20 @@
     }
 
     .bc-content h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.4rem;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.35rem;
       font-weight: 700;
+      letter-spacing: -0.025em;
       margin-bottom: 0.6rem;
+      line-height: 1.2;
     }
 
     .bc-content p {
-      font-size: 0.95rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.92rem;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.65;
+      font-weight: 400;
     }
 
     .bc-yt .bc-icon {
@@ -1060,21 +1091,24 @@
     }
 
     .nl-info h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.2rem;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 2rem;
       font-weight: 800;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
       background: linear-gradient(90deg, #fff, var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
     }
 
     .nl-info p {
+      font-family: 'Instrument Sans', sans-serif;
       color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 0.98rem;
+      line-height: 1.75;
+      font-weight: 400;
       margin-bottom: 0;
     }
 
@@ -1113,7 +1147,7 @@
       border: none;
       padding: 1rem 2rem;
       border-radius: 14px;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
@@ -1572,7 +1606,7 @@
     // Replace the value below with your YouTube Data API v3 key.
     // Get one free at: https://console.cloud.google.com
     // Steps: New Project → Enable "YouTube Data API v3" → Credentials → Create API Key
-    const YT_API_KEY = 'AIzaSyDADmiR45Q98flegigX8GKJdvgs49y2NO0';
+    const YT_API_KEY = 'YOUR_YOUTUBE_API_KEY_HERE';
     const YT_CHANNEL_ID = 'UCIY3viuqfg8BR9ucyCI2e1w';
 
     function formatSubCount(n) {
