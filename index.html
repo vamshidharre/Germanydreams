@@ -525,6 +525,51 @@
       margin-top: 0.3rem;
     }
 
+    .card-stats-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.2rem;
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+    }
+
+    .card-stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+      flex: 1;
+    }
+
+    .card-stat-icon {
+      font-size: 1.1rem;
+    }
+
+    .card-stat-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .card-stat-label {
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .card-stat-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
     .card-pills {
       margin-top: 1.2rem;
       display: flex;
@@ -1259,23 +1304,27 @@
 
       <div class="hero-visual">
         <div class="hero-card">
-          <div class="hero-avatar-wrapper" style="position: relative; display: inline-block;">
-            <div class="floating-badge fb-1">
-              <span style="font-size: 1.2rem;">🎥</span> 5K+ Subs
-            </div>
-            <div class="floating-badge fb-2">
-              <span style="font-size: 1.2rem;">🎓</span> FAU Student
-            </div>
-            <div class="avatar-ring">
-              <img src="Profile_pictur.jpg" alt="Vamshidhar Reddy"
-                style="width:100%; height:100%; object-fit:cover; border-radius:50%; z-index: 2; position: relative;" />
-            </div>
+          <div class="avatar-ring">
+            <img src="Profile_pictur.jpg" alt="Vamshidhar Reddy"
+              style="width:100%; height:100%; object-fit:cover; border-radius:50%; z-index: 2; position: relative;" />
           </div>
           <h3>Vamshidhar Reddy</h3>
           <p>Masters Student &middot; YouTuber &middot; Stuttgart &#127465;&#127466;</p>
+          <div class="card-stats-row">
+            <div class="card-stat-item">
+              <span class="card-stat-icon">🎥</span>
+              <span class="card-stat-value" id="yt-sub-count">—</span>
+              <span class="card-stat-label">Subscribers</span>
+            </div>
+            <div class="card-stat-divider"></div>
+            <div class="card-stat-item">
+              <span class="card-stat-icon">🎓</span>
+              <span class="card-stat-value">FAU</span>
+              <span class="card-stat-label">Erlangen-Nürnberg</span>
+            </div>
+          </div>
           <div class="card-pills">
             <span class="pill">Computational Eng.</span>
-            <span class="pill">FAU Erlangen</span>
             <span class="pill">Content Creator</span>
             <span class="pill">Student Life</span>
           </div>
@@ -1518,6 +1567,44 @@
         btn.children[0].style.transition = 'none';
       });
     });
+
+    // ── YouTube Live Subscriber Count ──────────────────────────────────
+    // Replace the value below with your YouTube Data API v3 key.
+    // Get one free at: https://console.cloud.google.com
+    // Steps: New Project → Enable "YouTube Data API v3" → Credentials → Create API Key
+    const YT_API_KEY = 'AIzaSyDADmiR45Q98flegigX8GKJdvgs49y2NO0';
+    const YT_CHANNEL_ID = 'UCIY3viuqfg8BR9ucyCI2e1w';
+
+    function formatSubCount(n) {
+      if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+      if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+      return n.toString();
+    }
+
+    async function fetchSubCount() {
+      const el = document.getElementById('yt-sub-count');
+      if (!YT_API_KEY || YT_API_KEY === 'YOUR_YOUTUBE_API_KEY_HERE') {
+        el.textContent = '5K+'; // fallback until key is set
+        return;
+      }
+      try {
+        const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${YT_CHANNEL_ID}&fields=items/statistics/subscriberCount&key=${YT_API_KEY}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        const count = parseInt(data?.items?.[0]?.statistics?.subscriberCount, 10);
+        if (!isNaN(count)) {
+          el.textContent = formatSubCount(count);
+          el.title = count.toLocaleString() + ' subscribers';
+        }
+      } catch (e) {
+        el.textContent = '5K+'; // fallback on error
+      }
+    }
+
+    fetchSubCount();
+    // Refresh every 5 minutes
+    setInterval(fetchSubCount, 5 * 60 * 1000);
+    // ──────────────────────────────────────────────────────────────────
 
     // Nav active link highlight on scroll
     const sections = document.querySelectorAll('section[id]');
