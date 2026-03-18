@@ -2,7 +2,7 @@
 
 A modern, dark-themed portfolio and resource hub for international students planning their move to Germany. Built by **Vamshidhar Reddy** — Masters student in Computational Engineering at FAU Erlangen-Nürnberg, content creator, and student life guide.
 
-🔗 **Live Site:** [germanydreams.de](https://germanydreams.de) *(or your hosted URL)*
+🔗 **Live Site:** [germanydreams](https://vamshidharre.github.io/Germanydreams/index.html#) 
 
 ---
 
