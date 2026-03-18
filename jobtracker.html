@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Job Application Tracker | GermanyDreams</title>
+  <meta name="description" content="Automatically scan Gmail, track job applications, generate analytics & draft recruiter replies — all inside a free Google Sheet. Set up in under 10 minutes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060d18;
+      --bg2: #0a1628;
+      --card: #0f1f35;
+      --card2: #152540;
+      --accent: #0ea5b0;
+      --accent2: #22d3ee;
+      --gold: #f59e0b;
+      --text: #f0f4f8;
+      --muted: #7a90a8;
+      --border: rgba(14,165,176,0.12);
+      --success: #22c55e;
+      --purple: #a78bfa;
+      --pink: #f472b6;
+      --orange: #fb923c;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(6,13,24,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    /* HERO BANNER */
+    .page-hero {
+      padding: 8rem 2.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(14,165,176,0.12) 0%, transparent 70%);
+      top: -120px; left: 50%; transform: translateX(-50%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(14,165,176,0.1);
+      border: 1px solid rgba(14,165,176,0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+    .page-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      line-height: 1.15;
+    }
+    .page-hero h1 span { color: var(--accent); }
+    .page-hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    /* FEATURE PILLS */
+    .feature-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1.8rem;
+    }
+    .feature-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .feature-pill:hover {
+      border-color: rgba(14,165,176,0.4);
+      color: var(--accent2);
+      transform: translateY(-2px);
+    }
+    .feature-pill .fp-icon { font-size: 0.9rem; }
+
+    /* MAIN CONTENT */
+    .page-body {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2.5rem 5rem;
+    }
+
+    /* FLOW DIAGRAM */
+    .flow-section {
+      margin-bottom: 3.5rem;
+    }
+    .flow-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .flow-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    .flow-header p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .flow-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      min-width: 120px;
+    }
+    .flow-node-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+    .flow-node:hover .flow-node-icon {
+      transform: scale(1.15) rotate(-5deg);
+    }
+    .flow-node-icon.gmail { background: rgba(234,67,53,0.15); }
+    .flow-node-icon.script { background: rgba(14,165,176,0.15); }
+    .flow-node-icon.sheet { background: rgba(34,197,94,0.15); }
+    .flow-node-icon.dash { background: rgba(167,139,250,0.15); }
+
+    .flow-node-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .flow-node-sub {
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: -0.3rem;
+    }
+    .flow-arrow {
+      color: var(--accent);
+      font-size: 1.3rem;
+      opacity: 0.5;
+      padding: 0 0.2rem;
+    }
+
+    /* STEPS */
+    .steps-section { margin-bottom: 3.5rem; }
+    .steps-section .flow-header { margin-bottom: 2rem; }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .step-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .step-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(14,165,176,0.3);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    }
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .step-card:hover::before { opacity: 1; }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(14,165,176,0.12);
+      color: var(--accent);
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .step-card:nth-child(2) .step-number { background: rgba(167,139,250,0.12); color: var(--purple); }
+    .step-card:nth-child(3) .step-number { background: rgba(34,197,94,0.12); color: var(--success); }
+    .step-card:nth-child(4) .step-number { background: rgba(251,146,60,0.12); color: var(--orange); }
+    .step-card:nth-child(5) .step-number { background: rgba(244,114,182,0.12); color: var(--pink); }
+    .step-card:nth-child(6) .step-number { background: rgba(34,211,238,0.12); color: var(--accent2); }
+
+    .step-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .step-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .step-desc a {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(34,211,238,0.3);
+      transition: border-color 0.2s;
+    }
+    .step-desc a:hover { border-color: var(--accent2); }
+
+    /* CODE SNIPPET INSIDE STEP */
+    .step-code {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.3rem 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--accent2);
+      margin-top: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .step-code:hover {
+      border-color: rgba(14,165,176,0.4);
+      background: var(--card2);
+    }
+    .step-code .copy-icon {
+      font-size: 0.7rem;
+      opacity: 0.5;
+    }
+
+    /* RESULT TABS PREVIEW */
+    .tabs-preview {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .tabs-preview::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--success), var(--accent), var(--purple));
+    }
+    .tabs-preview-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .tabs-preview-header h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .tabs-preview-header p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .tabs-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+    .tab-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .tab-item:hover {
+      border-color: rgba(14,165,176,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    .tab-emoji {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .tab-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .tab-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .cta-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .cta-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .cta-card:hover::before { opacity: 1; }
+
+    .cta-script::before { background: linear-gradient(90deg, var(--accent), var(--success)); }
+    .cta-video::before { background: linear-gradient(90deg, #ef4444, #f59e0b); }
+
+    .cta-script { border-color: rgba(14,165,176,0.2); }
+    .cta-video { border-color: rgba(239,68,68,0.15); }
+
+    .cta-card:hover.cta-script { border-color: rgba(14,165,176,0.4); }
+    .cta-card:hover.cta-video { border-color: rgba(239,68,68,0.3); }
+
+    .cta-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s;
+    }
+    .cta-card:hover .cta-icon { transform: scale(1.1) rotate(-5deg); }
+
+    .cta-script .cta-icon { background: rgba(14,165,176,0.12); }
+    .cta-video .cta-icon { background: rgba(239,68,68,0.12); }
+
+    .cta-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .cta-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .cta-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .cta-arrow {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: var(--muted);
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+    .cta-card:hover .cta-arrow {
+      transform: translate(4px, -4px);
+      color: var(--accent);
+    }
+
+    /* TRUST BANNER */
+    .trust-banner {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .trust-icon {
+      font-size: 2.2rem;
+      flex-shrink: 0;
+    }
+    .trust-content h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    .trust-content p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .trust-content p strong {
+      color: var(--success);
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 2.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    footer a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* TOOLTIP */
+    .tooltip {
+      position: fixed;
+      background: var(--success);
+      color: #fff;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .tooltip.show { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .page-hero { padding: 7rem 1.5rem 2rem; }
+      .page-body { padding: 0 1.5rem 4rem; }
+      .flow-diagram { gap: 0; }
+      .flow-node { min-width: 80px; padding: 0.8rem 0.5rem; }
+      .flow-node-icon { width: 42px; height: 42px; font-size: 1.2rem; }
+      .flow-arrow { font-size: 1rem; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .tabs-row { grid-template-columns: 1fr; }
+      .cta-section { grid-template-columns: 1fr; }
+      .trust-banner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-back" href="index.html">&#8592; Back to Home</a>
+    <a class="nav-logo" href="index.html"><span>G</span>ermanyDreams</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-badge">&#128269; Free &amp; Open Source</div>
+    <h1>Job Application <span>Tracker</span></h1>
+    <p>Automatically scan your Gmail, track every application, generate analytics, and draft recruiter replies &mdash; all inside a free Google Sheet. Set up in under 10 minutes.</p>
+
+    <div class="feature-pills">
+      <div class="feature-pill"><span class="fp-icon">📬</span> Gmail Auto-Scan</div>
+      <div class="feature-pill"><span class="fp-icon">📊</span> Live Dashboard</div>
+      <div class="feature-pill"><span class="fp-icon">📈</span> Analytics Tab</div>
+      <div class="feature-pill"><span class="fp-icon">✉️</span> Auto-Draft Replies</div>
+      <div class="feature-pill"><span class="fp-icon">🔒</span> 100% Private</div>
+      <div class="feature-pill"><span class="fp-icon">🌐</span> Multi-Language</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="page-body">
+
+    <!-- HOW IT WORKS FLOW -->
+    <div class="flow-section reveal">
+      <div class="flow-header">
+        <h2>How It Works</h2>
+        <p>From inbox to insights &mdash; fully automated</p>
+      </div>
+      <div class="flow-diagram">
+        <div class="flow-node">
+          <div class="flow-node-icon gmail">📬</div>
+          <div class="flow-node-label">Gmail Inbox</div>
+          <div class="flow-node-sub">Your emails</div>
+        </div>
+        <div class="flow-arrow">&#10140;</div>
+        <div class="flow-node">
+          <div class="flow-node-icon script">⚙️</div>
+          <div class="flow-node-label">Apps Script</div>
+          <div class="flow-node-sub">Auto-scan</div>
+        </div>
+        <div class="flow-arrow">&#10140;</div>
+        <div class="flow-node">
+          <div class="flow-node-icon sheet">📋</div>
+          <div class="flow-node-label">Google Sheet</div>
+          <div class="flow-node-sub">Track &amp; log</div>
+        </div>
+        <div class="flow-arrow">&#10140;</div>
+        <div class="flow-node">
+          <div class="flow-node-icon dash">📊</div>
+          <div class="flow-node-label">Dashboard</div>
+          <div class="flow-node-sub">Live analytics</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETUP STEPS -->
+    <div class="steps-section">
+      <div class="flow-header reveal">
+        <h2>Set Up in 6 Easy Steps</h2>
+        <p>No coding knowledge needed &mdash; just copy, paste, and go</p>
+      </div>
+
+      <div class="steps-grid">
+        <!-- Step 1 -->
+        <div class="step-card reveal">
+          <div class="step-number">1</div>
+          <div class="step-title">Create a Google Sheet</div>
+          <div class="step-desc">
+            Go to <a href="https://sheets.google.com" target="_blank">sheets.google.com</a> and create a new blank spreadsheet. This will be your tracker's home.
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card reveal">
+          <div class="step-number">2</div>
+          <div class="step-title">Open Apps Script</div>
+          <div class="step-desc">
+            Inside the sheet, go to <strong>Extensions &rarr; Apps Script</strong>. This opens the script editor where the magic happens.
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card reveal">
+          <div class="step-number">3</div>
+          <div class="step-title">Paste the Script</div>
+          <div class="step-desc">
+            Delete the existing code in the editor, then paste the full JobTracker script. Hit <strong>Ctrl + S</strong> to save.
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card reveal">
+          <div class="step-number">4</div>
+          <div class="step-title">Install Triggers</div>
+          <div class="step-desc">
+            Run these two functions once to activate automation:
+            <div style="margin-top: 0.6rem; display: flex; flex-direction: column; gap: 0.4rem;">
+              <div class="step-code" onclick="copyCode('installTrigger()')">
+                <span>installTrigger()</span>
+                <span class="copy-icon">📋</span>
+              </div>
+              <div class="step-code" onclick="copyCode('installDailySummaryTrigger()')">
+                <span>installDailySummaryTrigger()</span>
+                <span class="copy-icon">📋</span>
+              </div>
+            </div>
+            <div style="margin-top: 0.5rem; font-size: 0.78rem; color: var(--muted);">
+              ⏱️ Auto-scan every 15 min &bull; 📧 Daily summary at 8 AM
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-card reveal">
+          <div class="step-number">5</div>
+          <div class="step-title">Authorise Permissions</div>
+          <div class="step-desc">
+            Google will ask for <strong>Gmail + Sheets</strong> access. Click <strong>Allow</strong> to proceed.
+            <div style="margin-top: 0.6rem; padding: 0.5rem 0.8rem; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 8px; font-size: 0.78rem; color: var(--success);">
+              🔒 Everything stays in your own Google account &mdash; nothing is shared externally.
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step-card reveal">
+          <div class="step-number">6</div>
+          <div class="step-title">Run First Scan</div>
+          <div class="step-desc">
+            Select <strong>runTracker</strong> from the function dropdown, click <strong>&#9654; Run</strong>, and you're done!
+            <div class="step-code" onclick="copyCode('runTracker()')" style="margin-top: 0.6rem;">
+              <span>runTracker()</span>
+              <span class="copy-icon">📋</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT TABS -->
+    <div class="tabs-preview reveal">
+      <div class="tabs-preview-header">
+        <h3>Your Sheet Auto-Populates With 3 Tabs</h3>
+        <p>Everything is organised and updated automatically</p>
+      </div>
+      <div class="tabs-row">
+        <div class="tab-item">
+          <span class="tab-emoji">📋</span>
+          <div class="tab-name">Applications</div>
+          <div class="tab-desc">Company, role, HR contact, status, ATS platform &mdash; 14 columns of structured data</div>
+        </div>
+        <div class="tab-item">
+          <span class="tab-emoji">📊</span>
+          <div class="tab-name">Dashboard</div>
+          <div class="tab-desc">At-a-glance summary of your pipeline &mdash; applied, interviews, offers, rejections</div>
+        </div>
+        <div class="tab-item">
+          <span class="tab-emoji">📈</span>
+          <div class="tab-name">Analytics</div>
+          <div class="tab-desc">Trends, conversion rates, and application velocity over time</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA CARDS -->
+    <div class="cta-section">
+      <a class="cta-card cta-script reveal" href="https://github.com/vamshidharre/JobTracker/blob/main/JobTracker.groovy" target="_blank">
+        <div>
+          <div class="cta-icon">📜</div>
+          <div class="cta-label">Get the Script</div>
+          <div class="cta-title">View on GitHub</div>
+          <div class="cta-desc">Open the full script file, copy it, and paste it into your Apps Script editor. It's free and open source.</div>
+        </div>
+        <div class="cta-arrow">&#8599;</div>
+      </a>
+      <a class="cta-card cta-video reveal" href="https://www.youtube.com/watch?v=2h9nntHQvHk" target="_blank">
+        <div>
+          <div class="cta-icon">🎥</div>
+          <div class="cta-label">Prefer Watching?</div>
+          <div class="cta-title">Full Walkthrough Video</div>
+          <div class="cta-desc">Prefer a visual guide? Watch the step-by-step video tutorial and set it up together with me.</div>
+        </div>
+        <div class="cta-arrow">&#8599;</div>
+      </a>
+    </div>
+
+    <!-- TRUST BANNER -->
+    <div class="trust-banner reveal">
+      <div class="trust-icon">🛡️</div>
+      <div class="trust-content">
+        <h4>Privacy &amp; Security First</h4>
+        <p>This tracker runs entirely within your own Google Account. <strong>No external servers, no third-party access, no data collection.</strong> Your emails and job data never leave your Google workspace. It&rsquo;s free to use, open source, and you can audit every line of code.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 <a href="index.html">Vamshidhar Reddy</a>. All rights reserved.</p>
+    <p style="font-size:0.75rem; color:var(--muted);">Made with love from Stuttgart &#127465;&#127466;</p>
+  </footer>
+
+  <!-- TOOLTIP -->
+  <div class="tooltip" id="copyTooltip">Copied!</div>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Copy-to-clipboard for code snippets
+    function copyCode(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const tooltip = document.getElementById('copyTooltip');
+        const rect = event.currentTarget.getBoundingClientRect();
+        tooltip.style.left = rect.left + rect.width / 2 - 30 + 'px';
+        tooltip.style.top = rect.top - 36 + 'px';
+        tooltip.classList.add('show');
+        setTimeout(() => tooltip.classList.remove('show'), 1200);
+      });
+    }
+  </script>
+</body>
+</html>
