@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ATS Analyzer | GermanyDreams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060d18;
+      --bg2: #0a1628;
+      --card: #0f1f35;
+      --card2: #152540;
+      --accent: #0ea5b0;
+      --accent2: #22d3ee;
+      --gold: #f59e0b;
+      --text: #f0f4f8;
+      --muted: #94a7bf;
+      --border: rgba(14,165,176,0.12);
+      --success: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-size: 18px;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(6,13,24,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    /* HERO BANNER */
+    .page-hero {
+      padding: 8rem 2.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(14,165,176,0.12) 0%, transparent 70%);
+      top: -100px; left: 50%; transform: translateX(-50%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(14,165,176,0.1);
+      border: 1px solid rgba(14,165,176,0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+    .page-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    .page-hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      padding: 2rem 2.5rem 5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .tool-container {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    /* TABS */
+    .provider-tabs {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    /* FORM ELEMENTS */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+      font-family: monospace;
+    }
+
+    .char-count {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      text-align: right;
+    }
+
+    .file-upload {
+      position: relative;
+      display: block;
+    }
+
+    .file-upload-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg2);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.92rem;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .file-upload-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .file-upload-btn.loaded {
+      border-color: var(--success);
+      border-style: solid;
+      color: var(--success);
+      background: rgba(34, 197, 94, 0.1);
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .file-name {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .clear-file {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.78rem;
+      padding: 0.25rem 0.5rem;
+      margin-left: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .clear-file:hover {
+      color: var(--danger);
+    }
+
+    /* BUTTON */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: var(--bg);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(14, 165, 176, 0.3);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* INFO BOX */
+    .info-box {
+      background: rgba(14, 165, 176, 0.1);
+      border: 1px solid rgba(14, 165, 176, 0.3);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .info-box strong {
+      color: var(--accent);
+    }
+
+    /* LOADING */
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .loading.active {
+      display: block;
+    }
+
+    .spinner {
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* RESULTS */
+    .results {
+      display: none;
+      margin-top: 2rem;
+    }
+
+    .results.active {
+      display: block;
+    }
+
+    /* SCORE DISPLAY */
+    .score-overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .score-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .score-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .score-value.high {
+      color: var(--success);
+    }
+
+    .score-value.medium {
+      color: var(--warn);
+    }
+
+    .score-value.low {
+      color: var(--danger);
+    }
+
+    .score-label {
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: var(--card);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 999px;
+      transition: width 1s ease;
+    }
+
+    /* SCORE BREAKDOWN */
+    .score-breakdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .breakdown-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .breakdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .breakdown-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .breakdown-score {
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    /* KEYWORDS */
+    .keywords-section {
+      margin-bottom: 2rem;
+    }
+
+    .keywords-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .keyword-tag {
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    .keyword-matched {
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .keyword-missing {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--danger);
+      border: 1px solid var(--danger);
+    }
+
+    /* REVIEW */
+    .review-section {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .review-section h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .review-content {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .review-content h4 {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-content ul {
+      margin-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .review-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .review-content strong {
+      color: var(--text);
+    }
+
+    /* TIPS */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .tip-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+
+    .tip-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 0.75rem;
+    }
+
+    .tip-priority {
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .priority-high {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--danger);
+    }
+
+    .priority-medium {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--warn);
+    }
+
+    .priority-low {
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--success);
+    }
+
+    .tip-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+      .page-hero {
+        padding: 6rem 1.5rem 2rem;
+      }
+      main {
+        padding: 1.5rem 1.5rem 3rem;
+      }
+      .tool-container {
+        padding: 1.5rem;
+      }
+      .score-overview,
+      .score-breakdown {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-back">
+      <span>&#8592;</span> Back to Home
+    </a>
+    <a href="index.html" class="nav-logo">Germany<span>Dreams</span></a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-badge">
+      <span>📊</span> Transparent ATS Scoring
+    </div>
+    <h1>ATS Score Analyzer</h1>
+    <p>Get brutally honest, recruiter-perspective analysis of your CV against job descriptions. See exactly how well your resume matches and what you need to improve to pass ATS systems.</p>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- PROVIDER SELECTION -->
+    <div class="tool-container">
+      <h2 class="section-title">1. Choose AI Provider</h2>
+
+      <div class="provider-tabs">
+        <button class="tab-btn active" data-provider="openai">OpenAI</button>
+        <button class="tab-btn" data-provider="anthropic">Anthropic</button>
+        <button class="tab-btn" data-provider="gemini">Google Gemini</button>
+      </div>
+
+      <div class="info-box">
+        <strong>Privacy First:</strong> Your API key is stored locally in your browser. All processing happens directly between your browser and your chosen AI provider. No data is sent to our servers.
+      </div>
+
+      <!-- OpenAI Form -->
+      <div class="provider-form" data-provider-form="openai">
+        <div class="form-group">
+          <label for="openai-key">OpenAI API Key</label>
+          <input type="password" id="openai-key" placeholder="sk-...">
+        </div>
+        <div class="form-group">
+          <label for="openai-model">Model</label>
+          <select id="openai-model">
+            <option value="gpt-4">GPT-4</option>
+            <option value="gpt-4-turbo">GPT-4 Turbo</option>
+            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Anthropic Form -->
+      <div class="provider-form" data-provider-form="anthropic" style="display: none;">
+        <div class="form-group">
+          <label for="anthropic-key">Anthropic API Key</label>
+          <input type="password" id="anthropic-key" placeholder="sk-ant-...">
+        </div>
+        <div class="form-group">
+          <label for="anthropic-model">Model</label>
+          <select id="anthropic-model">
+            <option value="claude-opus-4-6">Claude Opus 4.6</option>
+            <option value="claude-sonnet-4-6">Claude Sonnet 4.6</option>
+            <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Gemini Form -->
+      <div class="provider-form" data-provider-form="gemini" style="display: none;">
+        <div class="form-group">
+          <label for="gemini-key">Google Gemini API Key</label>
+          <input type="password" id="gemini-key" placeholder="AIza...">
+        </div>
+        <div class="form-group">
+          <label for="gemini-model">Model</label>
+          <select id="gemini-model">
+            <option value="gemini-pro">Gemini Pro</option>
+            <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- INPUT CONTENT -->
+    <div class="tool-container">
+      <h2 class="section-title">2. Upload Your Documents</h2>
+
+      <div class="form-group">
+        <label>Your CV/Resume</label>
+        <label class="file-upload">
+          <div class="file-upload-btn" id="cv-upload-btn">
+            <span>📄</span> Choose CV File (.txt, .pdf, .tex)
+          </div>
+          <input type="file" id="cv-file" accept=".txt,.pdf,.tex">
+          <span class="file-name" id="cv-file-name"></span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>Cover Letter (Optional)</label>
+        <label class="file-upload">
+          <div class="file-upload-btn" id="cl-upload-btn">
+            <span>📝</span> Choose Cover Letter File (.txt, .pdf, .tex)
+          </div>
+          <input type="file" id="cl-file" accept=".txt,.pdf,.tex">
+          <span class="file-name" id="cl-file-name"></span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="job-description">Job Description</label>
+        <textarea id="job-description" placeholder="Paste the complete job description here..."></textarea>
+        <div class="char-count" id="char-count">0 characters</div>
+      </div>
+
+      <button class="btn-primary" id="analyze-btn">
+        Analyze ATS Score
+      </button>
+    </div>
+
+    <!-- LOADING STATE -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p class="loading-text">AI is analyzing your CV from a recruiter's perspective...</p>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results" id="results">
+      <!-- SCORE OVERVIEW -->
+      <div class="tool-container">
+        <h2 class="section-title">ATS Score Results</h2>
+
+        <div class="score-overview">
+          <div class="score-card">
+            <div class="score-value" id="overall-score">--</div>
+            <div class="score-label">Overall ATS Score</div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="overall-progress" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCORE BREAKDOWN -->
+        <h3 class="section-title" style="font-size: 1.2rem; margin-top: 2rem;">Score Breakdown (100 Points)</h3>
+        <div class="score-breakdown" id="score-breakdown">
+          <!-- Will be populated by JS -->
+        </div>
+
+        <!-- MATCHED & MISSING KEYWORDS -->
+        <div class="keywords-section">
+          <h3 class="section-title" style="font-size: 1.2rem;">Matched Keywords</h3>
+          <div class="keywords-grid" id="matched-keywords">
+            <!-- Will be populated by JS -->
+          </div>
+        </div>
+
+        <div class="keywords-section">
+          <h3 class="section-title" style="font-size: 1.2rem;">Missing Keywords</h3>
+          <div class="keywords-grid" id="missing-keywords">
+            <!-- Will be populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- RECRUITER REVIEW -->
+      <div class="tool-container">
+        <div class="review-section">
+          <h3>Recruiter's Honest Review</h3>
+          <div class="review-content" id="recruiter-review">
+            <!-- Will be populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- IMPROVEMENT TIPS -->
+      <div class="tool-container">
+        <h2 class="section-title">Actionable Improvement Tips</h2>
+        <div class="tips-grid" id="tips-grid">
+          <!-- Will be populated by JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Tab Switching
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const providerForms = document.querySelectorAll('.provider-form');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const provider = btn.dataset.provider;
+
+        // Update active tab
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Show corresponding form
+        providerForms.forEach(form => {
+          form.style.display = form.dataset.providerForm === provider ? 'block' : 'none';
+        });
+      });
+    });
+
+    // File Upload Handling
+    const cvFile = document.getElementById('cv-file');
+    const clFile = document.getElementById('cl-file');
+    const cvUploadBtn = document.getElementById('cv-upload-btn');
+    const clUploadBtn = document.getElementById('cl-upload-btn');
+    const cvFileName = document.getElementById('cv-file-name');
+    const clFileName = document.getElementById('cl-file-name');
+
+    cvFile.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        cvFileName.innerHTML = e.target.files[0].name + ' <button class="clear-file" onclick="clearCV()">Clear</button>';
+        cvUploadBtn.classList.add('loaded');
+        cvUploadBtn.innerHTML = '<span>✓</span> CV Loaded';
+      }
+    });
+
+    clFile.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        clFileName.innerHTML = e.target.files[0].name + ' <button class="clear-file" onclick="clearCL()">Clear</button>';
+        clUploadBtn.classList.add('loaded');
+        clUploadBtn.innerHTML = '<span>✓</span> Cover Letter Loaded';
+      }
+    });
+
+    function clearCV() {
+      cvFile.value = '';
+      cvFileName.innerHTML = '';
+      cvUploadBtn.classList.remove('loaded');
+      cvUploadBtn.innerHTML = '<span>📄</span> Choose CV File (.txt, .pdf, .tex)';
+    }
+
+    function clearCL() {
+      clFile.value = '';
+      clFileName.innerHTML = '';
+      clUploadBtn.classList.remove('loaded');
+      clUploadBtn.innerHTML = '<span>📝</span> Choose Cover Letter File (.txt, .pdf, .tex)';
+    }
+
+    // Character count
+    const jobDescInput = document.getElementById('job-description');
+    const charCount = document.getElementById('char-count');
+
+    jobDescInput.addEventListener('input', () => {
+      const count = jobDescInput.value.length;
+      charCount.textContent = `${count} characters`;
+    });
+
+    // Analyze Button
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const loading = document.getElementById('loading');
+    const results = document.getElementById('results');
+
+    analyzeBtn.addEventListener('click', async () => {
+      // Validation
+      const activeProvider = document.querySelector('.tab-btn.active').dataset.provider;
+      const apiKey = document.getElementById(`${activeProvider}-key`).value;
+      const model = document.getElementById(`${activeProvider}-model`).value;
+      const jobDescription = document.getElementById('job-description').value;
+
+      if (!apiKey) {
+        alert('Please enter your API key');
+        return;
+      }
+
+      if (!cvFile.files.length) {
+        alert('Please upload your CV');
+        return;
+      }
+
+      if (!jobDescription.trim()) {
+        alert('Please paste the job description');
+        return;
+      }
+
+      // Save API key to localStorage
+      localStorage.setItem(`${activeProvider}_api_key`, apiKey);
+
+      // Show loading
+      loading.classList.add('active');
+      results.classList.remove('active');
+      analyzeBtn.disabled = true;
+
+      try {
+        // Read CV file
+        const cvText = await readFile(cvFile.files[0]);
+        let clText = '';
+        if (clFile.files.length > 0) {
+          clText = await readFile(clFile.files[0]);
+        }
+
+        // Call AI API
+        const result = await analyzeATS(activeProvider, apiKey, model, cvText, clText, jobDescription);
+
+        // Display results
+        displayResults(result);
+
+        // Show results
+        loading.classList.remove('active');
+        results.classList.add('active');
+
+        // Scroll to results
+        results.scrollIntoView({ behavior: 'smooth' });
+
+      } catch (error) {
+        alert('Error: ' + error.message);
+        console.error(error);
+      } finally {
+        analyzeBtn.disabled = false;
+        loading.classList.remove('active');
+      }
+    });
+
+    // Read file as text
+    function readFile(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.onerror = (e) => reject(e);
+
+        if (file.type === 'application/pdf') {
+          // For PDF, just read as text (in production, you'd use pdf.js)
+          reader.readAsText(file);
+        } else {
+          reader.readAsText(file);
+        }
+      });
+    }
+
+    // Analyze ATS using AI
+    async function analyzeATS(provider, apiKey, model, cvText, clText, jobDescription) {
+      const systemPrompt = `You are a senior technical recruiter and hiring manager with 15+ years of experience placing talent in competitive roles. Your task is to analyze a CV against a job description from a brutally honest, recruiter perspective.
+
+Provide your analysis in the following structured format:
+
+===JD_PROFILE===
+Extract and list:
+- Hard requirements (must-have qualifications)
+- Key skills (as atomic 1-2 word keywords)
+- Nice-to-have skills
+- Evidence priorities (what proves competence)
+
+===RECRUITER_REVIEW===
+Provide honest feedback in markdown format with these sections:
+## First Impression (6-second scan)
+[Quick gut reaction]
+
+## Why Shortlist
+[Specific strengths with CV references]
+
+## Why Reject
+[Honest concerns and gaps]
+
+## Verdict
+Shortlist / Maybe / Pass
+
+===IMPROVEMENT_TIPS===
+List 5-10 actionable, prioritized tips in this format:
+[PRIORITY: High/Medium/Low] [CATEGORY] Specific improvement
+
+Example:
+[PRIORITY: High] [Keywords] Add "Python" and "Machine Learning" to skills section
+[PRIORITY: Medium] [Evidence] Quantify project impacts with metrics
+
+===KEYWORDS===
+Matched: [comma-separated list]
+Missing: [comma-separated list]
+
+Be brutally honest but constructive. Focus on what actually matters to recruiters.`;
+
+      const userPrompt = `CV:
+${cvText}
+
+${clText ? `Cover Letter:\n${clText}\n\n` : ''}Job Description:
+${jobDescription}`;
+
+      let response;
+
+      if (provider === 'openai') {
+        response = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            model: model,
+            messages: [
+              { role: 'system', content: systemPrompt },
+              { role: 'user', content: userPrompt }
+            ],
+            temperature: 0.3
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error?.message || 'API request failed');
+        return parseATSResponse(data.choices[0].message.content, cvText, jobDescription);
+
+      } else if (provider === 'anthropic') {
+        response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey,
+            'anthropic-version': '2023-06-01'
+          },
+          body: JSON.stringify({
+            model: model,
+            max_tokens: 4000,
+            system: systemPrompt,
+            messages: [
+              { role: 'user', content: userPrompt }
+            ],
+            temperature: 0.3
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error?.message || 'API request failed');
+        return parseATSResponse(data.content[0].text, cvText, jobDescription);
+
+      } else if (provider === 'gemini') {
+        response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            contents: [{
+              parts: [{
+                text: systemPrompt + '\n\n' + userPrompt
+              }]
+            }],
+            generationConfig: {
+              temperature: 0.3
+            }
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error?.message || 'API request failed');
+        return parseATSResponse(data.candidates[0].content.parts[0].text, cvText, jobDescription);
+      }
+    }
+
+    // Parse AI response and calculate scores
+    function parseATSResponse(text, cvText, jdText) {
+      const reviewMatch = text.match(/===RECRUITER_REVIEW===\s*([\s\S]*?)(?====|$)/);
+      const tipsMatch = text.match(/===IMPROVEMENT_TIPS===\s*([\s\S]*?)(?====|$)/);
+      const keywordsMatch = text.match(/===KEYWORDS===\s*([\s\S]*?)(?====|$)/);
+
+      // Extract keywords
+      let matchedKeywords = [];
+      let missingKeywords = [];
+
+      if (keywordsMatch) {
+        const keywordText = keywordsMatch[1];
+        const matchedMatch = keywordText.match(/Matched:\s*(.+)/);
+        const missingMatch = keywordText.match(/Missing:\s*(.+)/);
+
+        if (matchedMatch) {
+          matchedKeywords = matchedMatch[1].split(',').map(k => k.trim()).filter(k => k);
+        }
+        if (missingMatch) {
+          missingKeywords = missingMatch[1].split(',').map(k => k.trim()).filter(k => k);
+        }
+      }
+
+      // Calculate scores (simplified scoring algorithm)
+      const scores = calculateScores(cvText, jdText, matchedKeywords, missingKeywords);
+
+      // Parse tips
+      const tips = [];
+      if (tipsMatch) {
+        const tipLines = tipsMatch[1].split('\n').filter(l => l.trim().startsWith('[PRIORITY:'));
+        tipLines.forEach(line => {
+          const priorityMatch = line.match(/\[PRIORITY:\s*(High|Medium|Low)\]/i);
+          const categoryMatch = line.match(/\[([^\]]+)\]/g);
+          const text = line.replace(/\[PRIORITY:[^\]]+\]/i, '').replace(/\[[^\]]+\]/, '').trim();
+
+          if (priorityMatch && text) {
+            tips.push({
+              priority: priorityMatch[1].toLowerCase(),
+              category: categoryMatch && categoryMatch[1] ? categoryMatch[1].replace(/[\[\]]/g, '') : 'General',
+              text: text
+            });
+          }
+        });
+      }
+
+      return {
+        review: reviewMatch ? reviewMatch[1].trim() : 'No review available',
+        tips: tips,
+        matchedKeywords: matchedKeywords,
+        missingKeywords: missingKeywords,
+        scores: scores
+      };
+    }
+
+    // Calculate ATS scores
+    function calculateScores(cvText, jdText, matched, missing) {
+      // Simplified scoring algorithm
+      const cvLower = cvText.toLowerCase();
+      const jdLower = jdText.toLowerCase();
+
+      // Hard Requirements (30 points)
+      const hardReqScore = Math.min(30, matched.length * 3);
+
+      // Skills Coverage (25 points)
+      const totalKeywords = matched.length + missing.length;
+      const skillsScore = totalKeywords > 0 ? Math.round((matched.length / totalKeywords) * 25) : 0;
+
+      // Evidence Strength (20 points) - check for metrics, action verbs
+      const hasMetrics = /\d+%|\d+x|increased|decreased|improved|reduced/i.test(cvText);
+      const hasActionVerbs = /(developed|created|led|managed|implemented|designed)/i.test(cvText);
+      const evidenceScore = (hasMetrics ? 10 : 0) + (hasActionVerbs ? 10 : 0);
+
+      // Role Alignment (15 points)
+      const roleScore = matched.length > 5 ? 15 : matched.length * 3;
+
+      // Format Compatibility (10 points)
+      const hasContact = /(email|phone|linkedin)/i.test(cvText);
+      const hasSections = /(experience|education|skills)/i.test(cvText);
+      const formatScore = (hasContact ? 5 : 0) + (hasSections ? 5 : 0);
+
+      const overall = hardReqScore + skillsScore + evidenceScore + roleScore + formatScore;
+
+      return {
+        overall: overall,
+        hardRequirements: hardReqScore,
+        skillsCoverage: skillsScore,
+        evidenceStrength: evidenceScore,
+        roleAlignment: roleScore,
+        formatCompatibility: formatScore
+      };
+    }
+
+    // Display results
+    function displayResults(result) {
+      // Overall score
+      const overallScore = document.getElementById('overall-score');
+      const overallProgress = document.getElementById('overall-progress');
+
+      overallScore.textContent = result.scores.overall + '%';
+      overallProgress.style.width = result.scores.overall + '%';
+
+      // Color code
+      if (result.scores.overall >= 75) {
+        overallScore.classList.add('high');
+        overallScore.classList.remove('medium', 'low');
+      } else if (result.scores.overall >= 50) {
+        overallScore.classList.add('medium');
+        overallScore.classList.remove('high', 'low');
+      } else {
+        overallScore.classList.add('low');
+        overallScore.classList.remove('high', 'medium');
+      }
+
+      // Score breakdown
+      const breakdownContainer = document.getElementById('score-breakdown');
+      breakdownContainer.innerHTML = `
+        <div class="breakdown-item">
+          <div class="breakdown-header">
+            <span class="breakdown-title">Hard Requirements</span>
+            <span class="breakdown-score">${result.scores.hardRequirements}/30</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${(result.scores.hardRequirements/30)*100}%"></div>
+          </div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-header">
+            <span class="breakdown-title">Skills Coverage</span>
+            <span class="breakdown-score">${result.scores.skillsCoverage}/25</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${(result.scores.skillsCoverage/25)*100}%"></div>
+          </div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-header">
+            <span class="breakdown-title">Evidence Strength</span>
+            <span class="breakdown-score">${result.scores.evidenceStrength}/20</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${(result.scores.evidenceStrength/20)*100}%"></div>
+          </div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-header">
+            <span class="breakdown-title">Role Alignment</span>
+            <span class="breakdown-score">${result.scores.roleAlignment}/15</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${(result.scores.roleAlignment/15)*100}%"></div>
+          </div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-header">
+            <span class="breakdown-title">Format Compatibility</span>
+            <span class="breakdown-score">${result.scores.formatCompatibility}/10</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${(result.scores.formatCompatibility/10)*100}%"></div>
+          </div>
+        </div>
+      `;
+
+      // Keywords
+      const matchedContainer = document.getElementById('matched-keywords');
+      const missingContainer = document.getElementById('missing-keywords');
+
+      matchedContainer.innerHTML = result.matchedKeywords.length > 0
+        ? result.matchedKeywords.map(k => `<span class="keyword-tag keyword-matched">${k}</span>`).join('')
+        : '<span class="keyword-tag keyword-matched">No matched keywords extracted</span>';
+
+      missingContainer.innerHTML = result.missingKeywords.length > 0
+        ? result.missingKeywords.map(k => `<span class="keyword-tag keyword-missing">${k}</span>`).join('')
+        : '<span class="keyword-tag keyword-matched">No critical keywords missing</span>';
+
+      // Recruiter review (render as markdown-style)
+      const reviewContainer = document.getElementById('recruiter-review');
+      reviewContainer.innerHTML = formatMarkdown(result.review);
+
+      // Tips
+      const tipsContainer = document.getElementById('tips-grid');
+      tipsContainer.innerHTML = result.tips.map(tip => `
+        <div class="tip-card">
+          <div class="tip-header">
+            <span class="tip-priority priority-${tip.priority}">${tip.priority}</span>
+          </div>
+          <div class="tip-text">${tip.text}</div>
+        </div>
+      `).join('');
+    }
+
+    // Simple markdown formatter
+    function formatMarkdown(text) {
+      return text
+        .replace(/^## (.+)$/gm, '<h4>$1</h4>')
+        .replace(/^\* (.+)$/gm, '<li>$1</li>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n\n/g, '<br><br>')
+        .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+    }
+
+    // Load saved API keys
+    window.addEventListener('DOMContentLoaded', () => {
+      ['openai', 'anthropic', 'gemini'].forEach(provider => {
+        const savedKey = localStorage.getItem(`${provider}_api_key`);
+        if (savedKey) {
+          document.getElementById(`${provider}-key`).value = savedKey;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

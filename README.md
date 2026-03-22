@@ -16,6 +16,8 @@ A modern, dark-themed portfolio and resource hub for international students plan
 | **Cost Estimator** (`estimator.html`) | Monthly budget calculator by city, accommodation type, and lifestyle (2026 data) |
 | **WG Message Generator** (`wgmessage.html`) | Generate polished German WG application messages that landlords actually reply to |
 | **Job Application Tracker** (`jobtracker.html`) | Setup guide for an automated Gmail-to-Google-Sheets job tracker with analytics |
+| **AI CV Tailor** (`cvtailor.html`) | AI-powered tool to tailor resumes and cover letters to specific job postings for better interview chances |
+| **ATS Score Analyzer** (`atsanalyzer.html`) | Get brutally honest ATS analysis with recruiter-perspective feedback, keyword matching, and actionable improvement tips |
 
 ---
 
@@ -51,11 +53,14 @@ GermanyDreams/
 ├── estimator.html      # Cost of living estimator
 ├── wgmessage.html      # WG message generator
 ├── jobtracker.html     # Job tracker setup guide
+├── cvtailor.html       # AI-powered CV and cover letter tailor
+├── atsanalyzer.html    # ATS score analyzer with recruiter feedback
 ├── Profile_pictur.jpg  # Profile photo
 ├── IMG_7204corr.JPG    # Additional image asset
 ├── premium.py          # Premium features script
 ├── modify.py           # Utility script
 ├── modify2.py          # Utility script
+├── modify_fonts.py     # Font modification script
 └── README.md           # This file
 ```
 

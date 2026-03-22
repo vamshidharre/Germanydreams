@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI CV Tailor | GermanyDreams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060d18;
+      --bg2: #0a1628;
+      --card: #0f1f35;
+      --card2: #152540;
+      --accent: #0ea5b0;
+      --accent2: #22d3ee;
+      --gold: #f59e0b;
+      --text: #f0f4f8;
+      --muted: #94a7bf;
+      --border: rgba(14,165,176,0.12);
+      --success: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-size: 18px;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(6,13,24,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    /* HERO BANNER */
+    .page-hero {
+      padding: 8rem 2.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(14,165,176,0.12) 0%, transparent 70%);
+      top: -100px; left: 50%; transform: translateX(-50%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(14,165,176,0.1);
+      border: 1px solid rgba(14,165,176,0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+    .page-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    .page-hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 680px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      padding: 2rem 2.5rem 5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .tool-container {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    /* TABS */
+    .provider-tabs {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    /* FORM ELEMENTS */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+      font-family: monospace;
+    }
+
+    .file-upload {
+      position: relative;
+      display: block;
+    }
+
+    .file-upload-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg2);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.92rem;
+    }
+
+    .file-upload-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .file-upload-btn.loaded {
+      border-color: var(--success);
+      border-style: solid;
+      color: var(--success);
+      background: rgba(34, 197, 94, 0.1);
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .file-name {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* BUTTON */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: var(--bg);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(14, 165, 176, 0.3);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* INTENSITY SELECTOR */
+    .intensity-group {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .intensity-option {
+      flex: 1;
+      padding: 0.75rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .intensity-option input {
+      display: none;
+    }
+
+    .intensity-option:hover {
+      border-color: var(--accent);
+    }
+
+    .intensity-option.selected {
+      border-color: var(--accent);
+      background: rgba(14, 165, 176, 0.1);
+    }
+
+    .intensity-label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .intensity-desc {
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    /* LOADING */
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .loading.active {
+      display: block;
+    }
+
+    .spinner {
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* RESULTS */
+    .results {
+      display: none;
+      margin-top: 2rem;
+    }
+
+    .results.active {
+      display: block;
+    }
+
+    .result-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .result-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .score-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .score-high {
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--success);
+    }
+
+    .score-medium {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--warn);
+    }
+
+    .score-low {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--danger);
+    }
+
+    .result-content {
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      margin-top: 1rem;
+    }
+
+    .download-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* INFO BOX */
+    .info-box {
+      background: rgba(14, 165, 176, 0.1);
+      border: 1px solid rgba(14, 165, 176, 0.3);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .info-box strong {
+      color: var(--accent);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+      .page-hero {
+        padding: 6rem 1.5rem 2rem;
+      }
+      main {
+        padding: 1.5rem 1.5rem 3rem;
+      }
+      .tool-container {
+        padding: 1.5rem;
+      }
+      .intensity-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-back">
+      <span>&#8592;</span> Back to Home
+    </a>
+    <a href="index.html" class="nav-logo">Germany<span>Dreams</span></a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-badge">
+      <span>🤖</span> AI-Powered
+    </div>
+    <h1>AI CV Tailor</h1>
+    <p>Tailor your resume and cover letter to any job posting using AI. Increase your chances of landing interviews with perfectly matched applications.</p>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- PROVIDER SELECTION -->
+    <div class="tool-container">
+      <h2 class="section-title">1. Choose AI Provider</h2>
+
+      <div class="provider-tabs">
+        <button class="tab-btn active" data-provider="openai">OpenAI</button>
+        <button class="tab-btn" data-provider="anthropic">Anthropic</button>
+        <button class="tab-btn" data-provider="gemini">Google Gemini</button>
+      </div>
+
+      <div class="info-box">
+        <strong>Privacy Notice:</strong> Your API key is stored locally in your browser and never sent to our servers. All AI processing happens directly between your browser and your chosen AI provider.
+      </div>
+
+      <!-- OpenAI Form -->
+      <div class="provider-form" data-provider-form="openai">
+        <div class="form-group">
+          <label for="openai-key">OpenAI API Key</label>
+          <input type="password" id="openai-key" placeholder="sk-...">
+        </div>
+        <div class="form-group">
+          <label for="openai-model">Model</label>
+          <select id="openai-model">
+            <option value="gpt-4">GPT-4</option>
+            <option value="gpt-4-turbo">GPT-4 Turbo</option>
+            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Anthropic Form -->
+      <div class="provider-form" data-provider-form="anthropic" style="display: none;">
+        <div class="form-group">
+          <label for="anthropic-key">Anthropic API Key</label>
+          <input type="password" id="anthropic-key" placeholder="sk-ant-...">
+        </div>
+        <div class="form-group">
+          <label for="anthropic-model">Model</label>
+          <select id="anthropic-model">
+            <option value="claude-opus-4-6">Claude Opus 4.6</option>
+            <option value="claude-sonnet-4-6">Claude Sonnet 4.6</option>
+            <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Gemini Form -->
+      <div class="provider-form" data-provider-form="gemini" style="display: none;">
+        <div class="form-group">
+          <label for="gemini-key">Google Gemini API Key</label>
+          <input type="password" id="gemini-key" placeholder="AIza...">
+        </div>
+        <div class="form-group">
+          <label for="gemini-model">Model</label>
+          <select id="gemini-model">
+            <option value="gemini-pro">Gemini Pro</option>
+            <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- INPUT CONTENT -->
+    <div class="tool-container">
+      <h2 class="section-title">2. Upload Your Content</h2>
+
+      <div class="form-group">
+        <label>Your Current CV/Resume</label>
+        <label class="file-upload">
+          <div class="file-upload-btn" id="cv-upload-btn">
+            <span>📄</span> Choose CV File (.txt, .pdf, .tex)
+          </div>
+          <input type="file" id="cv-file" accept=".txt,.pdf,.tex">
+          <span class="file-name" id="cv-file-name"></span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label>Cover Letter (Optional)</label>
+        <label class="file-upload">
+          <div class="file-upload-btn" id="cl-upload-btn">
+            <span>📝</span> Choose Cover Letter File (.txt, .pdf, .tex)
+          </div>
+          <input type="file" id="cl-file" accept=".txt,.pdf,.tex">
+          <span class="file-name" id="cl-file-name"></span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="job-description">Job Description</label>
+        <textarea id="job-description" placeholder="Paste the full job description here..."></textarea>
+      </div>
+    </div>
+
+    <!-- TAILORING SETTINGS -->
+    <div class="tool-container">
+      <h2 class="section-title">3. Tailoring Intensity</h2>
+
+      <div class="intensity-group">
+        <label class="intensity-option selected">
+          <input type="radio" name="intensity" value="light" checked>
+          <span class="intensity-label">Light</span>
+          <span class="intensity-desc">Reorder sections only</span>
+        </label>
+        <label class="intensity-option">
+          <input type="radio" name="intensity" value="balanced">
+          <span class="intensity-label">Balanced</span>
+          <span class="intensity-desc">Honest keyword fitting</span>
+        </label>
+        <label class="intensity-option">
+          <input type="radio" name="intensity" value="aggressive">
+          <span class="intensity-label">Aggressive</span>
+          <span class="intensity-desc">Maximum reframing</span>
+        </label>
+      </div>
+
+      <button class="btn-primary" id="generate-btn">
+        Generate Tailored CV & Cover Letter
+      </button>
+    </div>
+
+    <!-- LOADING STATE -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p class="loading-text">AI is analyzing and tailoring your documents...</p>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results" id="results">
+      <div class="tool-container">
+        <h2 class="section-title">Your Tailored Documents</h2>
+
+        <div class="result-card">
+          <div class="result-header">
+            <h3 class="result-title">Tailored CV</h3>
+            <span class="score-badge score-high" id="cv-score">Match: 85%</span>
+          </div>
+          <div class="result-content" id="cv-result"></div>
+          <button class="download-btn" id="download-cv">
+            <span>⬇</span> Download CV
+          </button>
+        </div>
+
+        <div class="result-card">
+          <div class="result-header">
+            <h3 class="result-title">Tailored Cover Letter</h3>
+            <span class="score-badge score-high" id="cl-score">Match: 82%</span>
+          </div>
+          <div class="result-content" id="cl-result"></div>
+          <button class="download-btn" id="download-cl">
+            <span>⬇</span> Download Cover Letter
+          </button>
+        </div>
+
+        <div class="result-card">
+          <div class="result-header">
+            <h3 class="result-title">Interview Preparation Guide</h3>
+          </div>
+          <div class="result-content" id="prep-result"></div>
+          <button class="download-btn" id="download-prep">
+            <span>⬇</span> Download Prep Guide
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Tab Switching
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const providerForms = document.querySelectorAll('.provider-form');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const provider = btn.dataset.provider;
+
+        // Update active tab
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Show corresponding form
+        providerForms.forEach(form => {
+          form.style.display = form.dataset.providerForm === provider ? 'block' : 'none';
+        });
+      });
+    });
+
+    // File Upload Handling
+    const cvFile = document.getElementById('cv-file');
+    const clFile = document.getElementById('cl-file');
+    const cvUploadBtn = document.getElementById('cv-upload-btn');
+    const clUploadBtn = document.getElementById('cl-upload-btn');
+    const cvFileName = document.getElementById('cv-file-name');
+    const clFileName = document.getElementById('cl-file-name');
+
+    cvFile.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        cvFileName.textContent = e.target.files[0].name;
+        cvUploadBtn.classList.add('loaded');
+        cvUploadBtn.innerHTML = '<span>✓</span> CV Loaded';
+      }
+    });
+
+    clFile.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        clFileName.textContent = e.target.files[0].name;
+        clUploadBtn.classList.add('loaded');
+        clUploadBtn.innerHTML = '<span>✓</span> Cover Letter Loaded';
+      }
+    });
+
+    // Intensity Selection
+    const intensityOptions = document.querySelectorAll('.intensity-option');
+    intensityOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        intensityOptions.forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+        option.querySelector('input').checked = true;
+      });
+    });
+
+    // Generate Button
+    const generateBtn = document.getElementById('generate-btn');
+    const loading = document.getElementById('loading');
+    const results = document.getElementById('results');
+
+    generateBtn.addEventListener('click', async () => {
+      // Validation
+      const activeProvider = document.querySelector('.tab-btn.active').dataset.provider;
+      const apiKey = document.getElementById(`${activeProvider}-key`).value;
+      const model = document.getElementById(`${activeProvider}-model`).value;
+      const jobDescription = document.getElementById('job-description').value;
+
+      if (!apiKey) {
+        alert('Please enter your API key');
+        return;
+      }
+
+      if (!cvFile.files.length) {
+        alert('Please upload your CV');
+        return;
+      }
+
+      if (!jobDescription.trim()) {
+        alert('Please paste the job description');
+        return;
+      }
+
+      const intensity = document.querySelector('input[name="intensity"]:checked').value;
+
+      // Save API key to localStorage
+      localStorage.setItem(`${activeProvider}_api_key`, apiKey);
+
+      // Show loading
+      loading.classList.add('active');
+      results.classList.remove('active');
+      generateBtn.disabled = true;
+
+      try {
+        // Read CV file
+        const cvText = await readFile(cvFile.files[0]);
+        let clText = '';
+        if (clFile.files.length > 0) {
+          clText = await readFile(clFile.files[0]);
+        }
+
+        // Call AI API
+        const result = await generateTailoredCV(activeProvider, apiKey, model, cvText, clText, jobDescription, intensity);
+
+        // Display results
+        displayResults(result);
+
+        // Show results
+        loading.classList.remove('active');
+        results.classList.add('active');
+
+        // Scroll to results
+        results.scrollIntoView({ behavior: 'smooth' });
+
+      } catch (error) {
+        alert('Error: ' + error.message);
+        console.error(error);
+      } finally {
+        generateBtn.disabled = false;
+        loading.classList.remove('active');
+      }
+    });
+
+    // Read file as text
+    function readFile(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.onerror = (e) => reject(e);
+
+        if (file.type === 'application/pdf') {
+          // For PDF, just read as text (in production, you'd use pdf.js)
+          reader.readAsText(file);
+        } else {
+          reader.readAsText(file);
+        }
+      });
+    }
+
+    // Generate tailored CV using AI
+    async function generateTailoredCV(provider, apiKey, model, cvText, clText, jobDescription, intensity) {
+      const systemPrompt = `You are an expert career advisor and resume writer. Your task is to tailor a CV and cover letter to match a specific job description while maintaining 100% factual accuracy.
+
+Tailoring Intensity: ${intensity}
+- Light: Only reorder sections and bullet points to prioritize relevant experience
+- Balanced: Reorder + rephrase using job description keywords (no fabrication)
+- Aggressive: Maximum reframing while staying truthful
+
+CRITICAL RULES:
+1. NEVER add skills, experience, or qualifications not present in the original CV
+2. NEVER fabricate projects, roles, or achievements
+3. DO highlight relevant experience using keywords from the job description
+4. DO reorder sections to emphasize most relevant content first
+5. DO rephrase bullet points to align with job requirements (while staying truthful)
+
+Provide your response in the following format:
+
+===TAILORED_CV===
+[The tailored CV content here]
+
+===COVER_LETTER===
+[The tailored cover letter content here]
+
+===PREP_GUIDE===
+[Interview preparation guide with key topics and suggested talking points]
+
+===MATCH_ANALYSIS===
+Score: [0-100]
+Strong Matches: [List matching qualifications]
+Gaps: [List missing requirements from job description]
+`;
+
+      const userPrompt = `Original CV:
+${cvText}
+
+${clText ? `Original Cover Letter:\n${clText}\n\n` : ''}Job Description:
+${jobDescription}`;
+
+      let response;
+
+      if (provider === 'openai') {
+        response = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            model: model,
+            messages: [
+              { role: 'system', content: systemPrompt },
+              { role: 'user', content: userPrompt }
+            ],
+            temperature: intensity === 'aggressive' ? 0.8 : intensity === 'balanced' ? 0.5 : 0.3
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error?.message || 'API request failed');
+        return parseResponse(data.choices[0].message.content);
+
+      } else if (provider === 'anthropic') {
+        response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey,
+            'anthropic-version': '2023-06-01'
+          },
+          body: JSON.stringify({
+            model: model,
+            max_tokens: 4000,
+            system: systemPrompt,
+            messages: [
+              { role: 'user', content: userPrompt }
+            ],
+            temperature: intensity === 'aggressive' ? 0.8 : intensity === 'balanced' ? 0.5 : 0.3
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error?.message || 'API request failed');
+        return parseResponse(data.content[0].text);
+
+      } else if (provider === 'gemini') {
+        response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            contents: [{
+              parts: [{
+                text: systemPrompt + '\n\n' + userPrompt
+              }]
+            }],
+            generationConfig: {
+              temperature: intensity === 'aggressive' ? 0.8 : intensity === 'balanced' ? 0.5 : 0.3
+            }
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error?.message || 'API request failed');
+        return parseResponse(data.candidates[0].content.parts[0].text);
+      }
+    }
+
+    // Parse AI response
+    function parseResponse(text) {
+      const cvMatch = text.match(/===TAILORED_CV===\s*([\s\S]*?)(?====|$)/);
+      const clMatch = text.match(/===COVER_LETTER===\s*([\s\S]*?)(?====|$)/);
+      const prepMatch = text.match(/===PREP_GUIDE===\s*([\s\S]*?)(?====|$)/);
+      const analysisMatch = text.match(/===MATCH_ANALYSIS===\s*([\s\S]*?)(?====|$)/);
+
+      const scoreMatch = analysisMatch ? analysisMatch[1].match(/Score:\s*(\d+)/) : null;
+      const score = scoreMatch ? parseInt(scoreMatch[1]) : 75;
+
+      return {
+        cv: cvMatch ? cvMatch[1].trim() : 'Error parsing CV',
+        coverLetter: clMatch ? clMatch[1].trim() : 'Error parsing cover letter',
+        prepGuide: prepMatch ? prepMatch[1].trim() : 'Error parsing prep guide',
+        score: score,
+        analysis: analysisMatch ? analysisMatch[1].trim() : ''
+      };
+    }
+
+    // Display results
+    function displayResults(result) {
+      document.getElementById('cv-result').textContent = result.cv;
+      document.getElementById('cl-result').textContent = result.coverLetter;
+      document.getElementById('prep-result').textContent = result.prepGuide;
+
+      // Update scores
+      const cvScore = document.getElementById('cv-score');
+      const clScore = document.getElementById('cl-score');
+
+      cvScore.textContent = `Match: ${result.score}%`;
+      clScore.textContent = `Match: ${result.score}%`;
+
+      // Update score colors
+      const scoreClass = result.score >= 80 ? 'score-high' : result.score >= 60 ? 'score-medium' : 'score-low';
+      cvScore.className = `score-badge ${scoreClass}`;
+      clScore.className = `score-badge ${scoreClass}`;
+
+      // Setup download buttons
+      setupDownload('download-cv', 'tailored-cv.txt', result.cv);
+      setupDownload('download-cl', 'tailored-cover-letter.txt', result.coverLetter);
+      setupDownload('download-prep', 'interview-prep-guide.txt', result.prepGuide);
+    }
+
+    // Setup download button
+    function setupDownload(buttonId, filename, content) {
+      const button = document.getElementById(buttonId);
+      button.onclick = () => {
+        const blob = new Blob([content], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+      };
+    }
+
+    // Load saved API keys
+    window.addEventListener('DOMContentLoaded', () => {
+      ['openai', 'anthropic', 'gemini'].forEach(provider => {
+        const savedKey = localStorage.getItem(`${provider}_api_key`);
+        if (savedKey) {
+          document.getElementById(`${provider}-key`).value = savedKey;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
