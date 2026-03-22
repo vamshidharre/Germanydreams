@@ -508,6 +508,11 @@
         <strong>Privacy Notice:</strong> Your API key is stored locally in your browser and never sent to our servers. All AI processing happens directly between your browser and your chosen AI provider.
       </div>
 
+      <div class="info-box" style="background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3);">
+        <strong style="color: var(--warn);">⚠️ Technical Limitation:</strong> AI provider APIs (OpenAI, Anthropic) typically block direct browser requests due to CORS security policies. If you encounter "Failed to Fetch" errors, this tool requires a backend server to work properly. <br><br>
+        <strong style="color: var(--warn);">Workaround:</strong> You can use a browser extension that disables CORS temporarily for testing purposes. For production use, a server-side implementation is recommended.
+      </div>
+
       <!-- OpenAI Form -->
       <div class="provider-form" data-provider-form="openai">
         <div class="form-group">
@@ -774,8 +779,20 @@
         results.scrollIntoView({ behavior: 'smooth' });
 
       } catch (error) {
-        alert('Error: ' + error.message);
         console.error(error);
+
+        // Check if it's a CORS or network error
+        if (error.message.includes('fetch') || error.message.includes('NetworkError') || error.message.includes('Failed to fetch')) {
+          alert('❌ CORS Error: Cannot connect to AI provider.\n\n' +
+                'AI provider APIs block direct browser requests for security reasons.\n\n' +
+                'Solutions:\n' +
+                '1. Use a CORS-disabling browser extension (for testing only)\n' +
+                '2. Contact the developer for a server-side version\n' +
+                '3. Use the standalone desktop version (if available)\n\n' +
+                'Technical Details: ' + error.message);
+        } else {
+          alert('Error: ' + error.message + '\n\nPlease check your API key and try again.');
+        }
       } finally {
         generateBtn.disabled = false;
         loading.classList.remove('active');
@@ -854,8 +871,11 @@ ${jobDescription}`;
             ],
             temperature: intensity === 'aggressive' ? 0.8 : intensity === 'balanced' ? 0.5 : 0.3
           })
+        }).catch(err => {
+          throw new Error('Failed to fetch - CORS blocked or network error');
         });
 
+        if (!response) throw new Error('Failed to fetch - CORS blocked or network error');
         const data = await response.json();
         if (!response.ok) throw new Error(data.error?.message || 'API request failed');
         return parseResponse(data.choices[0].message.content);
@@ -877,8 +897,11 @@ ${jobDescription}`;
             ],
             temperature: intensity === 'aggressive' ? 0.8 : intensity === 'balanced' ? 0.5 : 0.3
           })
+        }).catch(err => {
+          throw new Error('Failed to fetch - CORS blocked or network error');
         });
 
+        if (!response) throw new Error('Failed to fetch - CORS blocked or network error');
         const data = await response.json();
         if (!response.ok) throw new Error(data.error?.message || 'API request failed');
         return parseResponse(data.content[0].text);
@@ -899,8 +922,11 @@ ${jobDescription}`;
               temperature: intensity === 'aggressive' ? 0.8 : intensity === 'balanced' ? 0.5 : 0.3
             }
           })
+        }).catch(err => {
+          throw new Error('Failed to fetch - CORS blocked or network error');
         });
 
+        if (!response) throw new Error('Failed to fetch - CORS blocked or network error');
         const data = await response.json();
         if (!response.ok) throw new Error(data.error?.message || 'API request failed');
         return parseResponse(data.candidates[0].content.parts[0].text);
