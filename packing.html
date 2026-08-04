@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Germany Student Packing & Buying Guide | GermanyDreams</title>
+  <meta name="description" content="Complete master checklist, luggage distribution guidelines, price comparison, and budget planning for international students moving to Germany." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060d18;
+      --bg2: #0a1628;
+      --card: #0f1f35;
+      --card2: #152540;
+      --accent: #0ea5b0;
+      --accent2: #22d3ee;
+      --gold: #f59e0b;
+      --text: #f0f4f8;
+      --muted: #7a90a8;
+      --border: rgba(14, 165, 176, 0.14);
+      --border-light: rgba(255, 255, 255, 0.08);
+      --success: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --amazon: #ff9900;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(6, 13, 24, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .nav-back:hover {
+      color: var(--text);
+      transform: translateX(-2px);
+    }
+
+    /* HERO SECTION */
+    .page-hero {
+      padding: 8.5rem 2.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(14, 165, 176, 0.15) 0%, transparent 70%);
+      top: -120px; left: 50%; transform: translateX(-50%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(14, 165, 176, 0.1);
+      border: 1px solid rgba(14, 165, 176, 0.3);
+      padding: 0.4rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--accent2);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+    .page-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.8rem;
+      line-height: 1.15;
+    }
+    .page-hero h1 span {
+      background: linear-gradient(135deg, var(--accent2), var(--accent), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    /* CONTROLS BAR & ACTIONS */
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.65rem 1.25rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .btn-action:hover {
+      background: rgba(14, 165, 176, 0.15);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(14, 165, 176, 0.2);
+    }
+    .btn-action.btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .btn-action.btn-primary:hover {
+      background: #0c939e;
+      box-shadow: 0 0 25px rgba(14, 165, 176, 0.4);
+    }
+
+    /* QUICK LINKS BANNER */
+    .banner-card {
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      background: linear-gradient(135deg, rgba(15, 31, 53, 0.9), rgba(10, 22, 40, 0.95));
+      border: 1px solid rgba(14, 165, 176, 0.25);
+      border-radius: 16px;
+      padding: 1.4rem 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .banner-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+    }
+    .banner-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .banner-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent2);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .banner-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+    .banner-links a {
+      color: var(--accent2);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: text-decoration 0.2s, color 0.2s;
+    }
+    .banner-links a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+
+    /* PROGRESS BANNER */
+    .progress-banner {
+      max-width: 900px;
+      margin: 0 auto 2rem;
+      padding: 0 1.5rem;
+    }
+    .progress-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.2rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .progress-text { flex: 1; min-width: 150px; }
+    .progress-text strong {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      display: block;
+    }
+    .progress-text span { font-size: 0.8rem; color: var(--muted); }
+    .progress-track {
+      flex: 2;
+      min-width: 160px;
+      height: 10px;
+      background: var(--card2);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--success));
+      border-radius: 999px;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+    .progress-count {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent2);
+      white-space: nowrap;
+    }
+
+    /* FILTER TABS & SEARCH */
+    .filter-wrapper {
+      max-width: 900px;
+      margin: 0 auto 2rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+    .search-box input {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.8rem 1rem 0.8rem 2.8rem;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-box input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(14, 165, 176, 0.2);
+    }
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+    .tabs-bar {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.4rem;
+      scrollbar-width: thin;
+    }
+    .tab-btn {
+      background: var(--card);
+      border: 1px solid var(--border-light);
+      color: var(--muted);
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover {
+      color: var(--text);
+      background: rgba(14, 165, 176, 0.08);
+      border-color: var(--border);
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 4px 15px rgba(14, 165, 176, 0.3);
+    }
+
+    /* MAIN CONTENT LAYOUT */
+    .page-body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+
+    /* SECTION CARD */
+    .guide-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .guide-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+    }
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 0.9rem;
+    }
+    .section-head-icon {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      background: rgba(14, 165, 176, 0.14);
+      border: 1px solid rgba(14, 165, 176, 0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .section-head h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .section-head p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    /* TABLES & DATA STYLING */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border-light);
+      margin-bottom: 0.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    th {
+      background: rgba(10, 22, 40, 0.9);
+      color: var(--accent2);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      vertical-align: middle;
+      color: var(--text);
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:nth-child(even) td {
+      background: rgba(255, 255, 255, 0.015);
+    }
+    tr:hover td {
+      background: rgba(14, 165, 176, 0.03);
+    }
+    .center { text-align: center; }
+
+    /* CHECKABLE LIST ITEM */
+    .checklist-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 0.95rem 1.1rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-light);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .check-item:hover {
+      background: rgba(14, 165, 176, 0.05);
+      border-color: rgba(14, 165, 176, 0.25);
+    }
+    .check-item.checked {
+      background: rgba(34, 197, 94, 0.06);
+      border-color: rgba(34, 197, 94, 0.25);
+    }
+    .check-box {
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--muted);
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      font-size: 0.85rem;
+      color: transparent;
+      font-weight: bold;
+    }
+    .check-item.checked .check-box {
+      background: var(--success);
+      border-color: var(--success);
+      color: #fff;
+    }
+    .check-item.checked .check-title {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+    .check-content {
+      flex: 1;
+    }
+    .check-title {
+      font-weight: 600;
+      font-size: 0.94rem;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .check-note {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* BADGES & HIGHLIGHTS */
+    .badge-qty {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--gold);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .price-tag {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent2);
+    }
+    .price-tag.india { color: #34d399; }
+    .price-tag.germany { color: var(--gold); }
+    .rec-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      background: rgba(14, 165, 176, 0.1);
+      border: 1px solid rgba(14, 165, 176, 0.2);
+      color: var(--text);
+    }
+    .rec-badge.home {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.25);
+      color: #4ade80;
+    }
+    .rec-badge.de {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.25);
+      color: #fbbf24;
+    }
+
+    /* AMAZON BUTTON */
+    .btn-amazon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--amazon);
+      color: #111;
+      font-weight: 700;
+      padding: 0.35rem 0.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: transform 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-amazon:hover {
+      background: #e68a00;
+      transform: scale(1.03);
+    }
+
+    /* LUGGAGE BENTO CARDS */
+    .luggage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .luggage-box {
+      background: rgba(10, 22, 40, 0.6);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 1.4rem;
+      position: relative;
+    }
+    .luggage-box.checked-bag {
+      border-top: 4px solid var(--accent);
+    }
+    .luggage-box.cabin-bag {
+      border-top: 4px solid var(--gold);
+    }
+    .luggage-box-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.6rem;
+    }
+    .luggage-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .luggage-box li {
+      position: relative;
+      padding-left: 1.4rem;
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .luggage-box li::before {
+      content: "•";
+      position: absolute;
+      left: 0.3rem;
+      top: 0;
+      color: var(--accent2);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .luggage-box.cabin-bag li::before {
+      color: var(--gold);
+    }
+    .luggage-box strong {
+      color: #fff;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      background: rgba(6, 13, 24, 0.95);
+    }
+    footer a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 10pt;
+      }
+      nav, .page-hero::before, .hero-actions, .filter-wrapper, footer {
+        display: none !important;
+      }
+      .page-hero {
+        padding: 1rem 0 !important;
+      }
+      .page-hero h1 {
+        color: #000 !important;
+        font-size: 18pt !important;
+        -webkit-text-fill-color: initial !important;
+      }
+      .banner-card, .guide-card, .progress-card, .luggage-box {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+      }
+      th {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+        border-bottom: 2px solid #000 !important;
+      }
+      td {
+        border-bottom: 1px solid #ddd !important;
+        color: #000 !important;
+      }
+      .check-item {
+        background: #fff !important;
+        border: 1px solid #eee !important;
+        color: #000 !important;
+      }
+      .check-box {
+        border-color: #000 !important;
+      }
+      .btn-amazon {
+        background: #eee !important;
+        color: #000 !important;
+        border: 1px solid #999;
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.2rem; }
+      .page-hero { padding: 7rem 1.2rem 2rem; }
+      .banner-card { flex-direction: column; text-align: center; }
+      .banner-links { justify-content: center; }
+      .progress-card { flex-direction: column; align-items: stretch; text-align: center; }
+      td, th { padding: 0.75rem 0.6rem; font-size: 0.82rem; }
+      .guide-card { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-back" href="index.html">&#8592; Back to Home</a>
+    <a class="nav-logo" href="index.html"><span>G</span>ermanyDreams</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-badge">&#129651; Master Student Checklist</div>
+    <h1>Ultimate Germany <span>Packing &amp; Buying Guide</span></h1>
+    <p>Complete master checklist, luggage distribution guidelines, India vs Germany price analysis, and budget planning for international students.</p>
+
+    <!-- HERO ACTIONS -->
+    <div class="hero-actions">
+      <button class="btn-action btn-primary" onclick="window.print()">
+        &#128438; Print / Save PDF
+      </button>
+      <button class="btn-action" onclick="resetChecklist()">
+        &#8634; Reset Checklist
+      </button>
+    </div>
+  </div>
+
+  <!-- QUICK RESOURCES BANNER -->
+  <div style="padding: 0 1.5rem;">
+    <div class="banner-card">
+      <div class="banner-info">
+        <div class="banner-title">&#128204; Essential Links &amp; Indian Groceries in Germany</div>
+        <div class="banner-links">
+          <span>• Order Indian Groceries: <a href="https://www.indische-lebensmittel-online.de/" target="_blank" rel="noopener">Indische Lebensmittel Online &#8599;</a></span>
+          <span>• Plug Adapter: <a href="https://link.amazon/B069I0aqO" target="_blank" rel="noopener">Volt23 International Adapter &#8599;</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRESS BANNER -->
+  <div class="progress-banner">
+    <div class="progress-card">
+      <div class="progress-text">
+        <strong>Your Packing Progress</strong>
+        <span id="progressLabel">0 of 21 items packed</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-count" id="progressCount">0%</div>
+    </div>
+  </div>
+
+  <!-- FILTER & SEARCH BAR -->
+  <div class="filter-wrapper">
+    <div class="search-box">
+      <span class="search-icon">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="Search items (e.g., passport, cooker, thermal, adapter)..." oninput="filterItems()" />
+    </div>
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="switchTab('all', this)">All Categories</button>
+      <button class="tab-btn" onclick="switchTab('documents', this)">&#128196; Documents</button>
+      <button class="tab-btn" onclick="switchTab('clothing', this)">&#129651; Clothing</button>
+      <button class="tab-btn" onclick="switchTab('electronics', this)">&#128187; Electronics</button>
+      <button class="tab-btn" onclick="switchTab('kitchen', this)">&#127889; Kitchenware</button>
+      <button class="tab-btn" onclick="switchTab('luggage', this)">&#129523; Luggage Rules</button>
+    </div>
+  </div>
+
+  <!-- PAGE BODY -->
+  <div class="page-body">
+
+    <!-- 1. ESSENTIAL DOCUMENTS & CHECKLIST -->
+    <div class="guide-card category-section" data-category="documents">
+      <div class="section-head">
+        <div class="section-head-icon">&#128203;</div>
+        <div>
+          <h2>1. Essential Documents &amp; Checklist</h2>
+          <p>Must-have documents to carry in original and physical copies for immigration &amp; university enrollment.</p>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+
+        <div class="check-item" data-id="doc-1" onclick="toggleCheck('doc-1')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div class="check-title">Passport &amp; Student Visa <span class="badge-qty">Orig + 2 Copies</span></div>
+            <div class="check-note">Keep digital backups on cloud storage (Google Drive / iCloud) at all times.</div>
+          </div>
+        </div>
+
+        <div class="check-item" data-id="doc-2" onclick="toggleCheck('doc-2')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div class="check-title">University Admission Letter <span class="badge-qty">2 Copies</span></div>
+            <div class="check-note">Required during airport immigration control and campus registration.</div>
+          </div>
+        </div>
+
+        <div class="check-item" data-id="doc-3" onclick="toggleCheck('doc-3')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div class="check-title">Degree Certificates &amp; Marksheets <span class="badge-qty">Orig + Copies</span></div>
+            <div class="check-note">Needed for university enrollment and part-time job applications (Werkstudent).</div>
+          </div>
+        </div>
+
+        <div class="check-item" data-id="doc-4" onclick="toggleCheck('doc-4')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div class="check-title">Travel &amp; Health Insurance Proof <span class="badge-qty">2 Copies</span></div>
+            <div class="check-note">Must satisfy German embassy &amp; local authority guidelines.</div>
+          </div>
+        </div>
+
+        <div class="check-item" data-id="doc-5" onclick="toggleCheck('doc-5')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div class="check-title">Housing Contract &amp; Confirmation <span class="badge-qty">1 Copy</span></div>
+            <div class="check-note">Mandatory for city address registration (<i>Anmeldung</i>) upon arrival.</div>
+          </div>
+        </div>
+
+        <div class="check-item" data-id="doc-6" onclick="toggleCheck('doc-6')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div class="check-title">Biometric Passport Photos <span class="badge-qty">10–12 Photos</span></div>
+            <div class="check-note">35x45mm, compliant with official German visa photo standards.</div>
+          </div>
+        </div>
+
+        <div class="check-item" data-id="doc-7" onclick="toggleCheck('doc-7')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div class="check-title">Euro Cash / Forex Card <span class="badge-qty">&euro;500 &ndash; &euro;1000</span></div>
+            <div class="check-note">For initial deposit, rent, and immediate daily expenses before Sperrkonto payout.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- 2. CLOTHING & APPAREL GUIDELINES -->
+    <div class="guide-card category-section" data-category="clothing">
+      <div class="section-head">
+        <div class="section-head-icon">&#128085;</div>
+        <div>
+          <h2>2. Clothing &amp; Apparel Guidelines</h2>
+          <p>India vs Germany pricing breakdown to help you pack smart and avoid over-spending.</p>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Category &amp; Item</th>
+              <th class="center">Qty</th>
+              <th>India Price</th>
+              <th>Germany Price</th>
+              <th>Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="check-row" data-id="cloth-1">
+              <td class="center">
+                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('cloth-1')">
+                  <div class="check-box">&#10003;</div>
+                </div>
+              </td>
+              <td><strong>Formal Suit / Presentation Wear</strong></td>
+              <td class="center"><span class="badge-qty">1–2 Pairs</span></td>
+              <td><span class="price-tag india">&#8377;350+</span></td>
+              <td><span class="price-tag germany">&euro;10+</span></td>
+              <td><span class="rec-badge home">Pack from home (custom fitting costly)</span></td>
+            </tr>
+
+            <tr class="check-row" data-id="cloth-2">
+              <td class="center">
+                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('cloth-2')">
+                  <div class="check-box">&#10003;</div>
+                </div>
+              </td>
+              <td><strong>Daily Wear (Shirts, T-Shirts, Jeans)</strong></td>
+              <td class="center"><span class="badge-qty">Your Choice</span></td>
+              <td><span class="price-tag india">Standard</span></td>
+              <td><span class="price-tag germany">&euro;10–&euro;25</span></td>
+              <td><span class="rec-badge de">Pack basics; buy heavy layers in DE</span></td>
+            </tr>
+
+            <tr class="check-row" data-id="cloth-3">
+              <td class="center">
+                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('cloth-3')">
+                  <div class="check-box">&#10003;</div>
+                </div>
+              </td>
+              <td><strong>Traditional Wear</strong></td>
+              <td class="center"><span class="badge-qty">1 Set</span></td>
+              <td><span class="price-tag india">&#8377;500+</span></td>
+              <td><span class="price-tag germany">&euro;60+</span></td>
+              <td><span class="rec-badge home">Pack from home (hard to find)</span></td>
+            </tr>
+
+            <tr class="check-row" data-id="cloth-4">
+              <td class="center">
+                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('cloth-4')">
+                  <div class="check-box">&#10003;</div>
+                </div>
+              </td>
+              <td><strong>Thermal Innerwear</strong></td>
+              <td class="center"><span class="badge-qty">1–2 Pairs</span></td>
+              <td><span class="price-tag india">&#8377;200+</span></td>
+              <td><span class="price-tag germany">&euro;15+</span></td>
+              <td><span class="rec-badge home">Pack quality thermal pairs from home</span></td>
+            </tr>
+
+            <tr class="check-row" data-id="cloth-5">
+              <td class="center">
+                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('cloth-5')">
+                  <div class="check-box">&#10003;</div>
+                </div>
+              </td>
+              <td><strong>Heavy Winter Jacket / Parka</strong></td>
+              <td class="center"><span class="badge-qty">1</span></td>
+              <td><span class="price-tag india">&#8377;1000+</span></td>
+              <td><span class="price-tag germany">&euro;25+</span></td>
+              <td><span class="rec-badge de">Buy in Germany for sub-zero rating</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- 3. ELECTRONICS & HARDWARE -->
+    <div class="guide-card category-section" data-category="electronics">
+      <div class="section-head">
+        <div class="section-head-icon">&#128187;</div>
+        <div>
+          <h2>3. Electronics &amp; Hardware</h2>
+          <p>Required adapters, study hardware &amp; baggage safety guidelines.</p>
+        </div>
+      </div>
+
+      <div class="checklist-group">
+
+        <div class="check-item" data-id="elec-1" onclick="toggleCheck('elec-1')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+              <div class="check-title">Universal Travel Adapter</div>
+              <a href="https://link.amazon/B069I0aqO" class="btn-amazon" target="_blank" rel="noopener" onclick="event.stopPropagation()">View on Amazon &#8599;</a>
+            </div>
+            <div class="check-note">Type C/F EU Standard 2-pin adapter with surge protection. Essential from day 1.</div>
+          </div>
+        </div>
+
+        <div class="check-item" data-id="elec-2" onclick="toggleCheck('elec-2')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+              <div class="check-title">Multipurpose Laptop Table</div>
+              <a href="https://link.amazon/B069I0aqO" class="btn-amazon" target="_blank" rel="noopener" onclick="event.stopPropagation()">View on Amazon &#8599;</a>
+            </div>
+            <div class="check-note">Adjustable height with extended surface for long study sessions in dorms.</div>
+          </div>
+        </div>
+
+        <div class="check-item" data-id="elec-3" onclick="toggleCheck('elec-3')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div class="check-title">Laptop &amp; Accessories <span class="badge-qty">Pack from Home</span></div>
+            <div class="check-note">Core i3/i5/i7, 8GB+ RAM, 256GB SSD, HDMI port &amp; charger. Keyboard layout differs in Germany (QWERTZ).</div>
+          </div>
+        </div>
+
+        <div class="check-item" data-id="elec-4" onclick="toggleCheck('elec-4')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div class="check-title">Power Bank (10,000–20,000 mAh) <span class="badge-qty">Cabin Baggage ONLY</span></div>
+            <div class="check-note" style="color:var(--warn);">&#9888; Carry strictly in hand/cabin baggage. Prohibited in checked luggage by airlines.</div>
+          </div>
+        </div>
+
+        <div class="check-item" data-id="elec-5" onclick="toggleCheck('elec-5')">
+          <div class="check-box">&#10003;</div>
+          <div class="check-content">
+            <div class="check-title">Extension Power Board <span class="badge-qty">Pack from Home</span></div>
+            <div class="check-note">3–4 socket board. Double-check power ratings (220V-240V supported in EU).</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- 4. KITCHENWARE & COOKWARE -->
+    <div class="guide-card category-section" data-category="kitchen">
+      <div class="section-head">
+        <div class="section-head-icon">&#127889;</div>
+        <div>
+          <h2>4. Kitchenware &amp; Cookware</h2>
+          <p>Indian cooking essentials that are expensive or hard to find in Germany.</p>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Item Description</th>
+              <th class="center">Qty</th>
+              <th>India Price</th>
+              <th>Germany Price</th>
+              <th>Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="check-row" data-id="kitch-1">
+              <td class="center">
+                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('kitch-1')">
+                  <div class="check-box">&#10003;</div>
+                </div>
+              </td>
+              <td><strong>Pressure Cooker (Induction Compatible)</strong></td>
+              <td class="center"><span class="badge-qty">1</span></td>
+              <td><span class="price-tag india">&#8377;1000+</span></td>
+              <td><span class="price-tag germany">&euro;30+</span></td>
+              <td><span class="rec-badge home">Must pack from home (expensive abroad)</span></td>
+            </tr>
+
+            <tr class="check-row" data-id="kitch-2">
+              <td class="center">
+                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('kitch-2')">
+                  <div class="check-box">&#10003;</div>
+                </div>
+              </td>
+              <td><strong>Spare Gaskets &amp; Safety Valves</strong></td>
+              <td class="center"><span class="badge-qty">1–2 Sets</span></td>
+              <td><span class="price-tag india">&#8377;100+</span></td>
+              <td><span class="price-tag germany">N/A</span></td>
+              <td><span class="rec-badge home">Must pack (hard to match sizes locally)</span></td>
+            </tr>
+
+            <tr class="check-row" data-id="kitch-3">
+              <td class="center">
+                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('kitch-3')">
+                  <div class="check-box">&#10003;</div>
+                </div>
+              </td>
+              <td><strong>Roti Tawa &amp; Rolling Pin (Belan)</strong></td>
+              <td class="center"><span class="badge-qty">1 Each</span></td>
+              <td><span class="price-tag india">&#8377;100+</span></td>
+              <td><span class="price-tag germany">&euro;5–&euro;7+</span></td>
+              <td><span class="rec-badge home">Pack from home</span></td>
+            </tr>
+
+            <tr class="check-row" data-id="kitch-4">
+              <td class="center">
+                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('kitch-4')">
+                  <div class="check-box">&#10003;</div>
+                </div>
+              </td>
+              <td><strong>Spice Box (Masala Container)</strong></td>
+              <td class="center"><span class="badge-qty">1</span></td>
+              <td><span class="price-tag india">&#8377;50+</span></td>
+              <td><span class="price-tag germany">N/A</span></td>
+              <td><span class="rec-badge home">Pack from home</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- 5. LUGGAGE DISTRIBUTION GUIDELINES -->
+    <div class="guide-card category-section" data-category="luggage">
+      <div class="section-head">
+        <div class="section-head-icon">&#129523;</div>
+        <div>
+          <h2>5. Luggage Distribution Guidelines</h2>
+          <p>Airlines regulations &amp; strict baggage allocation strategy for hassle-free transit.</p>
+        </div>
+      </div>
+
+      <div class="luggage-grid">
+        <!-- Checked Baggage -->
+        <div class="luggage-box checked-bag">
+          <div class="luggage-box-title">
+            <span>&#129523;</span> Checked Baggage (23–40 kg)
+          </div>
+          <ul>
+            <li>Knives, scissors, and sharp cutlery (strictly packed here).</li>
+            <li>All packaged food items, spices, and heavy cookware.</li>
+            <li>Heavy winter clothing, shoes, and secondary toiletries.</li>
+            <li>Attach clear name tags and a distinct ribbon/strap on handles for easy identification.</li>
+          </ul>
+        </div>
+
+        <!-- Cabin Baggage -->
+        <div class="luggage-box cabin-bag">
+          <div class="luggage-box-title">
+            <span>&#127890;</span> Cabin &amp; Laptop Bag (7–10 kg)
+          </div>
+          <ul>
+            <li><strong>ALL original documents</strong>, passport, student visa, and cash.</li>
+            <li><strong>Power Banks</strong> (strictly prohibited in checked luggage by aviation rules).</li>
+            <li>Laptops, chargers, external hard drives, and fragile electronics.</li>
+            <li>One extra pair of clothing and basic toiletries in case of transit/baggage delays.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="max-width:900px; margin:0 auto;">
+      <p style="margin-bottom:0.5rem;">Independent Student Guidance Document &bull; Prices and details are for reference and planning purposes.</p>
+      <p>&copy; 2026 <a href="index.html">GermanyDreams</a>. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <!-- JAVASCRIPT FOR CHECKLIST & SEARCH -->
+  <script>
+    const STORAGE_KEY = 'germany_packing_checklist_v1';
+    let checkedItems = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+    // Total trackable items
+    const TOTAL_ITEMS = 21;
+
+    function init() {
+      // Apply saved check states
+      Object.keys(checkedItems).forEach(id => {
+        if (checkedItems[id]) {
+          const elem = document.querySelector(`[data-id="${id}"]`);
+          if (elem) {
+            elem.classList.add('checked');
+          }
+        }
+      });
+      updateProgress();
+    }
+
+    function toggleCheck(id) {
+      const elem = document.querySelector(`[data-id="${id}"]`);
+      if (!elem) return;
+
+      const isChecked = elem.classList.toggle('checked');
+      checkedItems[id] = isChecked;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(checkedItems));
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const count = Object.values(checkedItems).filter(Boolean).length;
+      const pct = Math.round((count / TOTAL_ITEMS) * 100);
+
+      const label = document.getElementById('progressLabel');
+      const fill = document.getElementById('progressFill');
+      const countDisplay = document.getElementById('progressCount');
+
+      if (label) label.textContent = `${count} of ${TOTAL_ITEMS} items packed`;
+      if (fill) fill.style.width = `${pct}%`;
+      if (countDisplay) countDisplay.textContent = `${pct}%`;
+    }
+
+    function resetChecklist() {
+      if (confirm('Are you sure you want to reset all checked items in your packing checklist?')) {
+        checkedItems = {};
+        localStorage.removeItem(STORAGE_KEY);
+        document.querySelectorAll('.checked').forEach(el => el.classList.remove('checked'));
+        updateProgress();
+      }
+    }
+
+    function switchTab(category, btnElem) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnElem) btnElem.classList.add('active');
+
+      const sections = document.querySelectorAll('.category-section');
+      sections.forEach(sec => {
+        if (category === 'all' || sec.dataset.category === category) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+    }
+
+    function filterItems() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const allCards = document.querySelectorAll('.category-section');
+
+      if (!query) {
+        // Reset view based on active tab
+        const activeTab = document.querySelector('.tab-btn.active');
+        if (activeTab) {
+          const tabCategory = activeTab.getAttribute('onclick').match(/'([^']+)'/)[1];
+          switchTab(tabCategory, activeTab);
+        }
+        return;
+      }
+
+      allCards.forEach(sec => {
+        let matchCount = 0;
+        const checkItems = sec.querySelectorAll('.check-item, .check-row, .luggage-box li');
+
+        checkItems.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          if (text.includes(query)) {
+            item.style.display = '';
+            matchCount++;
+          } else {
+            if (item.classList.contains('check-item') || item.classList.contains('check-row')) {
+              item.style.display = 'none';
+            }
+          }
+        });
+
+        if (matchCount > 0 || sec.textContent.toLowerCase().includes(query)) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+
+</body>
+</html>
