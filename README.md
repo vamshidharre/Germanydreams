@@ -18,15 +18,34 @@ A modern, dark-themed portfolio and resource hub for international students plan
 | **Job Application Tracker** (`jobtracker.html`) | Setup guide for an automated Gmail-to-Google-Sheets job tracker with analytics |
 | **AI CV Tailor** (`cvtailor.html`) | AI-powered tool to tailor resumes and cover letters to specific job postings for better interview chances |
 | **ATS Score Analyzer** (`atsanalyzer.html`) | Get brutally honest ATS analysis with recruiter-perspective feedback, keyword matching, and actionable improvement tips |
+| **Packing & Buying Guide** (`packing.html`) | Master packing checklist with saved progress, India vs Germany price comparison, luggage rules, and buying links |
+
+---
+
+## 🎨 Design System — "Paper & Teal"
+
+`index.html` and `packing.html` share a light, editorial design system in `assets/`:
+
+- `assets/theme.css` — design tokens (surfaces, ink, teal/amber accents), layered
+  shadows, typography scale, nav, buttons, cards, CSS flags, animations,
+  `prefers-reduced-motion` and print rules
+- `assets/site.js` — scroll progress, sticky nav + mobile sheet, staggered scroll
+  reveal, mouse-tracked card spotlights, 3D tilt, magnetic buttons, count-up numbers
+
+To roll the system out to another page, link both files and swap the page's
+markup onto the shared classes (`.nav`, `.wrap`, `.section`, `.card`, `.btn`, …).
+
+> German and Indian flags are rendered as CSS gradients (`.flag--de` / `.flag--in`),
+> not emoji — Windows has no glyph for regional-indicator flag emoji.
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **HTML5** — Semantic, accessible markup
-- **CSS3** — Custom properties, CSS Grid, Flexbox, glassmorphism, and smooth animations
-- **Vanilla JavaScript** — Scroll reveals, magnetic buttons, copy-to-clipboard, YouTube API integration
-- **Google Fonts** — Syne, DM Sans, Bricolage Grotesque, Instrument Sans, JetBrains Mono
+- **CSS3** — Custom properties, CSS Grid, Flexbox, `:has()`, `color-mix()`, scroll-driven reveals
+- **Vanilla JavaScript** — Scroll reveals, magnetic buttons, spotlights, `localStorage` persistence
+- **Google Fonts** — Bricolage Grotesque, Instrument Sans, JetBrains Mono (plus Syne / DM Sans on legacy pages)
 - **No frameworks. No build tools. No dependencies.** — Just clean, fast, static files
 
 ---
@@ -47,7 +66,11 @@ No build step, no package manager, no setup required.
 
 ```
 GermanyDreams/
+├── assets/
+│   ├── theme.css       # Shared design system (tokens, components, animations)
+│   └── site.js         # Shared interaction layer
 ├── index.html          # Main landing page
+├── packing.html        # Packing & buying guide with saved checklist
 ├── calculator.html     # CGPA → German grade converter
 ├── visa.html           # Visa preparation checklist
 ├── estimator.html      # Cost of living estimator
@@ -63,6 +86,9 @@ GermanyDreams/
 ├── modify_fonts.py     # Font modification script
 └── README.md           # This file
 ```
+
+> `index.html` and `packing.html` use the shared design system. The remaining
+> pages still carry their original self-contained dark theme.
 
 ---
 

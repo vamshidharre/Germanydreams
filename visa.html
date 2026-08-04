@@ -1,770 +1,881 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Visa Prep Checklist | GermanyDreams</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visa Prep Checklist &amp; Q&amp;A Guide | GermanyDreams</title>
+  <meta name="description"
+    content="Everything you need to ace your German student visa interview — common questions, smart answers, and a full document checklist." />
+  <meta name="theme-color" content="#fcfcfd" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+
   <style>
-    :root {
-      --bg: #060d18;
-      --bg2: #0a1628;
-      --card: #0f1f35;
-      --card2: #152540;
-      --accent: #0ea5b0;
-      --accent2: #22d3ee;
-      --gold: #f59e0b;
-      --text: #f0f4f8;
-      --muted: #7a90a8;
-      --border: rgba(14,165,176,0.12);
-      --success: #22c55e;
-      --warn: #f59e0b;
-      --danger: #ef4444;
-    }
+    /* ======================================================================
+       VISA GUIDE — Page-specific layout
+       ====================================================================== */
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 1.2rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(6,13,24,0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-back:hover { color: var(--text); }
-
-    /* PAGE HERO */
-    .page-hero {
-      padding: 8rem 2.5rem 3rem;
-      text-align: center;
+    .phero {
       position: relative;
+      padding: calc(var(--nav-h) + 4rem) 0 3rem;
+      text-align: center;
       overflow: hidden;
     }
-    .page-hero::before {
-      content: '';
+
+    .phero__bg {
       position: absolute;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(14,165,176,0.12) 0%, transparent 70%);
-      top: -100px; left: 50%; transform: translateX(-50%);
-      border-radius: 50%;
+      inset: 0;
       pointer-events: none;
-    }
-    .page-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(14,165,176,0.1);
-      border: 1px solid rgba(14,165,176,0.3);
-      padding: 0.4rem 1rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 1.2rem;
-    }
-    .page-hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
-    }
-    .page-hero h1 span { color: var(--accent); }
-    .page-hero p {
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 540px;
-      margin: 0 auto;
-      line-height: 1.7;
+      overflow: hidden;
     }
 
-    /* PROGRESS BANNER */
-    .progress-banner {
-      max-width: 860px;
-      margin: 0 auto 2rem;
-      padding: 0 2.5rem;
+    .phero .a1 {
+      width: 620px;
+      height: 620px;
+      top: -300px;
+      left: 50%;
+      margin-left: -310px;
+      background: radial-gradient(circle, rgba(20, 184, 196, .22), transparent 68%);
+      animation: drift 24s ease-in-out infinite;
     }
-    .progress-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.2rem 1.5rem;
+
+    .phero__in {
+      position: relative;
+      max-width: 780px;
+    }
+
+    .progress-banner {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-2xl);
+      padding: 1.5rem 2rem;
+      box-shadow: var(--sh-md);
+      margin-bottom: 2.2rem;
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.8rem;
       flex-wrap: wrap;
     }
-    .progress-text { flex: 1; min-width: 140px; }
+
+    .progress-text {
+      flex: 1;
+      min-width: 180px;
+    }
+
     .progress-text strong {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.95rem;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
       font-weight: 700;
+      color: var(--ink);
       display: block;
     }
-    .progress-text span { font-size: 0.78rem; color: var(--muted); }
+
+    .progress-text span {
+      font-family: var(--font-mono);
+      font-size: .78rem;
+      color: var(--ink-3);
+    }
+
     .progress-track {
       flex: 2;
-      min-width: 160px;
-      height: 8px;
-      background: var(--card2);
-      border-radius: 999px;
+      min-width: 200px;
+      height: 10px;
+      background: var(--paper-3);
+      border-radius: var(--r-full);
       overflow: hidden;
     }
+
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--success));
-      border-radius: 999px;
+      background: linear-gradient(90deg, var(--brand), var(--green-bright));
+      border-radius: var(--r-full);
       width: 0%;
-      transition: width 0.5s ease;
+      transition: width .5s var(--ease);
     }
+
     .progress-count {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
       font-weight: 800;
-      color: var(--accent);
-      white-space: nowrap;
+      color: var(--brand);
+      min-width: 50px;
+      text-align: right;
     }
 
-    /* MAIN BODY */
-    .page-body {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 2.5rem 5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
+    .card-section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-2xl);
+      padding: 2.2rem;
+      box-shadow: var(--sh-md);
+      margin-bottom: 2.2rem;
     }
 
-    /* SECTION HEADER */
     .section-head {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--line-soft);
     }
+
     .section-head-icon {
-      width: 38px; height: 38px;
-      border-radius: 10px;
-      background: rgba(14,165,176,0.12);
-      border: 1px solid rgba(14,165,176,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--r-md);
+      background: var(--brand-tint);
+      color: var(--brand);
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
       flex-shrink: 0;
     }
+
     .section-head h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
       font-weight: 700;
-    }
-    .section-head p { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
-
-    /* CHECKLIST CARD */
-    .checklist-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1.8rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .checklist-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--gold));
+      color: var(--ink);
+      letter-spacing: -.03em;
     }
 
-    /* CHECKLIST ITEMS */
+    .section-head p {
+      font-size: .88rem;
+      color: var(--ink-3);
+    }
+
     .checklist {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: .8rem;
     }
+
     .check-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.9rem;
-      padding: 0.85rem 1rem;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      transition: background 0.2s, border-color 0.2s;
+      gap: 1rem;
+      padding: 1.1rem 1.3rem;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
       cursor: pointer;
-      user-select: none;
+      transition: all var(--t-fast);
     }
-    .check-item:hover { background: rgba(14,165,176,0.04); border-color: rgba(14,165,176,0.1); }
-    .check-item.checked { background: rgba(34,197,94,0.05); border-color: rgba(34,197,94,0.15); }
+
+    .check-item:hover {
+      background: var(--brand-tint);
+      border-color: var(--brand-tint-2);
+    }
+
+    .check-item.checked {
+      background: var(--green-tint);
+      border-color: rgba(21, 128, 61, 0.25);
+    }
 
     .check-box {
-      width: 22px; height: 22px;
+      width: 24px;
+      height: 24px;
       border-radius: 6px;
-      border: 2px solid var(--muted);
-      flex-shrink: 0;
-      margin-top: 1px;
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s;
-      font-size: 0.8rem;
+      border: 2px solid var(--line-strong);
+      display: grid;
+      place-items: center;
       color: transparent;
+      font-size: .85rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: .15rem;
+      transition: all var(--t-fast);
+      background: var(--surface);
     }
+
     .check-item.checked .check-box {
-      background: var(--success);
-      border-color: var(--success);
+      background: var(--green);
+      border-color: var(--green);
       color: #fff;
     }
-    .check-item.checked .check-label { text-decoration: line-through; color: var(--muted); }
 
     .check-label {
-      font-size: 0.92rem;
-      font-weight: 500;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: .98rem;
+      color: var(--ink);
       line-height: 1.4;
-      transition: color 0.2s;
     }
+
+    .check-item.checked .check-label {
+      text-decoration: line-through;
+      color: var(--ink-3);
+    }
+
     .check-note {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
+      font-size: .85rem;
+      color: var(--ink-3);
+      margin-top: .3rem;
       line-height: 1.5;
     }
-    .check-note.warn { color: var(--warn); }
-    .check-note.info { color: var(--accent2); }
 
-    /* ACCORDION (Q&A) */
+    .check-note.warn {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .check-note.info {
+      color: var(--brand-deep);
+      font-weight: 500;
+    }
+
+    /* ACCORDION */
     .accordion {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 1rem;
     }
+
     .acc-item {
-      background: var(--card2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
       overflow: hidden;
-      transition: border-color 0.2s;
+      transition: border-color var(--t-fast), box-shadow var(--t-fast);
     }
-    .acc-item.open { border-color: rgba(14,165,176,0.3); }
+
+    .acc-item.open {
+      border-color: var(--brand);
+      background: var(--surface);
+      box-shadow: var(--sh-sm);
+    }
 
     .acc-trigger {
       width: 100%;
+      padding: 1.2rem 1.4rem;
+      background: transparent;
+      border: none;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 1.1rem 1.3rem;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
+      gap: 1rem;
       text-align: left;
       cursor: pointer;
-      gap: 1rem;
+      font-family: inherit;
     }
-    .acc-trigger:hover { color: var(--accent2); }
+
     .acc-num {
-      width: 28px; height: 28px;
-      background: rgba(14,165,176,0.12);
-      border: 1px solid rgba(14,165,176,0.2);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--r-full);
+      background: var(--brand-tint);
+      color: var(--brand-deep);
+      font-family: var(--font-mono);
+      font-size: .82rem;
       font-weight: 700;
-      color: var(--accent);
+      display: grid;
+      place-items: center;
       flex-shrink: 0;
     }
-    .acc-q { flex: 1; }
+
+    .acc-q {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      flex: 1;
+      letter-spacing: -.02em;
+    }
+
     .acc-arrow {
-      flex-shrink: 0;
-      font-size: 0.8rem;
-      color: var(--muted);
-      transition: transform 0.3s;
+      color: var(--ink-4);
+      transition: transform var(--t-fast);
+      font-size: .8rem;
     }
-    .acc-item.open .acc-arrow { transform: rotate(180deg); }
+
+    .acc-item.open .acc-arrow {
+      transform: rotate(180deg);
+      color: var(--brand);
+    }
 
     .acc-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
+      display: none;
+      padding: 0 1.4rem 1.4rem 4rem;
+      border-top: 1px solid var(--line-soft);
+      margin-top: .4rem;
+      padding-top: 1.2rem;
     }
-    .acc-item.open .acc-body { max-height: 600px; }
 
-    .acc-content {
-      padding: 0 1.3rem 1.3rem;
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.75;
-      border-top: 1px solid var(--border);
-      padding-top: 1rem;
+    .acc-item.open .acc-body {
+      display: block;
     }
-    .acc-content strong { color: var(--text); }
-    .acc-content .tag {
-      display: inline-block;
-      padding: 0.15rem 0.6rem;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
+
+    .acc-content p, .acc-content ul {
+      font-size: .92rem;
+      color: var(--ink-2);
+      line-height: 1.65;
     }
-    .tag-wrong { background: rgba(239,68,68,0.12); color: #ef4444; }
-    .tag-right { background: rgba(34,197,94,0.12); color: #22c55e; }
-    .acc-content .sample {
-      background: rgba(14,165,176,0.07);
-      border-left: 3px solid var(--accent);
-      border-radius: 0 8px 8px 0;
-      padding: 0.75rem 1rem;
-      margin-top: 0.75rem;
-      font-style: italic;
-      color: var(--text);
-      font-size: 0.85rem;
-    }
+
     .acc-content ul {
-      margin: 0.6rem 0 0 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
+      padding-left: 1.2rem;
+      margin-top: .5rem;
     }
 
-    /* TIP BOX */
+    .tag {
+      display: inline-block;
+      padding: .25rem .65rem;
+      border-radius: var(--r-full);
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      font-weight: 600;
+      margin-bottom: .6rem;
+    }
+
+    .tag-wrong { background: var(--red-tint); color: var(--red); }
+    .tag-right { background: var(--green-tint); color: var(--green); }
+
+    .sample {
+      background: var(--paper-2);
+      border-left: 3.5px solid var(--brand);
+      padding: 1rem 1.2rem;
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      font-style: italic;
+      margin-top: .8rem;
+      font-size: .9rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+
     .tip-box {
-      background: rgba(14,165,176,0.06);
-      border: 1px solid rgba(14,165,176,0.2);
-      border-radius: 14px;
-      padding: 1.2rem 1.4rem;
-      font-size: 0.88rem;
-      color: var(--muted);
+      background: linear-gradient(135deg, var(--brand-tint), var(--paper-2));
+      border: 1px solid var(--brand-tint-2);
+      border-radius: var(--r-2xl);
+      padding: 2.2rem;
+      margin-bottom: 2.2rem;
+      color: var(--ink);
       line-height: 1.7;
+      font-size: .95rem;
     }
-    .tip-box strong { color: var(--accent2); }
 
-    /* CTA CARD */
+    .tip-box strong {
+      color: var(--brand-deep);
+      font-family: var(--font-display);
+    }
+
     .cta-card {
-      background: linear-gradient(135deg, rgba(14,165,176,0.1), rgba(245,158,11,0.07));
-      border: 1px solid rgba(14,165,176,0.2);
-      border-radius: 20px;
-      padding: 2.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-card h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 0.6rem;
-    }
-    .cta-card p { color: var(--muted); margin-bottom: 1.5rem; font-size: 0.9rem; }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--brand-deep), var(--brand));
       color: #fff;
-      padding: 0.75rem 1.8rem;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 0 20px rgba(14,165,176,0.3);
+      border-radius: var(--r-2xl);
+      padding: 3rem 2.2rem;
+      text-align: center;
+      margin-bottom: 4rem;
+      box-shadow: var(--sh-brand);
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(14,165,176,0.5); }
 
-    /* RESPONSIVE */
+    .cta-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: .6rem;
+    }
+
+    .cta-card p {
+      color: var(--brand-tint);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin: 0 auto 1.8rem;
+    }
+
+    .cta-card .btn {
+      background: #fff;
+      color: var(--brand-deep);
+      font-weight: 700;
+    }
+
+    .cta-card .btn:hover {
+      background: var(--brand-tint);
+    }
+
     @media (max-width: 700px) {
-      nav { padding: 1rem 1.5rem; }
-      .page-hero { padding: 7rem 1.5rem 2rem; }
-      .page-body, .progress-banner { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .acc-body { padding-left: 1.4rem; }
+      .progress-banner { flex-direction: column; align-items: stretch; text-align: center; }
+      .progress-count { text-align: center; }
     }
   </style>
 </head>
+
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="scroll-progress"></div>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-back" href="index.html">&#8592; Back to Home</a>
-    <a class="nav-logo" href="index.html"><span>G</span>ermanyDreams</a>
-  </nav>
+  <!-- ===== SVG SPRITE ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M11 6l-6 6 6 6" />
+      </symbol>
+      <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2.6H7a2 2 0 0 0-2 2v14.8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.6Z" />
+        <path d="M14 2.6v5h5" />
+        <path d="M8.6 12.4h6.8M8.6 16h4.4" />
+      </symbol>
+      <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.5 15.6V8.4L15.8 12Z" />
+      </symbol>
+      <symbol id="i-ig" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.15-3.23 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.41-11.85a1.44 1.44 0 1 0 0 2.89 1.44 1.44 0 0 0 0-2.89Z" />
+      </symbol>
+      <symbol id="i-li" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 0H5a5 5 0 0 0-5 5v14a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5ZM8 19H5V8h3v11ZM6.5 6.73a1.76 1.76 0 1 1 0-3.53 1.76 1.76 0 0 1 0 3.53ZM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.77c1.4-2.59 7-2.78 7 2.47V19Z" />
+      </symbol>
+      <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M.06 24l1.68-6.16A11.87 11.87 0 0 1 .15 11.9C.16 5.34 5.49 0 12.05 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.41c0 6.56-5.33 11.9-11.89 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24Zm6.6-3.81a9.87 9.87 0 0 0 5.39 1.6c5.45 0 9.89-4.44 9.89-9.89 0-5.46-4.42-9.89-9.88-9.89-5.45 0-9.89 4.43-9.89 9.88 0 2.23.65 3.9 1.75 5.64l-1 3.65 3.74-.99Zm11.39-5.47c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47a9 9 0 0 1-1.65-2.06c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41Z" />
+      </symbol>
+    </defs>
+  </svg>
 
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <div class="page-badge">&#128100; Visa Guide</div>
-    <h1>Visa <span>Interview Prep</span> &amp; Checklist</h1>
-    <p>Everything you need to ace your German student visa interview &mdash; common questions, smart answers, and a full document checklist.</p>
-  </div>
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="logo" href="index.html">
+        <span class="logo__mark">G</span>GermanyDreams
+      </a>
 
-  <!-- PROGRESS BANNER -->
-  <div class="progress-banner">
-    <div class="progress-card">
-      <div class="progress-text">
-        <strong>Your Checklist Progress</strong>
-        <span id="progressLabel">0 of 18 items done</span>
+      <nav class="nav__links" aria-label="Primary navigation">
+        <span class="nav__pill" aria-hidden="true"></span>
+        <a href="index.html#content">Guides</a>
+        <a href="index.html#resources" class="is-active">Free Tools</a>
+        <a href="index.html#connect">Community</a>
+      </nav>
+
+      <div class="nav__right">
+        <a class="btn btn--ghost btn--sm" href="index.html">
+          <svg width="15" height="15" aria-hidden="true"><use href="#i-back" /></svg>
+          Back to home
+        </a>
+        <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-      <div class="progress-count" id="progressCount">0%</div>
     </div>
+  </header>
+
+  <div class="nav__sheet" id="mobile-menu">
+    <a href="index.html#content">Guides</a>
+    <a href="index.html#resources">Free Tools</a>
+    <a href="index.html#connect">Community</a>
+    <a class="btn btn--primary" href="index.html">Back to Home</a>
   </div>
 
-  <div class="page-body">
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="phero">
+      <div class="phero__bg">
+        <span class="aurora a1"></span>
+        <span class="dotgrid"></span>
+      </div>
 
-    <!-- DOCUMENTS CHECKLIST -->
-    <div class="checklist-card">
-      <div class="section-head">
-        <div class="section-head-icon">&#128203;</div>
+      <div class="wrap phero__in">
+        <span class="chip chip--brand">
+          <svg width="14" height="14" aria-hidden="true"><use href="#i-doc" /></svg>
+          German Student Visa Guide
+        </span>
+
+        <h1>Visa Interview Prep &amp; <span class="grad-text">Checklist</span></h1>
+
+        <p class="lede">Everything you need to ace your German student visa interview — common questions, smart answers, and a complete document checklist.</p>
+      </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="wrap">
+      
+      <!-- PROGRESS BANNER -->
+      <div class="progress-banner">
+        <div class="progress-text">
+          <strong>Your Checklist Progress</strong>
+          <span id="progressLabel">0 of 18 items completed</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-count" id="progressCount">0%</div>
+      </div>
+
+      <!-- DOCUMENTS CHECKLIST -->
+      <div class="card-section">
+        <div class="section-head">
+          <div class="section-head-icon">&#128203;</div>
+          <div>
+            <h2>Document Checklist</h2>
+            <p>Tick off each item as you gather and verify it</p>
+          </div>
+        </div>
+
+        <div class="checklist" id="checklist">
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Valid Passport (min. 1 year validity remaining)</div>
+              <div class="check-note">Must be valid for the entire duration of your study + 6 months extra</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">University Admission Letter</div>
+              <div class="check-note">Official conditional or unconditional offer from your German university</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Blocked Account (Sperrkonto) &mdash; &euro;11,208</div>
+              <div class="check-note warn">&#9888; Must show required funds. Use official providers like Coracle, Expatrio, or Deutsche Bank.</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Health Insurance Proof</div>
+              <div class="check-note">Travel health insurance valid from arrival. Public insurance (TK, AOK) registered after arrival.</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Bachelor's Degree Certificate &amp; Transcripts</div>
+              <div class="check-note">Originals + certified copies + official English/German translations if required</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Statement of Purpose (SoP / Motivationsschreiben)</div>
+              <div class="check-note info">&#9432; Prepare a clear, tailored SoP explaining your academic focus and why Germany.</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">CV / Resume (Europass or tabular format)</div>
+              <div class="check-note">Academic and work experience listed in chronological order</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Language Proficiency Certificate</div>
+              <div class="check-note">IELTS / TOEFL (for English programs) or TestDaF / DSH (for German programs)</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Visa Application Form (filled &amp; signed)</div>
+              <div class="check-note">Download the official National Visa (Type D) form from your German Embassy portal</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Biometric Photos (2 recent copies)</div>
+              <div class="check-note">35x45mm, white background, taken within the last 6 months</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Proof of Accommodation in Germany</div>
+              <div class="check-note">Dormitory booking confirmation, hostel reservation, or WG rental agreement</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Sponsor's Financial Documents</div>
+              <div class="check-note">Bank statements (last 6 months), salary slips, and IT returns of sponsor</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Recommendation Letters (if required)</div>
+              <div class="check-note">Usually 2 academic letters from professors on official university letterhead</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Gap Year / Work Experience Letter (if applicable)</div>
+              <div class="check-note">Be ready to explain any gap between your last degree and current application</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">APS Certificate (for Indian applicants)</div>
+              <div class="check-note warn">&#9888; Mandatory for Indian students. Apply via the official APS India portal.</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Visa Fee Payment (&approx; &euro;75 equivalent)</div>
+              <div class="check-note">Check exact cash/demand draft fee requirements at your VFS/Embassy office</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">Appointment Confirmation Email (printed)</div>
+              <div class="check-note">Bring the appointment booking confirmation from the VFS/Embassy portal</div>
+            </div>
+          </div>
+
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">&#10003;</div>
+            <div>
+              <div class="check-label">All documents in both originals AND 2 photocopies</div>
+              <div class="check-note info">&#9432; Carry 2 complete sets of copies in separate folders.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Q&A ACCORDION -->
+      <div class="card-section">
+        <div class="section-head">
+          <div class="section-head-icon">&#127908;</div>
+          <div>
+            <h2>Common Visa Officer Questions</h2>
+            <p>Master your answers with clear structure and authentic reasoning</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+
+          <div class="acc-item">
+            <button class="acc-trigger" onclick="toggleAcc(this)">
+              <div class="acc-num">1</div>
+              <div class="acc-q">Why did you choose Germany?</div>
+              <div class="acc-arrow">&#9660;</div>
+            </button>
+            <div class="acc-body">
+              <div class="acc-content">
+                <span class="tag tag-wrong">&#10007; Avoid generic response</span>
+                <p>"Because tuition is free and I love cars."</p>
+                <br>
+                <span class="tag tag-right">&#10003; Recommended approach</span>
+                <p>Focus on the <strong>quality of education</strong>, state-of-the-art research facilities, and the specific curriculum of your course. Highlight that German degrees are practice-oriented and globally respected.</p>
+                <div class="sample">
+                  "Germany is a global leader in [Your Field]. The curriculum at [Your University] offers specialized modules in [Specific Subject] which directly align with my career focus in [Area]. The combination of academic rigor and industry integration in Germany is unmatched."
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" onclick="toggleAcc(this)">
+              <div class="acc-num">2</div>
+              <div class="acc-q">Why this specific university?</div>
+              <div class="acc-arrow">&#9660;</div>
+            </button>
+            <div class="acc-body">
+              <div class="acc-content">
+                <span class="tag tag-wrong">&#10007; Never say</span>
+                <p>"Because I got admission here."</p>
+                <br>
+                <span class="tag tag-right">&#10003; Show detailed research</span>
+                <ul>
+                  <li>Mention specific professor research projects or chairs</li>
+                  <li>Name specific laboratories or institutes at that university</li>
+                  <li>Highlight unique course modules that match your background</li>
+                  <li>Reference industry partnerships with local companies</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" onclick="toggleAcc(this)">
+              <div class="acc-num">3</div>
+              <div class="acc-q">What are your plans after completing your Master's?</div>
+              <div class="acc-arrow">&#9660;</div>
+            </button>
+            <div class="acc-body">
+              <div class="acc-content">
+                <span class="tag tag-wrong">&#10007; Avoid</span>
+                <p>"I plan to settle in Germany permanently." &mdash; This can create immigration intent concerns for the visa officer.</p>
+                <br>
+                <span class="tag tag-right">&#10003; Balanced Answer</span>
+                <div class="sample">
+                  "My primary focus is to gain expertise in [Field]. After completing my degree, I plan to gain 1–2 years of practical work experience in the German industry to apply my learnings before taking up leadership roles in my career field."
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" onclick="toggleAcc(this)">
+              <div class="acc-num">4</div>
+              <div class="acc-q">Who is sponsoring your education?</div>
+              <div class="acc-arrow">&#9660;</div>
+            </button>
+            <div class="acc-body">
+              <div class="acc-content">
+                <p>Be <strong>completely clear and confident</strong> about your finances. The visa officer wants to verify financial stability.</p>
+                <div class="sample">
+                  "My [parents/sponsor] are funding my studies. My [father/mother] is a [Profession] earning [Amount] annually. Additionally, I have deposited &euro;11,208 in an official Blocked Account at [Coracle / Expatrio / Deutsche Bank] to cover my first year of living expenses."
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" onclick="toggleAcc(this)">
+              <div class="acc-num">5</div>
+              <div class="acc-q">Do you speak German?</div>
+              <div class="acc-arrow">&#9660;</div>
+            </button>
+            <div class="acc-body">
+              <div class="acc-content">
+                <p>Be honest while demonstrating active effort.</p>
+                <div class="sample">
+                  "My degree program is taught entirely in English. However, I have already completed A1 German basics on Duolingo / Goethe Institute, and I plan to continue taking intensive German language courses at the university language center to integrate smoothly into daily life."
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" onclick="toggleAcc(this)">
+              <div class="acc-num">6</div>
+              <div class="acc-q">Why not study in your home country or the US/UK?</div>
+              <div class="acc-arrow">&#9660;</div>
+            </button>
+            <div class="acc-body">
+              <div class="acc-content">
+                <p>Demonstrate deliberate choice rather than fallback logic.</p>
+                <ul>
+                  <li>Germany's technical education is renowned worldwide for practical application</li>
+                  <li>Direct access to leading industrial networks (Bosch, Siemens, SAP, BMW)</li>
+                  <li>High standard of living and safe environment for international students</li>
+                  <li>Affordable tuition structure compared to US/UK universities</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" onclick="toggleAcc(this)">
+              <div class="acc-num">7</div>
+              <div class="acc-q">What will you do if your visa application is refused?</div>
+              <div class="acc-arrow">&#9660;</div>
+            </button>
+            <div class="acc-body">
+              <div class="acc-content">
+                <p>Stay calm, confident, and structured.</p>
+                <div class="sample">
+                  "I would request the detailed feedback letter, address whatever documentation gap was identified, and reapply immediately with complete corrections, as I am strongly committed to pursuing this program."
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PRO TIPS -->
+      <div class="tip-box">
+        <strong>&#128161; Pro Tips for Visa Day Success:</strong><br><br>
+        <strong>Dress professionally</strong> &mdash; Treat it with the same respect as a formal job interview.<br>
+        <strong>Be concise &amp; clear</strong> &mdash; Answer directly what is asked without rambling.<br>
+        <strong>Know your SoP details</strong> &mdash; The visa officer may ask about specific projects or courses mentioned in your statement.<br>
+        <strong>Organize your document file</strong> &mdash; Use labeled dividers so you can hand over requested papers instantly.<br>
+        <strong>Arrive early</strong> &mdash; Reach the appointment center 20 minutes before your scheduled slot.
+      </div>
+
+      <!-- CTA CARD -->
+      <div class="cta-card">
+        <h2>Want a Mock Interview Session? &#127908;</h2>
+        <p>Practice your answers 1-on-1 with me. Get constructive feedback and walk into your visa appointment fully confident.</p>
+        <a class="btn" href="index.html#connect">&#128222; Connect for Guidance</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <div class="footer__brand">
+        <a class="logo" href="index.html">
+          <span class="logo__mark">G</span>GermanyDreams
+        </a>
+        <p class="footer__desc">
+          Honest, practical tools and resources built by international students for international students moving to Germany.
+        </p>
+      </div>
+      <div class="footer__cols">
         <div>
-          <h2>Document Checklist</h2>
-          <p>Tick off each item as you prepare it</p>
+          <h4>Free Tools</h4>
+          <ul>
+            <li><a href="calculator.html">Grade Calculator</a></li>
+            <li><a href="estimator.html">Cost Estimator</a></li>
+            <li><a href="visa.html">Visa Checklist</a></li>
+            <li><a href="packing.html">Packing Guide</a></li>
+            <li><a href="wgmessage.html">WG Generator</a></li>
+            <li><a href="jobtracker.html">Job Tracker</a></li>
+          </ul>
         </div>
-      </div>
-
-      <div class="checklist" id="checklist">
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Valid Passport (min. 1 year validity)</div>
-            <div class="check-note">Must be valid for the entire duration of your study + 6 months extra</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">University Admission Letter</div>
-            <div class="check-note">Official conditional or unconditional offer from your German university</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Blocked Account (Sperrkonto) &mdash; &euro;11,208</div>
-            <div class="check-note warn">&#9888; Must show exactly &euro;11,208 for 2024. Use Coracle, Expatrio, or Deutsche Bank.</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Health Insurance Proof</div>
-            <div class="check-note">Travel health insurance valid from arrival. Public insurance (TK, AOK) sorted after arrival.</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Bachelor's Degree Certificate &amp; Transcripts</div>
-            <div class="check-note">Originals + certified copies + German/English translations if required</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Statement of Purpose (SoP / Motivationsschreiben)</div>
-            <div class="check-note info">&#9432; Prepare a clear, specific SoP explaining why Germany and why this university</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">CV / Resume</div>
-            <div class="check-note">Academic and work experience, in English or German</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Language Proficiency Certificate</div>
-            <div class="check-note">IELTS / TOEFL (English programs) or TestDaF / DSH (German programs)</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Visa Application Form (filled &amp; signed)</div>
-            <div class="check-note">Download from the German Embassy website specific to your country</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Biometric Photos (2 recent)</div>
-            <div class="check-note">35x45mm, white background, taken within 6 months</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Proof of Accommodation in Germany</div>
-            <div class="check-note">Dormitory booking confirmation or WG rental agreement</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Sponsor's Financial Documents</div>
-            <div class="check-note">Bank statements (last 6 months), salary slips, IT returns of sponsor</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Recommendation Letters (if required)</div>
-            <div class="check-note">Usually 2 academic letters from professors on university letterhead</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Gap Year / Work Experience Letter (if applicable)</div>
-            <div class="check-note">Be ready to explain any gaps in your academic or professional history</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">APS Certificate (for Indian applicants)</div>
-            <div class="check-note warn">&#9888; Mandatory for Indian students since Feb 2022. Apply at APS India website.</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Visa Fee Payment (approx. &euro;75)</div>
-            <div class="check-note">Check exact amount on the German Embassy website for your country</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">Appointment Confirmation Email (printed)</div>
-            <div class="check-note">Bring the appointment booking confirmation from VFS/Embassy portal</div>
-          </div>
-        </div>
-
-        <div class="check-item" onclick="toggleCheck(this)">
-          <div class="check-box">&#10003;</div>
-          <div>
-            <div class="check-label">All documents in both originals AND photocopies</div>
-            <div class="check-note info">&#9432; Tip: Carry 2 sets of copies. Embassies often keep one set.</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Q&A ACCORDION -->
-    <div class="checklist-card">
-      <div class="section-head">
-        <div class="section-head-icon">&#127908;</div>
         <div>
-          <h2>Common Visa Officer Questions</h2>
-          <p>Know what to say &mdash; and what NOT to say</p>
+          <h4>Connect</h4>
+          <div class="footer__socials">
+            <a href="https://www.youtube.com/channel/UCIY3viuqfg8BR9ucyCI2e1w" target="_blank" rel="noopener" aria-label="YouTube"><svg width="19" height="19" aria-hidden="true"><use href="#i-play" /></svg></a>
+            <a href="https://www.instagram.com/germanydreamz" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" aria-hidden="true"><use href="#i-ig" /></svg></a>
+            <a href="https://www.linkedin.com/in/vamshidhar-reddy-7180551a2/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" aria-hidden="true"><use href="#i-li" /></svg></a>
+            <a href="https://chat.whatsapp.com/C62Bkdk5G0kBMCBquVW1vg" target="_blank" rel="noopener" aria-label="WhatsApp community"><svg width="18" height="18" aria-hidden="true"><use href="#i-wa" /></svg></a>
+          </div>
         </div>
       </div>
-
-      <div class="accordion">
-
-        <div class="acc-item">
-          <button class="acc-trigger" onclick="toggleAcc(this)">
-            <div class="acc-num">1</div>
-            <div class="acc-q">Why did you choose Germany?</div>
-            <div class="acc-arrow">&#9660;</div>
-          </button>
-          <div class="acc-body">
-            <div class="acc-content">
-              <span class="tag tag-wrong">&#10007; Wrong Answer</span>
-              <p>"Because it's free education and I love cars."</p>
-              <br>
-              <span class="tag tag-right">&#10003; Right Approach</span>
-              <p>Focus on the <strong>quality of education</strong>, research facilities, and the specific curriculum of your course. Mention that German degrees are practice-oriented and globally respected.</p>
-              <div class="sample">
-                "Germany is a global leader in [Your Field]. The curriculum at [Your University] offers a module on [Specific Subject] which directly aligns with my career goals in [Area]. The combination of academic rigor and industry integration in Germany is unmatched."
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-trigger" onclick="toggleAcc(this)">
-            <div class="acc-num">2</div>
-            <div class="acc-q">Why this specific university?</div>
-            <div class="acc-arrow">&#9660;</div>
-          </button>
-          <div class="acc-body">
-            <div class="acc-content">
-              <span class="tag tag-wrong">&#10007; Never say</span>
-              <p>"Because I got admission here."</p>
-              <br>
-              <span class="tag tag-right">&#10003; Show you researched it</span>
-              <ul>
-                <li>Mention a specific professor's research work</li>
-                <li>Mention a specific lab or research center at that university</li>
-                <li>Name the course modules that excite you</li>
-                <li>Mention the university's ranking in your field</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-trigger" onclick="toggleAcc(this)">
-            <div class="acc-num">3</div>
-            <div class="acc-q">What are your future plans after the Masters?</div>
-            <div class="acc-arrow">&#9660;</div>
-          </button>
-          <div class="acc-body">
-            <div class="acc-content">
-              <span class="tag tag-wrong">&#10007; Avoid</span>
-              <p>"I want to settle in Germany forever." &mdash; This can imply permanent immigration intent, which visa officers are cautious about.</p>
-              <br>
-              <span class="tag tag-right">&#10003; Balanced Answer</span>
-              <div class="sample">
-                "My goal is to become an expert in [Field]. After my Masters, I plan to gain 1&ndash;2 years of international work experience in the German industry to apply my learnings, and eventually contribute back to my field globally."
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-trigger" onclick="toggleAcc(this)">
-            <div class="acc-num">4</div>
-            <div class="acc-q">Who is sponsoring your education?</div>
-            <div class="acc-arrow">&#9660;</div>
-          </button>
-          <div class="acc-body">
-            <div class="acc-content">
-              <p>Be <strong>very clear and confident</strong> about your finances. The visa officer wants to confirm you won't run out of money.</p>
-              <div class="sample">
-                "My [father/parents] are sponsoring me. [He/She] is a [Job Title] with an annual income of [Amount]. We also have a blocked account with &euro;11,208 deposited at [Coracle / Expatrio / Deutsche Bank], which covers my first year's living expenses."
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-trigger" onclick="toggleAcc(this)">
-            <div class="acc-num">5</div>
-            <div class="acc-q">Do you speak German?</div>
-            <div class="acc-arrow">&#9660;</div>
-          </button>
-          <div class="acc-body">
-            <div class="acc-content">
-              <p>Be honest, but show initiative.</p>
-              <div class="sample">
-                "My program is taught in English, so I don't need German for my studies. However, I have started learning German basics and I'm excited to improve my language skills once I'm in Germany, as I understand it will help me integrate better."
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-trigger" onclick="toggleAcc(this)">
-            <div class="acc-num">6</div>
-            <div class="acc-q">Why not study in your home country or the USA/UK?</div>
-            <div class="acc-arrow">&#9660;</div>
-          </button>
-          <div class="acc-body">
-            <div class="acc-content">
-              <p>This is a key differentiator question. Show you actively chose Germany, not just as a fallback.</p>
-              <ul>
-                <li>Germany's engineering &amp; technical education is world-class</li>
-                <li>Close collaboration between universities and leading industries (Bosch, Siemens, SAP, etc.)</li>
-                <li>Affordable education compared to the US/UK</li>
-                <li>Structured career pathways after graduation</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-trigger" onclick="toggleAcc(this)">
-            <div class="acc-num">7</div>
-            <div class="acc-q">What will you do if you don't get the visa?</div>
-            <div class="acc-arrow">&#9660;</div>
-          </button>
-          <div class="acc-body">
-            <div class="acc-content">
-              <p>Stay calm and show you have a backup plan. Don't say you'll give up.</p>
-              <div class="sample">
-                "I would immediately find out the reason for rejection and address whatever was missing. I am very committed to this program and would reapply with the corrected documentation."
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div class="footer__base">
+        <p>&copy; 2026 Vamshidhar Reddy. All rights reserved.</p>
+        <p>Made with care for international students moving to Germany.</p>
       </div>
     </div>
+  </footer>
 
-    <!-- PRO TIPS -->
-    <div class="tip-box">
-      <strong>&#128161; Pro Tips from Someone Who's Been Through It:</strong><br><br>
-      <strong>Dress professionally</strong> &mdash; treat it like a job interview, not a casual appointment.<br>
-      <strong>Be confident and concise</strong> &mdash; answer what's asked, don't over-explain.<br>
-      <strong>Know your SoP inside out</strong> &mdash; the VO may ask you to elaborate on anything you wrote.<br>
-      <strong>Carry everything in an organized folder</strong> &mdash; fumbling for documents creates a bad impression.<br>
-      <strong>Arrive 15 minutes early</strong> &mdash; rushing in stressed is never a good start.
-    </div>
+  <button class="to-top" aria-label="Back to top">
+    <svg class="to-top__ring" width="46" height="46" aria-hidden="true">
+      <circle cx="23" cy="23" r="21" />
+    </svg>
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" />
+    </svg>
+  </button>
 
-    <!-- CTA -->
-    <div class="cta-card">
-      <h2>Want a Mock Interview? &#127908;</h2>
-      <p>Practice your answers 1-on-1 with me. I'll give you honest feedback and help you walk in confident.</p>
-      <a class="btn-primary" href="index.html#connect">&#128222; Book a 1:1 Call</a>
-    </div>
-
-  </div>
-
+  <script src="assets/site.js"></script>
   <script>
-    // ACCORDION
     function toggleAcc(btn) {
       const item = btn.closest('.acc-item');
       const isOpen = item.classList.contains('open');
@@ -772,7 +883,6 @@
       if (!isOpen) item.classList.add('open');
     }
 
-    // CHECKLIST
     const TOTAL = document.querySelectorAll('.check-item').length;
 
     function toggleCheck(el) {
@@ -782,11 +892,12 @@
 
     function updateProgress() {
       const done = document.querySelectorAll('.check-item.checked').length;
-      const pct  = Math.round((done / TOTAL) * 100);
-      document.getElementById('progressLabel').textContent = done + ' of ' + TOTAL + ' items done';
-      document.getElementById('progressFill').style.width  = pct + '%';
+      const pct = Math.round((done / TOTAL) * 100);
+      document.getElementById('progressLabel').textContent = done + ' of ' + TOTAL + ' items completed';
+      document.getElementById('progressFill').style.width = pct + '%';
       document.getElementById('progressCount').textContent = pct + '%';
     }
   </script>
 </body>
+
 </html>

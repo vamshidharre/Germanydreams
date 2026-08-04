@@ -1,807 +1,617 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Job Application Tracker | GermanyDreams</title>
-  <meta name="description" content="Automatically scan Gmail, track job applications, generate analytics & draft recruiter replies — all inside a free Google Sheet. Set up in under 10 minutes.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automated Job Application Tracker | GermanyDreams</title>
+  <meta name="description"
+    content="Automatically scan Gmail, log job applications, generate pipeline analytics & draft recruiter replies — inside your own free Google Sheet." />
+  <meta name="theme-color" content="#fcfcfd" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+
   <style>
-    :root {
-      --bg: #060d18;
-      --bg2: #0a1628;
-      --card: #0f1f35;
-      --card2: #152540;
-      --accent: #0ea5b0;
-      --accent2: #22d3ee;
-      --gold: #f59e0b;
-      --text: #f0f4f8;
-      --muted: #7a90a8;
-      --border: rgba(14,165,176,0.12);
-      --success: #22c55e;
-      --purple: #a78bfa;
-      --pink: #f472b6;
-      --orange: #fb923c;
-    }
+    /* ======================================================================
+       JOB TRACKER — Page-specific layout
+       ====================================================================== */
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 1.2rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(6,13,24,0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-back:hover { color: var(--text); }
-
-    /* HERO BANNER */
-    .page-hero {
-      padding: 8rem 2.5rem 3rem;
-      text-align: center;
+    .phero {
       position: relative;
+      padding: calc(var(--nav-h) + 4rem) 0 3rem;
+      text-align: center;
       overflow: hidden;
     }
-    .page-hero::before {
-      content: '';
+
+    .phero__bg {
       position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(14,165,176,0.12) 0%, transparent 70%);
-      top: -120px; left: 50%; transform: translateX(-50%);
-      border-radius: 50%;
+      inset: 0;
       pointer-events: none;
-    }
-    .page-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(14,165,176,0.1);
-      border: 1px solid rgba(14,165,176,0.3);
-      padding: 0.4rem 1rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 1.2rem;
-    }
-    .page-hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2rem, 4.5vw, 3.4rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
-      line-height: 1.15;
-    }
-    .page-hero h1 span { color: var(--accent); }
-    .page-hero p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 580px;
-      margin: 0 auto;
-      line-height: 1.75;
+      overflow: hidden;
     }
 
-    /* FEATURE PILLS */
+    .phero .a1 {
+      width: 620px;
+      height: 620px;
+      top: -300px;
+      left: 50%;
+      margin-left: -310px;
+      background: radial-gradient(circle, rgba(20, 184, 196, .22), transparent 68%);
+      animation: drift 24s ease-in-out infinite;
+    }
+
+    .phero__in {
+      position: relative;
+      max-width: 780px;
+    }
+
     .feature-pills {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.6rem;
+      gap: .6rem;
       margin-top: 1.8rem;
     }
+
     .feature-pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 0.45rem 1rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-weight: 500;
-      transition: all 0.3s;
-    }
-    .feature-pill:hover {
-      border-color: rgba(14,165,176,0.4);
-      color: var(--accent2);
-      transform: translateY(-2px);
-    }
-    .feature-pill .fp-icon { font-size: 0.9rem; }
-
-    /* MAIN CONTENT */
-    .page-body {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 2.5rem 5rem;
+      gap: .4rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: .45rem 1rem;
+      border-radius: var(--r-full);
+      font-family: var(--font-body);
+      font-size: .84rem;
+      color: var(--ink-2);
+      box-shadow: var(--sh-xs);
     }
 
-    /* FLOW DIAGRAM */
-    .flow-section {
-      margin-bottom: 3.5rem;
+    .flow-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-2xl);
+      padding: 2.2rem;
+      box-shadow: var(--sh-md);
+      margin-bottom: 2.2rem;
     }
-    .flow-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-    .flow-header h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.6rem;
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.4rem;
+      color: var(--ink);
+      letter-spacing: -.03em;
+      text-align: center;
+      margin-bottom: .3rem;
     }
-    .flow-header p {
-      color: var(--muted);
-      font-size: 0.9rem;
+
+    .card-sub {
+      font-size: .88rem;
+      color: var(--ink-3);
+      text-align: center;
+      margin-bottom: 2rem;
     }
 
     .flow-diagram {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0;
+      justify-content: space-between;
+      gap: 1rem;
       flex-wrap: wrap;
-      margin-bottom: 2rem;
     }
+
     .flow-node {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1.2rem 1rem;
+      flex: 1;
+      min-width: 140px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      border-radius: var(--r-xl);
+      padding: 1.4rem 1rem;
       text-align: center;
-      min-width: 120px;
     }
+
     .flow-node-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      transition: transform 0.3s;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--r-md);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      margin: 0 auto .8rem;
     }
-    .flow-node:hover .flow-node-icon {
-      transform: scale(1.15) rotate(-5deg);
-    }
-    .flow-node-icon.gmail { background: rgba(234,67,53,0.15); }
-    .flow-node-icon.script { background: rgba(14,165,176,0.15); }
-    .flow-node-icon.sheet { background: rgba(34,197,94,0.15); }
-    .flow-node-icon.dash { background: rgba(167,139,250,0.15); }
 
     .flow-node-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .flow-node-sub {
-      font-size: 0.68rem;
-      color: var(--muted);
-      margin-top: -0.3rem;
-    }
-    .flow-arrow {
-      color: var(--accent);
-      font-size: 1.3rem;
-      opacity: 0.5;
-      padding: 0 0.2rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--ink);
     }
 
-    /* STEPS */
-    .steps-section { margin-bottom: 3.5rem; }
-    .steps-section .flow-header { margin-bottom: 2rem; }
+    .flow-node-sub {
+      font-size: .78rem;
+      color: var(--ink-3);
+      margin-top: .2rem;
+    }
+
+    .flow-arrow {
+      color: var(--brand);
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
 
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      gap: 1.4rem;
+      margin-bottom: 2.2rem;
     }
 
     .step-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-2xl);
+      padding: 1.8rem;
+      box-shadow: var(--sh-md);
       position: relative;
-      overflow: hidden;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .step-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(14,165,176,0.3);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
-    }
-    .step-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .step-card:hover::before { opacity: 1; }
 
     .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       width: 36px;
       height: 36px;
-      border-radius: 10px;
-      background: rgba(14,165,176,0.12);
-      color: var(--accent);
-      font-family: 'Syne', sans-serif;
+      border-radius: var(--r-full);
+      background: var(--brand-tint);
+      color: var(--brand-deep);
+      font-family: var(--font-mono);
+      font-size: .9rem;
       font-weight: 800;
-      font-size: 0.9rem;
+      display: grid;
+      place-items: center;
       margin-bottom: 1rem;
     }
-    .step-card:nth-child(2) .step-number { background: rgba(167,139,250,0.12); color: var(--purple); }
-    .step-card:nth-child(3) .step-number { background: rgba(34,197,94,0.12); color: var(--success); }
-    .step-card:nth-child(4) .step-number { background: rgba(251,146,60,0.12); color: var(--orange); }
-    .step-card:nth-child(5) .step-number { background: rgba(244,114,182,0.12); color: var(--pink); }
-    .step-card:nth-child(6) .step-number { background: rgba(34,211,238,0.12); color: var(--accent2); }
 
     .step-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: .5rem;
     }
+
     .step-desc {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.7;
+      font-size: .88rem;
+      color: var(--ink-3);
+      line-height: 1.6;
     }
-    .step-desc a {
-      color: var(--accent2);
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(34,211,238,0.3);
-      transition: border-color 0.2s;
-    }
-    .step-desc a:hover { border-color: var(--accent2); }
 
-    /* CODE SNIPPET INSIDE STEP */
     .step-code {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 0.4rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.3rem 0.7rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.76rem;
-      color: var(--accent2);
-      margin-top: 0.5rem;
+      justify-content: space-between;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      padding: .6rem .8rem;
+      font-family: var(--font-mono);
+      font-size: .78rem;
+      color: var(--brand-deep);
       cursor: pointer;
-      transition: all 0.2s;
-    }
-    .step-code:hover {
-      border-color: rgba(14,165,176,0.4);
-      background: var(--card2);
-    }
-    .step-code .copy-icon {
-      font-size: 0.7rem;
-      opacity: 0.5;
+      margin-top: .6rem;
+      transition: all var(--t-fast);
     }
 
-    /* RESULT TABS PREVIEW */
-    .tabs-preview {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2.5rem;
-      margin-bottom: 3.5rem;
-      position: relative;
-      overflow: hidden;
+    .step-code:hover {
+      background: var(--brand-tint);
+      border-color: var(--brand-tint-2);
     }
-    .tabs-preview::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--success), var(--accent), var(--purple));
-    }
-    .tabs-preview-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .tabs-preview-header h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-    }
-    .tabs-preview-header p {
-      color: var(--muted);
-      font-size: 0.88rem;
+
+    .tabs-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-2xl);
+      padding: 2.2rem;
+      box-shadow: var(--sh-md);
+      margin-bottom: 2.2rem;
     }
 
     .tabs-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.2rem;
-    }
-    .tab-item {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.8rem 1.5rem;
-      text-align: center;
-      transition: all 0.3s;
-      position: relative;
-    }
-    .tab-item:hover {
-      border-color: rgba(14,165,176,0.35);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    }
-    .tab-emoji {
-      font-size: 2.2rem;
-      margin-bottom: 0.8rem;
-      display: block;
-    }
-    .tab-name {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 0.4rem;
-    }
-    .tab-desc {
-      font-size: 0.78rem;
-      color: var(--muted);
-      line-height: 1.6;
+      margin-top: 1.4rem;
     }
 
-    /* CTA SECTION */
-    .cta-section {
+    .tab-item {
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 1.4rem;
+    }
+
+    .tab-emoji { font-size: 1.6rem; margin-bottom: .6rem; display: block; }
+    .tab-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: .3rem; }
+    .tab-desc { font-size: .84rem; color: var(--ink-3); line-height: 1.55; }
+
+    .cta-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 3.5rem;
+      gap: 1.4rem;
+      margin-bottom: 2.2rem;
     }
+
     .cta-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-2xl);
+      padding: 2rem;
+      box-shadow: var(--sh-md);
       text-decoration: none;
-      color: var(--text);
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      transition: all var(--t-fast);
     }
+
     .cta-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      transform: translateY(-4px);
+      box-shadow: var(--sh-lg);
+      border-color: var(--brand);
     }
-    .cta-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .cta-card:hover::before { opacity: 1; }
 
-    .cta-script::before { background: linear-gradient(90deg, var(--accent), var(--success)); }
-    .cta-video::before { background: linear-gradient(90deg, #ef4444, #f59e0b); }
+    .cta-icon { font-size: 2rem; margin-bottom: .8rem; }
+    .cta-label { font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--brand); margin-bottom: .2rem; }
+    .cta-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: .4rem; }
+    .cta-desc { font-size: .86rem; color: var(--ink-3); line-height: 1.55; }
+    .cta-arrow { font-size: 1.4rem; color: var(--ink-4); }
 
-    .cta-script { border-color: rgba(14,165,176,0.2); }
-    .cta-video { border-color: rgba(239,68,68,0.15); }
-
-    .cta-card:hover.cta-script { border-color: rgba(14,165,176,0.4); }
-    .cta-card:hover.cta-video { border-color: rgba(239,68,68,0.3); }
-
-    .cta-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
+    .trust-card {
+      background: linear-gradient(135deg, var(--green-tint), var(--surface));
+      border: 1px solid rgba(21, 128, 61, 0.2);
+      border-radius: var(--r-2xl);
+      padding: 2rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      margin-bottom: 1.5rem;
-      transition: transform 0.3s;
-    }
-    .cta-card:hover .cta-icon { transform: scale(1.1) rotate(-5deg); }
-
-    .cta-script .cta-icon { background: rgba(14,165,176,0.12); }
-    .cta-video .cta-icon { background: rgba(239,68,68,0.12); }
-
-    .cta-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .cta-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-    }
-    .cta-desc {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-    .cta-arrow {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      color: var(--muted);
-      font-size: 1.2rem;
-      transition: all 0.3s;
-    }
-    .cta-card:hover .cta-arrow {
-      transform: translate(4px, -4px);
-      color: var(--accent);
+      gap: 1.4rem;
+      margin-bottom: 4rem;
     }
 
-    /* TRUST BANNER */
-    .trust-banner {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2rem 2.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-    .trust-icon {
-      font-size: 2.2rem;
-      flex-shrink: 0;
-    }
-    .trust-content h4 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-    }
-    .trust-content p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-    .trust-content p strong {
-      color: var(--success);
-    }
+    .trust-icon { font-size: 2.2rem; flex-shrink: 0; }
+    .trust-content h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: .3rem; }
+    .trust-content p { font-size: .88rem; color: var(--ink-2); line-height: 1.6; }
 
-    /* FOOTER */
-    footer {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 2rem 2.5rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    footer p {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-    footer a {
-      color: var(--accent2);
-      text-decoration: none;
-    }
-
-    /* SCROLL REVEAL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* TOOLTIP */
     .tooltip {
       position: fixed;
-      background: var(--success);
+      background: var(--ink);
       color: #fff;
-      padding: 0.4rem 0.8rem;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
+      padding: .4rem .8rem;
+      border-radius: var(--r-md);
+      font-family: var(--font-mono);
+      font-size: .75rem;
       pointer-events: none;
-      z-index: 999;
       opacity: 0;
-      transition: opacity 0.3s;
+      transition: opacity .2s;
+      z-index: 999;
     }
+
     .tooltip.show { opacity: 1; }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .page-hero { padding: 7rem 1.5rem 2rem; }
-      .page-body { padding: 0 1.5rem 4rem; }
-      .flow-diagram { gap: 0; }
-      .flow-node { min-width: 80px; padding: 0.8rem 0.5rem; }
-      .flow-node-icon { width: 42px; height: 42px; font-size: 1.2rem; }
-      .flow-arrow { font-size: 1rem; }
-      .steps-grid { grid-template-columns: 1fr; }
-      .tabs-row { grid-template-columns: 1fr; }
-      .cta-section { grid-template-columns: 1fr; }
-      .trust-banner { flex-direction: column; text-align: center; }
+    @media (max-width: 760px) {
+      .flow-diagram { flex-direction: column; }
+      .flow-arrow { transform: rotate(90deg); margin: .4rem 0; }
+      .cta-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
+
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="scroll-progress"></div>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-back" href="index.html">&#8592; Back to Home</a>
-    <a class="nav-logo" href="index.html"><span>G</span>ermanyDreams</a>
-  </nav>
+  <!-- ===== SVG SPRITE ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M11 6l-6 6 6 6" />
+      </symbol>
+      <symbol id="i-case" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="7.5" width="18" height="13" rx="2" />
+        <path d="M8.8 7.5V5.4a2 2 0 0 1 2-2h2.4a2 2 0 0 1 2 2v2.1" />
+        <path d="M3 12.6h18" />
+      </symbol>
+      <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.5 15.6V8.4L15.8 12Z" />
+      </symbol>
+      <symbol id="i-ig" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.15-3.23 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.41-11.85a1.44 1.44 0 1 0 0 2.89 1.44 1.44 0 0 0 0-2.89Z" />
+      </symbol>
+      <symbol id="i-li" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 0H5a5 5 0 0 0-5 5v14a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5ZM8 19H5V8h3v11ZM6.5 6.73a1.76 1.76 0 1 1 0-3.53 1.76 1.76 0 0 1 0 3.53ZM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.77c1.4-2.59 7-2.78 7 2.47V19Z" />
+      </symbol>
+      <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M.06 24l1.68-6.16A11.87 11.87 0 0 1 .15 11.9C.16 5.34 5.49 0 12.05 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.41c0 6.56-5.33 11.9-11.89 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24Zm6.6-3.81a9.87 9.87 0 0 0 5.39 1.6c5.45 0 9.89-4.44 9.89-9.89 0-5.46-4.42-9.89-9.88-9.89-5.45 0-9.89 4.43-9.89 9.88 0 2.23.65 3.9 1.75 5.64l-1 3.65 3.74-.99Zm11.39-5.47c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47a9 9 0 0 1-1.65-2.06c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41Z" />
+      </symbol>
+    </defs>
+  </svg>
 
-  <!-- HERO -->
-  <div class="page-hero">
-    <div class="page-badge">&#128269; Free &amp; Open Source</div>
-    <h1>Job Application <span>Tracker</span></h1>
-    <p>Automatically scan your Gmail, track every application, generate analytics, and draft recruiter replies &mdash; all inside a free Google Sheet. Set up in under 10 minutes.</p>
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="logo" href="index.html">
+        <span class="logo__mark">G</span>GermanyDreams
+      </a>
 
-    <div class="feature-pills">
-      <div class="feature-pill"><span class="fp-icon">📬</span> Gmail Auto-Scan</div>
-      <div class="feature-pill"><span class="fp-icon">📊</span> Live Dashboard</div>
-      <div class="feature-pill"><span class="fp-icon">📈</span> Analytics Tab</div>
-      <div class="feature-pill"><span class="fp-icon">✉️</span> Auto-Draft Replies</div>
-      <div class="feature-pill"><span class="fp-icon">🔒</span> 100% Private</div>
-      <div class="feature-pill"><span class="fp-icon">🌐</span> Multi-Language</div>
+      <nav class="nav__links" aria-label="Primary navigation">
+        <span class="nav__pill" aria-hidden="true"></span>
+        <a href="index.html#content">Guides</a>
+        <a href="index.html#resources" class="is-active">Free Tools</a>
+        <a href="index.html#connect">Community</a>
+      </nav>
+
+      <div class="nav__right">
+        <a class="btn btn--ghost btn--sm" href="index.html">
+          <svg width="15" height="15" aria-hidden="true"><use href="#i-back" /></svg>
+          Back to home
+        </a>
+        <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+  </header>
+
+  <div class="nav__sheet" id="mobile-menu">
+    <a href="index.html#content">Guides</a>
+    <a href="index.html#resources">Free Tools</a>
+    <a href="index.html#connect">Community</a>
+    <a class="btn btn--primary" href="index.html">Back to Home</a>
   </div>
 
-  <!-- BODY -->
-  <div class="page-body">
-
-    <!-- HOW IT WORKS FLOW -->
-    <div class="flow-section reveal">
-      <div class="flow-header">
-        <h2>How It Works</h2>
-        <p>From inbox to insights &mdash; fully automated</p>
-      </div>
-      <div class="flow-diagram">
-        <div class="flow-node">
-          <div class="flow-node-icon gmail">📬</div>
-          <div class="flow-node-label">Gmail Inbox</div>
-          <div class="flow-node-sub">Your emails</div>
-        </div>
-        <div class="flow-arrow">&#10140;</div>
-        <div class="flow-node">
-          <div class="flow-node-icon script">⚙️</div>
-          <div class="flow-node-label">Apps Script</div>
-          <div class="flow-node-sub">Auto-scan</div>
-        </div>
-        <div class="flow-arrow">&#10140;</div>
-        <div class="flow-node">
-          <div class="flow-node-icon sheet">📋</div>
-          <div class="flow-node-label">Google Sheet</div>
-          <div class="flow-node-sub">Track &amp; log</div>
-        </div>
-        <div class="flow-arrow">&#10140;</div>
-        <div class="flow-node">
-          <div class="flow-node-icon dash">📊</div>
-          <div class="flow-node-label">Dashboard</div>
-          <div class="flow-node-sub">Live analytics</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SETUP STEPS -->
-    <div class="steps-section">
-      <div class="flow-header reveal">
-        <h2>Set Up in 6 Easy Steps</h2>
-        <p>No coding knowledge needed &mdash; just copy, paste, and go</p>
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="phero">
+      <div class="phero__bg">
+        <span class="aurora a1"></span>
+        <span class="dotgrid"></span>
       </div>
 
-      <div class="steps-grid">
-        <!-- Step 1 -->
-        <div class="step-card reveal">
-          <div class="step-number">1</div>
-          <div class="step-title">Create a Google Sheet</div>
-          <div class="step-desc">
-            Go to <a href="https://sheets.google.com" target="_blank">sheets.google.com</a> and create a new blank spreadsheet. This will be your tracker's home.
+      <div class="wrap phero__in">
+        <span class="chip chip--brand">
+          <svg width="14" height="14" aria-hidden="true"><use href="#i-case" /></svg>
+          Free Open-Source Automation
+        </span>
+
+        <h1>Job Application <span class="grad-text">Tracker</span></h1>
+
+        <p class="lede">Scan Gmail automatically, log job applications, generate pipeline analytics, and draft recruiter replies inside your own private Google Sheet.</p>
+
+        <div class="feature-pills">
+          <div class="feature-pill"><span>🚀</span> 100% Free &amp; Open Source</div>
+          <div class="feature-pill"><span>⚡</span> Setup in under 10 minutes</div>
+          <div class="feature-pill"><span>🔒</span> 100% Private (No External Servers)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MAIN BODY ===== -->
+    <div class="wrap">
+      
+      <!-- FLOW SECTION -->
+      <div class="flow-card">
+        <h2 class="card-title">How It Works</h2>
+        <p class="card-sub">From application email to live pipeline analytics — fully automated</p>
+
+        <div class="flow-diagram">
+          <div class="flow-node">
+            <div class="flow-node-icon">📬</div>
+            <div class="flow-node-label">Gmail Inbox</div>
+            <div class="flow-node-sub">Receives updates</div>
+          </div>
+          <div class="flow-arrow">&#10140;</div>
+          <div class="flow-node">
+            <div class="flow-node-icon">⚙️</div>
+            <div class="flow-node-label">Apps Script</div>
+            <div class="flow-node-sub">Scans automatically</div>
+          </div>
+          <div class="flow-arrow">&#10140;</div>
+          <div class="flow-node">
+            <div class="flow-node-icon">📋</div>
+            <div class="flow-node-label">Google Sheet</div>
+            <div class="flow-node-sub">Logs structured data</div>
+          </div>
+          <div class="flow-arrow">&#10140;</div>
+          <div class="flow-node">
+            <div class="flow-node-icon">📊</div>
+            <div class="flow-node-label">Dashboard</div>
+            <div class="flow-node-sub">Real-time stats</div>
           </div>
         </div>
+      </div>
 
-        <!-- Step 2 -->
-        <div class="step-card reveal">
-          <div class="step-number">2</div>
-          <div class="step-title">Open Apps Script</div>
-          <div class="step-desc">
-            Inside the sheet, go to <strong>Extensions &rarr; Apps Script</strong>. This opens the script editor where the magic happens.
+      <!-- SETUP STEPS -->
+      <div style="margin-bottom:2.2rem;">
+        <h2 class="card-title">6 Simple Setup Steps</h2>
+        <p class="card-sub">No programming skills required — copy, paste, and run.</p>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title">Create a Spreadsheet</div>
+            <div class="step-desc">
+              Open <a href="https://sheets.google.com" target="_blank" rel="noopener">sheets.google.com</a> and create a blank new spreadsheet.
+            </div>
           </div>
-        </div>
 
-        <!-- Step 3 -->
-        <div class="step-card reveal">
-          <div class="step-number">3</div>
-          <div class="step-title">Paste the Script</div>
-          <div class="step-desc">
-            Delete the existing code in the editor, then paste the full JobTracker script. Hit <strong>Ctrl + S</strong> to save.
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Open Apps Script</div>
+            <div class="step-desc">
+              In your sheet menu, click <strong>Extensions &rarr; Apps Script</strong> to open the automation editor.
+            </div>
           </div>
-        </div>
 
-        <!-- Step 4 -->
-        <div class="step-card reveal">
-          <div class="step-number">4</div>
-          <div class="step-title">Install Triggers</div>
-          <div class="step-desc">
-            Run these two functions once to activate automation:
-            <div style="margin-top: 0.6rem; display: flex; flex-direction: column; gap: 0.4rem;">
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Paste the Code</div>
+            <div class="step-desc">
+              Clear the default code in the editor, paste the JobTracker script, and press <strong>Ctrl + S</strong> to save.
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-title">Install Triggers</div>
+            <div class="step-desc">
+              Run these functions once in the dropdown to set up background timers:
               <div class="step-code" onclick="copyCode('installTrigger()')">
-                <span>installTrigger()</span>
-                <span class="copy-icon">📋</span>
+                <span>installTrigger()</span> 📋
               </div>
               <div class="step-code" onclick="copyCode('installDailySummaryTrigger()')">
-                <span>installDailySummaryTrigger()</span>
-                <span class="copy-icon">📋</span>
+                <span>installDailySummaryTrigger()</span> 📋
               </div>
             </div>
-            <div style="margin-top: 0.5rem; font-size: 0.78rem; color: var(--muted);">
-              ⏱️ Auto-scan every 15 min &bull; 📧 Daily summary at 8 AM
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">5</div>
+            <div class="step-title">Authorize Access</div>
+            <div class="step-desc">
+              Click <strong>Allow</strong> when Google requests permission to read Gmail and write to your Google Sheet.
             </div>
           </div>
-        </div>
 
-        <!-- Step 5 -->
-        <div class="step-card reveal">
-          <div class="step-number">5</div>
-          <div class="step-title">Authorise Permissions</div>
-          <div class="step-desc">
-            Google will ask for <strong>Gmail + Sheets</strong> access. Click <strong>Allow</strong> to proceed.
-            <div style="margin-top: 0.6rem; padding: 0.5rem 0.8rem; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 8px; font-size: 0.78rem; color: var(--success);">
-              🔒 Everything stays in your own Google account &mdash; nothing is shared externally.
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 6 -->
-        <div class="step-card reveal">
-          <div class="step-number">6</div>
-          <div class="step-title">Run First Scan</div>
-          <div class="step-desc">
-            Select <strong>runTracker</strong> from the function dropdown, click <strong>&#9654; Run</strong>, and you're done!
-            <div class="step-code" onclick="copyCode('runTracker()')" style="margin-top: 0.6rem;">
-              <span>runTracker()</span>
-              <span class="copy-icon">📋</span>
+          <div class="step-card">
+            <div class="step-number">6</div>
+            <div class="step-title">Execute First Scan</div>
+            <div class="step-desc">
+              Select <strong>runTracker</strong> from the function list and click <strong>&blackright; Run</strong>.
+              <div class="step-code" onclick="copyCode('runTracker()')">
+                <span>runTracker()</span> 📋
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- AUTO-GENERATED TABS OVERVIEW -->
+      <div class="tabs-card">
+        <h2 class="card-title">Auto-Populated Sheet Structure</h2>
+        <p class="card-sub">Your spreadsheet is organized into 3 clear tabs.</p>
+
+        <div class="tabs-row">
+          <div class="tab-item">
+            <span class="tab-emoji">📋</span>
+            <div class="tab-name">Applications Log</div>
+            <div class="tab-desc">Stores company name, role, HR contacts, interview status, application date, and ATS links across 14 columns.</div>
+          </div>
+          <div class="tab-item">
+            <span class="tab-emoji">📊</span>
+            <div class="tab-name">Pipeline Dashboard</div>
+            <div class="tab-desc">Displays real-time metrics for total applications, pending replies, interview calls, and offers.</div>
+          </div>
+          <div class="tab-item">
+            <span class="tab-emoji">📈</span>
+            <div class="tab-name">Analytics &amp; Rates</div>
+            <div class="tab-desc">Calculates conversion rates from applied &rarr; interview &rarr; offer to optimize your job search.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA LINKS -->
+      <div class="cta-grid">
+        <a class="cta-card" href="https://github.com/vamshidharre/JobTracker/blob/main/JobTracker.groovy" target="_blank" rel="noopener">
+          <div>
+            <div class="cta-icon">📜</div>
+            <div class="cta-label">Open Source Code</div>
+            <div class="cta-title">Get Script on GitHub</div>
+            <div class="cta-desc">Copy the complete script directly from GitHub repository.</div>
+          </div>
+          <div class="cta-arrow">&#8599;</div>
+        </a>
+
+        <a class="cta-card" href="https://www.youtube.com/watch?v=2h9nntHQvHk" target="_blank" rel="noopener">
+          <div>
+            <div class="cta-icon">🎥</div>
+            <div class="cta-label">Video Guide</div>
+            <div class="cta-title">Watch Setup Tutorial</div>
+            <div class="cta-desc">Step-by-step video demonstration to follow along visually.</div>
+          </div>
+          <div class="cta-arrow">&#8599;</div>
+        </a>
+      </div>
+
+      <!-- PRIVACY CARD -->
+      <div class="trust-card">
+        <div class="trust-icon">🛡️</div>
+        <div class="trust-content">
+          <h4>Privacy &amp; Security Guaranteed</h4>
+          <p>This script executes entirely within your personal Google Apps Script account. <strong>No third-party servers, no telemetry, no tracking.</strong> Your application emails and credentials stay completely inside your Google workspace.</p>
+        </div>
+      </div>
+
     </div>
+  </main>
 
-    <!-- RESULT TABS -->
-    <div class="tabs-preview reveal">
-      <div class="tabs-preview-header">
-        <h3>Your Sheet Auto-Populates With 3 Tabs</h3>
-        <p>Everything is organised and updated automatically</p>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <div class="footer__brand">
+        <a class="logo" href="index.html">
+          <span class="logo__mark">G</span>GermanyDreams
+        </a>
+        <p class="footer__desc">
+          Honest, practical tools and resources built by international students for international students moving to Germany.
+        </p>
       </div>
-      <div class="tabs-row">
-        <div class="tab-item">
-          <span class="tab-emoji">📋</span>
-          <div class="tab-name">Applications</div>
-          <div class="tab-desc">Company, role, HR contact, status, ATS platform &mdash; 14 columns of structured data</div>
-        </div>
-        <div class="tab-item">
-          <span class="tab-emoji">📊</span>
-          <div class="tab-name">Dashboard</div>
-          <div class="tab-desc">At-a-glance summary of your pipeline &mdash; applied, interviews, offers, rejections</div>
-        </div>
-        <div class="tab-item">
-          <span class="tab-emoji">📈</span>
-          <div class="tab-name">Analytics</div>
-          <div class="tab-desc">Trends, conversion rates, and application velocity over time</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA CARDS -->
-    <div class="cta-section">
-      <a class="cta-card cta-script reveal" href="https://github.com/vamshidharre/JobTracker/blob/main/JobTracker.groovy" target="_blank">
+      <div class="footer__cols">
         <div>
-          <div class="cta-icon">📜</div>
-          <div class="cta-label">Get the Script</div>
-          <div class="cta-title">View on GitHub</div>
-          <div class="cta-desc">Open the full script file, copy it, and paste it into your Apps Script editor. It's free and open source.</div>
+          <h4>Free Tools</h4>
+          <ul>
+            <li><a href="calculator.html">Grade Calculator</a></li>
+            <li><a href="estimator.html">Cost Estimator</a></li>
+            <li><a href="visa.html">Visa Checklist</a></li>
+            <li><a href="packing.html">Packing Guide</a></li>
+            <li><a href="wgmessage.html">WG Generator</a></li>
+            <li><a href="jobtracker.html">Job Tracker</a></li>
+          </ul>
         </div>
-        <div class="cta-arrow">&#8599;</div>
-      </a>
-      <a class="cta-card cta-video reveal" href="https://www.youtube.com/watch?v=2h9nntHQvHk" target="_blank">
         <div>
-          <div class="cta-icon">🎥</div>
-          <div class="cta-label">Prefer Watching?</div>
-          <div class="cta-title">Full Walkthrough Video</div>
-          <div class="cta-desc">Prefer a visual guide? Watch the step-by-step video tutorial and set it up together with me.</div>
+          <h4>Connect</h4>
+          <div class="footer__socials">
+            <a href="https://www.youtube.com/channel/UCIY3viuqfg8BR9ucyCI2e1w" target="_blank" rel="noopener" aria-label="YouTube"><svg width="19" height="19" aria-hidden="true"><use href="#i-play" /></svg></a>
+            <a href="https://www.instagram.com/germanydreamz" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" aria-hidden="true"><use href="#i-ig" /></svg></a>
+            <a href="https://www.linkedin.com/in/vamshidhar-reddy-7180551a2/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" aria-hidden="true"><use href="#i-li" /></svg></a>
+            <a href="https://chat.whatsapp.com/C62Bkdk5G0kBMCBquVW1vg" target="_blank" rel="noopener" aria-label="WhatsApp community"><svg width="18" height="18" aria-hidden="true"><use href="#i-wa" /></svg></a>
+          </div>
         </div>
-        <div class="cta-arrow">&#8599;</div>
-      </a>
-    </div>
-
-    <!-- TRUST BANNER -->
-    <div class="trust-banner reveal">
-      <div class="trust-icon">🛡️</div>
-      <div class="trust-content">
-        <h4>Privacy &amp; Security First</h4>
-        <p>This tracker runs entirely within your own Google Account. <strong>No external servers, no third-party access, no data collection.</strong> Your emails and job data never leave your Google workspace. It&rsquo;s free to use, open source, and you can audit every line of code.</p>
+      </div>
+      <div class="footer__base">
+        <p>&copy; 2026 Vamshidhar Reddy. All rights reserved.</p>
+        <p>Made with care for international students moving to Germany.</p>
       </div>
     </div>
-
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2026 <a href="index.html">Vamshidhar Reddy</a>. All rights reserved.</p>
-    <p style="font-size:0.75rem; color:var(--muted);">Made with love from Stuttgart &#127465;&#127466;</p>
   </footer>
 
-  <!-- TOOLTIP -->
+  <button class="to-top" aria-label="Back to top">
+    <svg class="to-top__ring" width="46" height="46" aria-hidden="true">
+      <circle cx="23" cy="23" r="21" />
+    </svg>
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" />
+    </svg>
+  </button>
+
   <div class="tooltip" id="copyTooltip">Copied!</div>
 
+  <script src="assets/site.js"></script>
   <script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 80);
-        }
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => observer.observe(el));
-
-    // Copy-to-clipboard for code snippets
     function copyCode(text) {
       navigator.clipboard.writeText(text).then(() => {
         const tooltip = document.getElementById('copyTooltip');
@@ -814,4 +624,5 @@
     }
   </script>
 </body>
+
 </html>

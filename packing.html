@@ -1,1124 +1,1613 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Germany Student Packing & Buying Guide | GermanyDreams</title>
-  <meta name="description" content="Complete master checklist, luggage distribution guidelines, price comparison, and budget planning for international students moving to Germany." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Germany Student Packing &amp; Buying Guide | GermanyDreams</title>
+  <meta name="description"
+    content="Complete master checklist, luggage distribution guidelines, India vs Germany price comparison and budget planning for international students moving to Germany." />
+  <meta name="theme-color" content="#fcfcfd" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+
   <style>
-    :root {
-      --bg: #060d18;
-      --bg2: #0a1628;
-      --card: #0f1f35;
-      --card2: #152540;
-      --accent: #0ea5b0;
-      --accent2: #22d3ee;
-      --gold: #f59e0b;
-      --text: #f0f4f8;
-      --muted: #7a90a8;
-      --border: rgba(14, 165, 176, 0.14);
-      --border-light: rgba(255, 255, 255, 0.08);
-      --success: #22c55e;
-      --warn: #f59e0b;
-      --danger: #ef4444;
-      --amazon: #ff9900;
-    }
+    /* ======================================================================
+       PACKING GUIDE — page-specific
+       ====================================================================== */
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 1.2rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(6, 13, 24, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s, transform 0.2s;
-    }
-    .nav-back:hover {
-      color: var(--text);
-      transform: translateX(-2px);
-    }
-
-    /* HERO SECTION */
-    .page-hero {
-      padding: 8.5rem 2.5rem 3rem;
+    /* ---------- HERO ---------- */
+    .phero {
+      position: relative;
+      padding: calc(var(--nav-h) + 4rem) 0 3rem;
       text-align: center;
-      position: relative;
       overflow: hidden;
     }
-    .page-hero::before {
-      content: '';
+
+    .phero__bg {
       position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(14, 165, 176, 0.15) 0%, transparent 70%);
-      top: -120px; left: 50%; transform: translateX(-50%);
-      border-radius: 50%;
+      inset: 0;
       pointer-events: none;
-    }
-    .page-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(14, 165, 176, 0.1);
-      border: 1px solid rgba(14, 165, 176, 0.3);
-      padding: 0.4rem 1.1rem;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      color: var(--accent2);
-      font-weight: 600;
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.02em;
-    }
-    .page-hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.8rem;
-      line-height: 1.15;
-    }
-    .page-hero h1 span {
-      background: linear-gradient(135deg, var(--accent2), var(--accent), var(--gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .page-hero p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 620px;
-      margin: 0 auto 2rem;
-      line-height: 1.7;
+      overflow: hidden;
     }
 
-    /* CONTROLS BAR & ACTIONS */
-    .hero-actions {
+    .phero .a1 {
+      width: 660px;
+      height: 660px;
+      top: -320px;
+      left: 50%;
+      margin-left: -330px;
+      background: radial-gradient(circle, rgba(20, 184, 196, .26), transparent 68%);
+      animation: drift 26s ease-in-out infinite;
+    }
+
+    .phero .a2 {
+      width: 460px;
+      height: 460px;
+      top: -60px;
+      right: -180px;
+      background: radial-gradient(circle, rgba(245, 158, 11, .2), transparent 68%);
+      animation: drift 32s ease-in-out infinite reverse;
+    }
+
+    .phero__in {
+      position: relative;
+    }
+
+    .phero h1 {
+      font-size: clamp(2.1rem, 4.6vw, 3.5rem);
+      line-height: 1.06;
+      margin: 1.2rem 0 1rem;
+    }
+
+    .phero .lede {
+      margin-inline: auto;
+      text-align: center;
+      font-size: 1.03rem;
+    }
+
+    .phero__actions {
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 1rem;
+      gap: .8rem;
       flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-    .btn-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.65rem 1.25rem;
-      border-radius: 10px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.25s ease;
-    }
-    .btn-action:hover {
-      background: rgba(14, 165, 176, 0.15);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(14, 165, 176, 0.2);
-    }
-    .btn-action.btn-primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-    .btn-action.btn-primary:hover {
-      background: #0c939e;
-      box-shadow: 0 0 25px rgba(14, 165, 176, 0.4);
+      margin-top: 2rem;
     }
 
-    /* QUICK LINKS BANNER */
-    .banner-card {
-      max-width: 900px;
-      margin: 0 auto 2.5rem;
-      background: linear-gradient(135deg, rgba(15, 31, 53, 0.9), rgba(10, 22, 40, 0.95));
-      border: 1px solid rgba(14, 165, 176, 0.25);
-      border-radius: 16px;
-      padding: 1.4rem 1.8rem;
+    /* ---------- PROGRESS RING CARD ---------- */
+    .prog {
+      max-width: 560px;
+      margin: 2.8rem auto 0;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 1.5rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      text-align: left;
+      padding: 1.4rem 1.7rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-xl);
+      box-shadow: var(--sh-lg);
+    }
+
+    .ring {
       position: relative;
-      overflow: hidden;
-    }
-    .banner-card::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 4px;
-      background: linear-gradient(180deg, var(--accent2), var(--accent));
-    }
-    .banner-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .banner-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--accent2);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .banner-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      font-size: 0.88rem;
-      color: var(--text);
-    }
-    .banner-links a {
-      color: var(--accent2);
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      transition: text-decoration 0.2s, color 0.2s;
-    }
-    .banner-links a:hover {
-      text-decoration: underline;
-      color: #fff;
+      width: 78px;
+      height: 78px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
     }
 
-    /* PROGRESS BANNER */
-    .progress-banner {
-      max-width: 900px;
-      margin: 0 auto 2rem;
-      padding: 0 1.5rem;
+    .ring svg {
+      position: absolute;
+      inset: 0;
+      transform: rotate(-90deg);
     }
-    .progress-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.2rem 1.6rem;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+
+    .ring circle {
+      fill: none;
+      stroke-width: 7;
+      stroke-linecap: round;
     }
-    .progress-text { flex: 1; min-width: 150px; }
-    .progress-text strong {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.98rem;
-      font-weight: 700;
-      display: block;
+
+    .ring__bg {
+      stroke: var(--paper-3);
     }
-    .progress-text span { font-size: 0.8rem; color: var(--muted); }
-    .progress-track {
-      flex: 2;
-      min-width: 160px;
-      height: 10px;
-      background: var(--card2);
-      border-radius: 999px;
-      overflow: hidden;
+
+    .ring__fg {
+      stroke: url(#ringGrad);
+      transition: stroke-dashoffset .55s var(--ease);
     }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--success));
-      border-radius: 999px;
-      width: 0%;
-      transition: width 0.4s ease;
-    }
-    .progress-count {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.15rem;
+
+    .ring__pct {
+      position: relative;
+      font-family: var(--font-display);
+      font-size: 1.06rem;
       font-weight: 800;
-      color: var(--accent2);
-      white-space: nowrap;
+      color: var(--ink);
+      letter-spacing: -.04em;
     }
 
-    /* FILTER TABS & SEARCH */
-    .filter-wrapper {
-      max-width: 900px;
-      margin: 0 auto 2rem;
-      padding: 0 1.5rem;
+    .prog__txt strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.02rem;
+      color: var(--ink);
+      letter-spacing: -.03em;
+    }
+
+    .prog__txt span {
+      font-size: .87rem;
+      color: var(--ink-3);
+    }
+
+    .prog.is-done {
+      border-color: #b8e6cb;
+      background: linear-gradient(160deg, var(--green-tint), var(--surface) 60%);
+      animation: pop .6s var(--ease-spring);
+    }
+
+    @keyframes pop {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      45% {
+        transform: scale(1.025);
+      }
+    }
+
+    /* ---------- STICKY TOOLBAR ---------- */
+    .toolbar {
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 90;
+      padding: .9rem 0;
+      background: rgba(252, 252, 253, .86);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--t), box-shadow var(--t);
+      margin-top: 2.5rem;
+    }
+
+    .toolbar.is-stuck {
+      border-bottom-color: var(--line);
+      box-shadow: 0 10px 26px -22px rgba(9, 21, 40, .8);
+    }
+
+    .toolbar__in {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: .8rem;
     }
-    .search-box {
+
+    .search {
       position: relative;
-      width: 100%;
     }
-    .search-box input {
-      width: 100%;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 0.8rem 1rem 0.8rem 2.8rem;
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.92rem;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .search-box input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 15px rgba(14, 165, 176, 0.2);
-    }
-    .search-icon {
+
+    .search svg {
       position: absolute;
-      left: 1rem;
+      left: 1.05rem;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--muted);
-      font-size: 1rem;
+      color: var(--ink-4);
       pointer-events: none;
     }
-    .tabs-bar {
-      display: flex;
-      gap: 0.6rem;
-      overflow-x: auto;
-      padding-bottom: 0.4rem;
-      scrollbar-width: thin;
-    }
-    .tab-btn {
-      background: var(--card);
-      border: 1px solid var(--border-light);
-      color: var(--muted);
-      padding: 0.55rem 1.1rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-    }
-    .tab-btn:hover {
-      color: var(--text);
-      background: rgba(14, 165, 176, 0.08);
-      border-color: var(--border);
-    }
-    .tab-btn.active {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-      box-shadow: 0 4px 15px rgba(14, 165, 176, 0.3);
+
+    .search input {
+      width: 100%;
+      padding: .82rem 2.8rem .82rem 2.9rem;
+      border-radius: var(--r-full);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: .93rem;
+      outline: none;
+      box-shadow: var(--sh-xs);
+      transition: border-color var(--t-fast), box-shadow var(--t-fast);
     }
 
-    /* MAIN CONTENT LAYOUT */
-    .page-body {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 1.5rem 5rem;
+    .search input::placeholder {
+      color: var(--ink-4);
+    }
+
+    .search input:focus {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 4px rgba(20, 184, 196, .15);
+    }
+
+    .search__clear {
+      position: absolute;
+      right: .55rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 50%;
+      background: var(--paper-3);
+      color: var(--ink-3);
+      cursor: pointer;
+      display: none;
+      place-items: center;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .search__clear.is-on {
+      display: grid;
+    }
+
+    .tabs {
+      display: flex;
+      gap: .5rem;
+      overflow-x: auto;
+      padding-bottom: .25rem;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .5rem 1rem;
+      border-radius: var(--r-full);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink-3);
+      font-family: inherit;
+      font-size: .85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      box-shadow: var(--sh-xs);
+      transition: all var(--t-fast) var(--ease);
+    }
+
+    .tab:hover {
+      color: var(--ink);
+      border-color: var(--line-strong);
+    }
+
+    .tab b {
+      font-family: var(--font-mono);
+      font-size: .68rem;
+      font-weight: 600;
+      padding: .1rem .38rem;
+      border-radius: 5px;
+      background: var(--paper-3);
+      color: var(--ink-3);
+    }
+
+    .tab.is-active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+      box-shadow: var(--sh-md);
+    }
+
+    .tab.is-active b {
+      background: rgba(255, 255, 255, .16);
+      color: #fff;
+    }
+
+    /* ---------- BODY ---------- */
+    .pbody {
+      padding: 2.5rem 0 5rem;
       display: flex;
       flex-direction: column;
-      gap: 2.2rem;
+      gap: 1.8rem;
     }
 
-    /* SECTION CARD */
-    .guide-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1.8rem;
+    .gcard {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-2xl);
+      padding: 1.9rem;
+      box-shadow: var(--sh-sm);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      scroll-margin-top: 200px;
     }
-    .guide-card::before {
+
+    .gcard::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--gold));
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--tone, var(--brand)), transparent 70%);
     }
-    .section-head {
+
+    .ghead {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      margin-bottom: 1.3rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      padding-bottom: 0.9rem;
+      gap: 1rem;
+      padding-bottom: 1.1rem;
+      margin-bottom: 1.4rem;
+      border-bottom: 1px solid var(--line-soft);
     }
-    .section-head-icon {
-      width: 42px; height: 42px;
-      border-radius: 12px;
-      background: rgba(14, 165, 176, 0.14);
-      border: 1px solid rgba(14, 165, 176, 0.3);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
+
+    .ghead .icon-tile {
+      background: linear-gradient(160deg, var(--tone-bg, var(--brand-tint)), #fff);
+      border-color: var(--tone-line, var(--brand-tint-2));
+      color: var(--tone, var(--brand));
+    }
+
+    .ghead .icon-tile svg {
+      width: 23px;
+      height: 23px;
+    }
+
+    .ghead h2 {
+      font-size: 1.18rem;
+      letter-spacing: -.032em;
+    }
+
+    .ghead p {
+      font-size: .87rem;
+      color: var(--ink-3);
+      margin-top: .12rem;
+      line-height: 1.55;
+    }
+
+    .gnum {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: .68rem;
+      letter-spacing: .12em;
+      color: var(--ink-4);
       flex-shrink: 0;
-    }
-    .section-head h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-    .section-head p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: 0.1rem;
+      align-self: flex-start;
     }
 
-    /* TABLES & DATA STYLING */
-    .table-container {
-      width: 100%;
-      overflow-x: auto;
-      border-radius: 12px;
-      border: 1px solid var(--border-light);
-      margin-bottom: 0.5rem;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-      text-align: left;
-    }
-    th {
-      background: rgba(10, 22, 40, 0.9);
-      color: var(--accent2);
-      font-family: 'Syne', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding: 0.9rem 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-    td {
-      padding: 0.9rem 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      vertical-align: middle;
-      color: var(--text);
-    }
-    tr:last-child td {
-      border-bottom: none;
-    }
-    tr:nth-child(even) td {
-      background: rgba(255, 255, 255, 0.015);
-    }
-    tr:hover td {
-      background: rgba(14, 165, 176, 0.03);
-    }
-    .center { text-align: center; }
-
-    /* CHECKABLE LIST ITEM */
-    .checklist-group {
+    /* ---------- CHECK ITEMS ---------- */
+    .clist {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: .65rem;
     }
+
     .check-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.9rem;
-      padding: 0.95rem 1.1rem;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-light);
-      transition: all 0.2s ease;
+      gap: .9rem;
+      padding: .95rem 1.1rem;
+      border-radius: var(--r-lg);
+      background: var(--surface-sunk);
+      border: 1px solid var(--line-soft);
       cursor: pointer;
-      user-select: none;
+      transition: background var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
     }
+
     .check-item:hover {
-      background: rgba(14, 165, 176, 0.05);
-      border-color: rgba(14, 165, 176, 0.25);
+      background: var(--brand-tint);
+      border-color: var(--brand-tint-2);
     }
-    .check-item.checked {
-      background: rgba(34, 197, 94, 0.06);
-      border-color: rgba(34, 197, 94, 0.25);
+
+    .check-item:has(input:checked) {
+      background: var(--green-tint);
+      border-color: #cdeed9;
     }
-    .check-box {
-      width: 22px; height: 22px;
-      border-radius: 6px;
-      border: 2px solid var(--muted);
+
+    .check-item:has(input:focus-visible) {
+      outline: 2.5px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    /* Checkbox */
+    .cbox {
+      width: 23px;
+      height: 23px;
       flex-shrink: 0;
-      margin-top: 2px;
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s;
-      font-size: 0.85rem;
-      color: transparent;
-      font-weight: bold;
+      margin-top: 1px;
+      border-radius: 7px;
+      border: 2px solid var(--ink-4);
+      background: var(--surface);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease),
+        transform var(--t-fast) var(--ease-spring);
     }
-    .check-item.checked .check-box {
-      background: var(--success);
-      border-color: var(--success);
+
+    .check-item:hover .cbox,
+    tr:hover .cbox {
+      border-color: var(--brand);
+    }
+
+    :is(.check-item, tr):has(input:checked) .cbox {
+      background: var(--green);
+      border-color: var(--green);
+      transform: scale(1.05);
+    }
+
+    .cbox svg {
+      width: 13px;
+      height: 13px;
       color: #fff;
     }
-    .check-item.checked .check-title {
-      text-decoration: line-through;
-      color: var(--muted);
+
+    .cbox svg path {
+      stroke-dasharray: 24;
+      stroke-dashoffset: 24;
+      transition: stroke-dashoffset .32s var(--ease) .06s;
     }
-    .check-content {
-      flex: 1;
+
+    :is(.check-item, tr):has(input:checked) .cbox svg path {
+      stroke-dashoffset: 0;
     }
+
+    /* Deliberately not flex: as an atomic inline, .qty is skipped by
+       text-decoration propagation, so the "checked" strikethrough crosses
+       out the label without striking through the badge. */
     .check-title {
       font-weight: 600;
-      font-size: 0.94rem;
-      color: var(--text);
-      margin-bottom: 0.2rem;
+      font-size: .96rem;
+      color: var(--ink);
+      line-height: 1.6;
     }
+
+    .check-title .qty {
+      margin-left: .45rem;
+      vertical-align: 1px;
+    }
+
+    .check-item:has(input:checked) .check-title {
+      text-decoration: line-through;
+      text-decoration-color: var(--ink-4);
+      color: var(--ink-3);
+    }
+
     .check-note {
-      font-size: 0.83rem;
-      color: var(--muted);
-      line-height: 1.45;
+      font-size: .855rem;
+      color: var(--ink-3);
+      line-height: 1.55;
+      margin-top: .18rem;
     }
 
-    /* BADGES & HIGHLIGHTS */
-    .badge-qty {
-      display: inline-block;
-      background: rgba(245, 158, 11, 0.15);
-      border: 1px solid rgba(245, 158, 11, 0.3);
+    .check-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .check-row-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: .8rem;
+      flex-wrap: wrap;
+    }
+
+    .check-note.warn {
       color: var(--gold);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .price-tag {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent2);
-    }
-    .price-tag.india { color: #34d399; }
-    .price-tag.germany { color: var(--gold); }
-    .rec-badge {
-      display: inline-block;
-      font-size: 0.8rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 6px;
-      background: rgba(14, 165, 176, 0.1);
-      border: 1px solid rgba(14, 165, 176, 0.2);
-      color: var(--text);
-    }
-    .rec-badge.home {
-      background: rgba(34, 197, 94, 0.1);
-      border-color: rgba(34, 197, 94, 0.25);
-      color: #4ade80;
-    }
-    .rec-badge.de {
-      background: rgba(245, 158, 11, 0.1);
-      border-color: rgba(245, 158, 11, 0.25);
-      color: #fbbf24;
+      font-weight: 500;
     }
 
-    /* AMAZON BUTTON */
-    .btn-amazon {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--amazon);
-      color: #111;
-      font-weight: 700;
-      padding: 0.35rem 0.8rem;
+    /* ---------- BADGES ---------- */
+    .qty {
+      display: inline-block;
+      padding: .12rem .55rem;
       border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.82rem;
-      transition: transform 0.2s, background 0.2s;
+      background: var(--gold-tint);
+      border: 1px solid #f8e3c0;
+      color: var(--gold);
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      font-weight: 600;
       white-space: nowrap;
     }
-    .btn-amazon:hover {
-      background: #e68a00;
-      transform: scale(1.03);
+
+    .price {
+      font-weight: 600;
+      font-size: .88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      white-space: nowrap;
     }
 
-    /* LUGGAGE BENTO CARDS */
-    .luggage-grid {
+    .price--in {
+      color: var(--green);
+    }
+
+    .price--de {
+      color: var(--gold);
+    }
+
+    .rec {
+      display: inline-block;
+      font-size: .8rem;
+      line-height: 1.45;
+      padding: .26rem .62rem;
+      border-radius: 7px;
+      border: 1px solid;
+    }
+
+    .rec--home {
+      background: var(--green-tint);
+      border-color: #cdeed9;
+      color: var(--green);
+    }
+
+    .rec--de {
+      background: var(--gold-tint);
+      border-color: #f8e3c0;
+      color: var(--gold);
+    }
+
+    /* ---------- TABLES ---------- */
+    .tscroll {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      background: var(--surface);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+      min-width: 780px;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: var(--surface-sunk);
+      font-family: var(--font-mono);
+      font-size: .66rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      text-align: left;
+      padding: .85rem 1rem;
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap;
+    }
+
+    tbody td {
+      padding: .9rem 1rem;
+      border-bottom: 1px solid var(--line-soft);
+      vertical-align: middle;
+      color: var(--ink-2);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr {
+      transition: background var(--t-fast);
+    }
+
+    tbody tr:hover {
+      background: var(--brand-tint);
+    }
+
+    tbody tr:has(input:checked) {
+      background: var(--green-tint);
+    }
+
+    tbody tr:has(input:checked) .t-name {
+      text-decoration: line-through;
+      text-decoration-color: var(--ink-4);
+      color: var(--ink-3);
+    }
+
+    .t-name {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    td.c {
+      text-align: center;
+    }
+
+    th.c {
+      text-align: center;
+    }
+
+    /* ---------- LUGGAGE ---------- */
+    .lgrid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 0.5rem;
+      gap: 1.2rem;
     }
-    .luggage-box {
-      background: rgba(10, 22, 40, 0.6);
-      border: 1px solid var(--border-light);
-      border-radius: 16px;
-      padding: 1.4rem;
-      position: relative;
+
+    .lbox {
+      padding: 1.4rem 1.5rem;
+      border-radius: var(--r-lg);
+      background: var(--surface-sunk);
+      border: 1px solid var(--line-soft);
+      border-top: 3px solid var(--lc, var(--brand));
     }
-    .luggage-box.checked-bag {
-      border-top: 4px solid var(--accent);
+
+    .lbox--cabin {
+      --lc: var(--gold-bright);
     }
-    .luggage-box.cabin-bag {
-      border-top: 4px solid var(--gold);
-    }
-    .luggage-box-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 1rem;
+
+    .lbox h3 {
+      font-size: 1.02rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      border-bottom: 1px solid var(--border-light);
-      padding-bottom: 0.6rem;
+      gap: .6rem;
+      padding-bottom: .75rem;
+      margin-bottom: .9rem;
+      border-bottom: 1px solid var(--line);
+      letter-spacing: -.03em;
     }
-    .luggage-box ul {
+
+    .lbox h3 svg {
+      width: 19px;
+      height: 19px;
+      color: var(--lc, var(--brand));
+    }
+
+    .lbox ul {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: .7rem;
     }
-    .luggage-box li {
+
+    .lbox li {
       position: relative;
-      padding-left: 1.4rem;
-      font-size: 0.88rem;
-      color: var(--text);
-      line-height: 1.5;
+      padding-left: 1.5rem;
+      font-size: .885rem;
+      line-height: 1.55;
+      color: var(--ink-2);
     }
-    .luggage-box li::before {
-      content: "•";
+
+    .lbox li::before {
+      content: '';
       position: absolute;
-      left: 0.3rem;
-      top: 0;
-      color: var(--accent2);
-      font-size: 1.2rem;
-      line-height: 1;
-    }
-    .luggage-box.cabin-bag li::before {
-      color: var(--gold);
-    }
-    .luggage-box strong {
-      color: #fff;
+      left: .3rem;
+      top: .55em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--lc, var(--brand));
     }
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.85rem;
-      background: rgba(6, 13, 24, 0.95);
+    .lbox strong {
+      color: var(--ink);
+      font-weight: 600;
     }
-    footer a {
-      color: var(--accent2);
+
+    /* ---------- LINKS BANNER ---------- */
+    .links-card {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      padding: 1.2rem 1.5rem;
+      border-radius: var(--r-lg);
+      background: linear-gradient(120deg, var(--brand-tint), var(--surface) 65%);
+      border: 1px solid var(--brand-tint-2);
+      margin-bottom: 1.8rem;
+    }
+
+    .links-card h3 {
+      font-size: .92rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: .3rem;
+    }
+
+    .links-card p {
+      font-size: .875rem;
+      color: var(--ink-3);
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem 1.3rem;
+    }
+
+    .links-card a {
+      font-weight: 600;
       text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
+      border-bottom: 1.5px solid var(--brand-tint-2);
+      transition: border-color var(--t-fast);
     }
 
-    /* PRINT STYLES */
-    @media print {
-      body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        font-size: 10pt;
+    .links-card a:hover {
+      border-color: var(--brand);
+    }
+
+    /* ---------- EMPTY STATE ---------- */
+    .empty {
+      display: none;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      background: var(--surface);
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--r-xl);
+    }
+
+    .empty.is-on {
+      display: block;
+    }
+
+    .empty svg {
+      margin: 0 auto 1rem;
+      color: var(--ink-4);
+    }
+
+    .empty h3 {
+      font-size: 1.1rem;
+      margin-bottom: .4rem;
+    }
+
+    .empty p {
+      color: var(--ink-3);
+      font-size: .92rem;
+    }
+
+    /* ---------- DISCLOSURE ---------- */
+    .disclosure {
+      margin-top: .5rem;
+      padding: 1.1rem 1.4rem;
+      border-radius: var(--r-lg);
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      font-size: .83rem;
+      color: var(--ink-3);
+      line-height: 1.6;
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
+    }
+
+    .disclosure svg {
+      flex-shrink: 0;
+      color: var(--ink-4);
+      margin-top: .15rem;
+    }
+
+    /* ---------- RESPONSIVE: tables become cards ---------- */
+    @media (max-width: 760px) {
+      .tscroll {
+        border: none;
+        background: none;
+        overflow: visible;
       }
-      nav, .page-hero::before, .hero-actions, .filter-wrapper, footer {
+
+      table {
+        min-width: 0;
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody,
+      tr {
+        display: block;
+      }
+
+      tbody tr {
+        position: relative;
+        border: 1px solid var(--line-soft);
+        background: var(--surface-sunk);
+        border-radius: var(--r-lg);
+        padding: .95rem 1.1rem .95rem 3.2rem;
+        margin-bottom: .65rem;
+      }
+
+      tbody tr:hover {
+        background: var(--brand-tint);
+      }
+
+      tbody td {
+        display: flex;
+        gap: .8rem;
+        justify-content: space-between;
+        align-items: center;
+        padding: .3rem 0;
+        border: none;
+        text-align: left !important;
+      }
+
+      tbody td::before {
+        content: attr(data-label);
+        font-family: var(--font-mono);
+        font-size: .62rem;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--ink-4);
+        flex-shrink: 0;
+      }
+
+      /* Checkbox floats into the reserved left gutter */
+      td.c-check {
+        position: absolute;
+        left: 1.05rem;
+        top: 1rem;
+        padding: 0;
+      }
+
+      td.c-check::before {
+        display: none;
+      }
+
+      td.t-item {
+        padding-bottom: .55rem;
+      }
+
+      td.t-item::before {
+        display: none;
+      }
+
+      td.t-item .t-name {
+        font-size: .96rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .phero {
+        padding-top: calc(var(--nav-h) + 2.5rem);
+      }
+
+      .prog {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .gcard {
+        padding: 1.3rem 1.1rem;
+      }
+
+      .ghead {
+        flex-wrap: wrap;
+      }
+
+      .gnum {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .phero__actions .btn {
+        flex: 1;
+      }
+    }
+
+    @media print {
+
+      .toolbar,
+      .phero__actions,
+      .links-card {
         display: none !important;
       }
-      .page-hero {
-        padding: 1rem 0 !important;
-      }
-      .page-hero h1 {
-        color: #000 !important;
-        font-size: 18pt !important;
-        -webkit-text-fill-color: initial !important;
-      }
-      .banner-card, .guide-card, .progress-card, .luggage-box {
-        background: #fff !important;
-        color: #000 !important;
-        border: 1px solid #ccc !important;
-        box-shadow: none !important;
-        page-break-inside: avoid;
-      }
-      th {
-        background: #f0f0f0 !important;
-        color: #000 !important;
-        border-bottom: 2px solid #000 !important;
-      }
-      td {
-        border-bottom: 1px solid #ddd !important;
-        color: #000 !important;
-      }
-      .check-item {
-        background: #fff !important;
-        border: 1px solid #eee !important;
-        color: #000 !important;
-      }
-      .check-box {
-        border-color: #000 !important;
-      }
-      .btn-amazon {
-        background: #eee !important;
-        color: #000 !important;
-        border: 1px solid #999;
-      }
-    }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.2rem; }
-      .page-hero { padding: 7rem 1.2rem 2rem; }
-      .banner-card { flex-direction: column; text-align: center; }
-      .banner-links { justify-content: center; }
-      .progress-card { flex-direction: column; align-items: stretch; text-align: center; }
-      td, th { padding: 0.75rem 0.6rem; font-size: 0.82rem; }
-      .guide-card { padding: 1.2rem; }
+      .gcard,
+      .prog {
+        border: 1px solid #ccc;
+        box-shadow: none;
+      }
+
+      table {
+        min-width: 0;
+      }
     }
   </style>
 </head>
+
 <body>
+  <a class="skip-link" href="#guide">Skip to checklist</a>
+  <div class="scroll-progress"></div>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-back" href="index.html">&#8592; Back to Home</a>
-    <a class="nav-logo" href="index.html"><span>G</span>ermanyDreams</a>
-  </nav>
+  <!-- ===== ICONS ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#14b8c4" />
+        <stop offset="100%" stop-color="#22c55e" />
+      </linearGradient>
+      <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2.6H7a2 2 0 0 0-2 2v14.8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.6Z" />
+        <path d="M14 2.6v5h5" />
+        <path d="M8.6 12.4h6.8M8.6 16h4.4" />
+      </symbol>
+      <symbol id="i-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 3.2 4 5.6l1.4 4.2 2-.7V20.8h9.2V9.1l2 .7L20 5.6l-5-2.4a3 3 0 0 1-6 0Z" />
+      </symbol>
+      <symbol id="i-plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 2.6v5.2M15 2.6v5.2" />
+        <path d="M5.6 7.8h12.8v3.4a6.4 6.4 0 0 1-12.8 0Z" />
+        <path d="M12 17.6v3.8" />
+      </symbol>
+      <symbol id="i-pot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 9.4h16v6.4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z" />
+        <path d="M2.4 9.4h19.2" />
+        <path d="M8 6.2V4M12 6.2V3.2M16 6.2V4" />
+      </symbol>
+      <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3.5" y="7" width="17" height="14" rx="2.2" />
+        <path d="M8.6 7V4.6a1.6 1.6 0 0 1 1.6-1.6h3.6a1.6 1.6 0 0 1 1.6 1.6V7" />
+        <path d="M9.4 11v6M14.6 11v6" />
+      </symbol>
+      <symbol id="i-carry" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6.5 8.4h11l1.2 12.2H5.3Z" />
+        <path d="M9 8.4V6a3 3 0 0 1 6 0v2.4" />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="10.6" cy="10.6" r="6.6" />
+        <path d="m15.4 15.4 4.2 4.2" />
+      </symbol>
+      <symbol id="i-tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="m4.8 12.4 4.6 4.6L19.2 7" />
+      </symbol>
+      <symbol id="i-print" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6.5 9V3.6h11V9" />
+        <path d="M6.5 18H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1.5" />
+        <rect x="6.5" y="14.4" width="11" height="6" rx="1" />
+      </symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3.5 5.5v5h5" />
+        <path d="M4.2 10.5a8 8 0 1 1 .6 6" />
+      </symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2.6 3.4h2.6l2.2 10.6h9.4l2.2-7.6H6.2" />
+        <circle cx="9.4" cy="19" r="1.5" />
+        <circle cx="16.6" cy="19" r="1.5" />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 17 17 7M8.5 7H17v8.5" />
+      </symbol>
+      <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 11v5.2M12 7.8h.01" />
+      </symbol>
+      <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M11 6l-6 6 6 6" />
+      </symbol>
+    </defs>
+  </svg>
 
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <div class="page-badge">&#129651; Master Student Checklist</div>
-    <h1>Ultimate Germany <span>Packing &amp; Buying Guide</span></h1>
-    <p>Complete master checklist, luggage distribution guidelines, India vs Germany price analysis, and budget planning for international students.</p>
-
-    <!-- HERO ACTIONS -->
-    <div class="hero-actions">
-      <button class="btn-action btn-primary" onclick="window.print()">
-        &#128438; Print / Save PDF
-      </button>
-      <button class="btn-action" onclick="resetChecklist()">
-        &#8634; Reset Checklist
-      </button>
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="logo" href="index.html">
+        <span class="logo__mark">G</span>GermanyDreams
+      </a>
+      <div class="nav__right">
+        <a class="btn btn--ghost btn--sm" href="index.html">
+          <svg width="15" height="15" aria-hidden="true">
+            <use href="#i-back" />
+          </svg>
+          Back to home
+        </a>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <!-- QUICK RESOURCES BANNER -->
-  <div style="padding: 0 1.5rem;">
-    <div class="banner-card">
-      <div class="banner-info">
-        <div class="banner-title">&#128204; Essential Links &amp; Indian Groceries in Germany</div>
-        <div class="banner-links">
-          <span>• Order Indian Groceries: <a href="https://www.indische-lebensmittel-online.de/" target="_blank" rel="noopener">Indische Lebensmittel Online &#8599;</a></span>
-          <span>• Universal Plug Adapter: <a href="https://www.amazon.in/dp/B07G15P58D?tag=amazonquiz-21" target="_blank" rel="noopener">TESSAN EU Travel Adapter (Amazon) &#8599;</a></span>
+  <!-- ===== HERO ===== -->
+  <section class="phero">
+    <div class="phero__bg">
+      <span class="aurora a1"></span>
+      <span class="aurora a2"></span>
+      <span class="dotgrid"></span>
+    </div>
+
+    <div class="wrap phero__in">
+      <span class="chip chip--brand">
+        <svg width="14" height="14" aria-hidden="true">
+          <use href="#i-bag" />
+        </svg>
+        Master student checklist &middot; 2026
+      </span>
+
+      <h1>Ultimate Germany<br><span class="grad-text">Packing &amp; Buying Guide</span></h1>
+
+      <p class="lede">Complete master checklist, luggage distribution guidelines, India vs Germany price analysis, and
+        budget planning for international students.</p>
+
+      <div class="phero__actions">
+        <button class="btn btn--primary btn--sheen" onclick="window.print()">
+          <svg width="16" height="16" aria-hidden="true">
+            <use href="#i-print" />
+          </svg>
+          Print / Save PDF
+        </button>
+        <button class="btn btn--ghost" id="resetBtn">
+          <svg width="16" height="16" aria-hidden="true">
+            <use href="#i-reset" />
+          </svg>
+          Reset checklist
+        </button>
+      </div>
+
+      <!-- Progress -->
+      <div class="prog" id="progCard">
+        <div class="ring">
+          <svg width="78" height="78" aria-hidden="true">
+            <circle class="ring__bg" cx="39" cy="39" r="33" />
+            <circle class="ring__fg" id="ringFg" cx="39" cy="39" r="33" />
+          </svg>
+          <span class="ring__pct" id="progPct">0%</span>
+        </div>
+        <div class="prog__txt">
+          <strong id="progTitle">Your packing progress</strong>
+          <span id="progLabel">0 of 21 items packed</span>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- PROGRESS BANNER -->
-  <div class="progress-banner">
-    <div class="progress-card">
-      <div class="progress-text">
-        <strong>Your Packing Progress</strong>
-        <span id="progressLabel">0 of 21 items packed</span>
+  <!-- ===== STICKY TOOLBAR ===== -->
+  <div class="toolbar" id="toolbar">
+    <div class="wrap toolbar__in">
+      <div class="search">
+        <svg width="17" height="17" aria-hidden="true">
+          <use href="#i-search" />
+        </svg>
+        <label class="sr-only" for="q">Search checklist items</label>
+        <input type="search" id="q" placeholder="Search items — passport, cooker, thermal, adapter…"
+          autocomplete="off" />
+        <button class="search__clear" id="qClear" type="button" aria-label="Clear search">&times;</button>
       </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progressFill"></div>
+
+      <div class="tabs" role="tablist" id="tabs">
+        <button class="tab is-active" role="tab" data-cat="all">All categories <b id="cnt-all"></b></button>
+        <button class="tab" role="tab" data-cat="documents">Documents <b id="cnt-documents"></b></button>
+        <button class="tab" role="tab" data-cat="clothing">Clothing <b id="cnt-clothing"></b></button>
+        <button class="tab" role="tab" data-cat="electronics">Electronics <b id="cnt-electronics"></b></button>
+        <button class="tab" role="tab" data-cat="kitchen">Kitchenware <b id="cnt-kitchen"></b></button>
+        <button class="tab" role="tab" data-cat="luggage">Luggage rules</button>
       </div>
-      <div class="progress-count" id="progressCount">0%</div>
     </div>
   </div>
 
-  <!-- FILTER & SEARCH BAR -->
-  <div class="filter-wrapper">
-    <div class="search-box">
-      <span class="search-icon">&#128269;</span>
-      <input type="text" id="searchInput" placeholder="Search items (e.g., passport, cooker, thermal, adapter)..." oninput="filterItems()" />
-    </div>
-    <div class="tabs-bar">
-      <button class="tab-btn active" onclick="switchTab('all', this)">All Categories</button>
-      <button class="tab-btn" onclick="switchTab('documents', this)">&#128196; Documents</button>
-      <button class="tab-btn" onclick="switchTab('clothing', this)">&#129651; Clothing</button>
-      <button class="tab-btn" onclick="switchTab('electronics', this)">&#128187; Electronics</button>
-      <button class="tab-btn" onclick="switchTab('kitchen', this)">&#127889; Kitchenware</button>
-      <button class="tab-btn" onclick="switchTab('luggage', this)">&#129523; Luggage Rules</button>
-    </div>
-  </div>
+  <!-- ===== BODY ===== -->
+  <main class="wrap pbody" id="guide">
 
-  <!-- PAGE BODY -->
-  <div class="page-body">
+    <!-- Quick links -->
+    <div class="links-card">
+      <div>
+        <h3>
+          <svg width="16" height="16" style="color:var(--brand)" aria-hidden="true">
+            <use href="#i-info" />
+          </svg>
+          Essential links &amp; Indian groceries in Germany
+        </h3>
+        <p>
+          <span>Order Indian groceries:
+            <a href="https://www.indische-lebensmittel-online.de/" target="_blank" rel="noopener">Indische
+              Lebensmittel Online &#8599;</a></span>
+          <span>Universal plug adapter:
+            <a href="https://www.amazon.in/s?k=universal+travel+adapter+europe+type+c&amp;tag=amazonquiz-21"
+              target="_blank" rel="noopener sponsored">EU travel adapters on Amazon &#8599;</a></span>
+        </p>
+      </div>
+    </div>
 
-    <!-- 1. ESSENTIAL DOCUMENTS & CHECKLIST -->
-    <div class="guide-card category-section" data-category="documents">
-      <div class="section-head">
-        <div class="section-head-icon">&#128203;</div>
+    <!-- ===== 1. DOCUMENTS ===== -->
+    <section class="gcard cat" data-cat="documents" style="--tone:#0b7a85;--tone-bg:#e8f7f8;--tone-line:#cceef1">
+      <div class="ghead">
+        <span class="icon-tile"><svg aria-hidden="true">
+            <use href="#i-doc" />
+          </svg></span>
         <div>
           <h2>1. Essential Documents &amp; Checklist</h2>
-          <p>Must-have documents to carry in original and physical copies for immigration &amp; university enrollment.</p>
+          <p>Must-have documents to carry in original and physical copies for immigration &amp; university enrollment.
+          </p>
         </div>
+        <span class="gnum">01 / 05</span>
       </div>
 
-      <div class="checklist-group">
-
-        <div class="check-item" data-id="doc-1" onclick="toggleCheck('doc-1')">
-          <div class="check-box">&#10003;</div>
+      <div class="clist">
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="doc-1" data-id="doc-1">
+          <label class="cbox" for="doc-1" aria-label="Passport & Student Visa"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div class="check-title">Passport &amp; Student Visa <span class="badge-qty">Orig + 2 Copies</span></div>
+            <div class="check-title">Passport &amp; Student Visa <span class="qty">Orig + 2 copies</span></div>
             <div class="check-note">Keep digital backups on cloud storage (Google Drive / iCloud) at all times.</div>
           </div>
         </div>
 
-        <div class="check-item" data-id="doc-2" onclick="toggleCheck('doc-2')">
-          <div class="check-box">&#10003;</div>
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="doc-2" data-id="doc-2">
+          <label class="cbox" for="doc-2" aria-label="University Admission Letter"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div class="check-title">University Admission Letter <span class="badge-qty">2 Copies</span></div>
+            <div class="check-title">University Admission Letter <span class="qty">2 copies</span></div>
             <div class="check-note">Required during airport immigration control and campus registration.</div>
           </div>
         </div>
 
-        <div class="check-item" data-id="doc-3" onclick="toggleCheck('doc-3')">
-          <div class="check-box">&#10003;</div>
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="doc-3" data-id="doc-3">
+          <label class="cbox" for="doc-3" aria-label="Degree Certificates & Marksheets"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div class="check-title">Degree Certificates &amp; Marksheets <span class="badge-qty">Orig + Copies</span></div>
-            <div class="check-note">Needed for university enrollment and part-time job applications (Werkstudent).</div>
+            <div class="check-title">Degree Certificates &amp; Marksheets <span class="qty">Orig + copies</span></div>
+            <div class="check-note">Needed for university enrollment and part-time job applications (Werkstudent).
+            </div>
           </div>
         </div>
 
-        <div class="check-item" data-id="doc-4" onclick="toggleCheck('doc-4')">
-          <div class="check-box">&#10003;</div>
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="doc-4" data-id="doc-4">
+          <label class="cbox" for="doc-4" aria-label="Travel & Health Insurance Proof"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div class="check-title">Travel &amp; Health Insurance Proof <span class="badge-qty">2 Copies</span></div>
+            <div class="check-title">Travel &amp; Health Insurance Proof <span class="qty">2 copies</span></div>
             <div class="check-note">Must satisfy German embassy &amp; local authority guidelines.</div>
           </div>
         </div>
 
-        <div class="check-item" data-id="doc-5" onclick="toggleCheck('doc-5')">
-          <div class="check-box">&#10003;</div>
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="doc-5" data-id="doc-5">
+          <label class="cbox" for="doc-5" aria-label="Housing Contract & Confirmation"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div class="check-title">Housing Contract &amp; Confirmation <span class="badge-qty">1 Copy</span></div>
+            <div class="check-title">Housing Contract &amp; Confirmation <span class="qty">1 copy</span></div>
             <div class="check-note">Mandatory for city address registration (<i>Anmeldung</i>) upon arrival.</div>
           </div>
         </div>
 
-        <div class="check-item" data-id="doc-6" onclick="toggleCheck('doc-6')">
-          <div class="check-box">&#10003;</div>
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="doc-6" data-id="doc-6">
+          <label class="cbox" for="doc-6" aria-label="Biometric Passport Photos"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div class="check-title">Biometric Passport Photos <span class="badge-qty">10–12 Photos</span></div>
-            <div class="check-note">35x45mm, compliant with official German visa photo standards.</div>
+            <div class="check-title">Biometric Passport Photos <span class="qty">10&ndash;12 photos</span></div>
+            <div class="check-note">35&times;45&nbsp;mm, compliant with official German visa photo standards.</div>
           </div>
         </div>
 
-        <div class="check-item" data-id="doc-7" onclick="toggleCheck('doc-7')">
-          <div class="check-box">&#10003;</div>
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="doc-7" data-id="doc-7">
+          <label class="cbox" for="doc-7" aria-label="Euro Cash / Forex Card"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div class="check-title">Euro Cash / Forex Card <span class="badge-qty">&euro;500 &ndash; &euro;1000</span></div>
-            <div class="check-note">For initial deposit, rent, and immediate daily expenses before Sperrkonto payout.</div>
+            <div class="check-title">Euro Cash / Forex Card <span class="qty">&euro;500 &ndash; &euro;1000</span></div>
+            <div class="check-note">For initial deposit, rent, and immediate daily expenses before your Sperrkonto
+              payout.</div>
           </div>
         </div>
-
       </div>
-    </div>
+    </section>
 
-
-    <!-- 2. CLOTHING & APPAREL GUIDELINES -->
-    <div class="guide-card category-section" data-category="clothing">
-      <div class="section-head">
-        <div class="section-head-icon">&#128085;</div>
+    <!-- ===== 2. CLOTHING ===== -->
+    <section class="gcard cat" data-cat="clothing" style="--tone:#6d28d9;--tone-bg:#f2ecfd;--tone-line:#e3d8fb">
+      <div class="ghead">
+        <span class="icon-tile"><svg aria-hidden="true">
+            <use href="#i-shirt" />
+          </svg></span>
         <div>
           <h2>2. Clothing &amp; Apparel Guidelines</h2>
-          <p>India vs Germany pricing breakdown to help you pack smart and avoid over-spending.</p>
+          <p>India vs Germany pricing breakdown so you pack smart and avoid over-spending.</p>
         </div>
+        <span class="gnum">02 / 05</span>
       </div>
 
-      <div class="table-container">
+      <div class="tscroll">
         <table>
           <thead>
             <tr>
-              <th>Status</th>
-              <th>Category &amp; Item</th>
-              <th class="center">Qty</th>
-              <th>India Price</th>
-              <th>Germany Price</th>
+              <th class="c"><span class="sr-only">Packed</span>&#10003;</th>
+              <th>Category &amp; item</th>
+              <th class="c">Qty</th>
+              <th>India price</th>
+              <th>Germany price</th>
               <th>Recommendation</th>
-              <th class="center">Buy / Link</th>
+              <th class="c">Buy</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="check-row" data-id="cloth-1">
-              <td class="center">
-                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('cloth-1')">
-                  <div class="check-box">&#10003;</div>
-                </div>
+            <tr>
+              <td class="c c-check">
+                <input class="sr-only" type="checkbox" id="cloth-1" data-id="cloth-1">
+                <label class="cbox" for="cloth-1" aria-label="Formal suit / presentation wear"><svg aria-hidden="true">
+                    <use href="#i-tick" />
+                  </svg></label>
               </td>
-              <td><strong>Formal Suit / Presentation Wear</strong></td>
-              <td class="center"><span class="badge-qty">1–2 Pairs</span></td>
-              <td><span class="price-tag india">&#8377;350+</span></td>
-              <td><span class="price-tag germany">&euro;10+</span></td>
-              <td><span class="rec-badge home">Pack from home (custom fitting costly)</span></td>
-              <td class="center">&mdash;</td>
+              <td class="t-item"><span class="t-name">Formal Suit / Presentation Wear</span></td>
+              <td class="c" data-label="Qty"><span class="qty">1&ndash;2 pairs</span></td>
+              <td data-label="India"><span class="price price--in"><span class="flag flag--in"></span>&#8377;350+</span>
+              </td>
+              <td data-label="Germany"><span class="price price--de"><span class="flag flag--de"></span>&euro;10+</span>
+              </td>
+              <td data-label="Advice"><span class="rec rec--home">Pack from home (custom fitting costly)</span></td>
+              <td class="c" data-label="Buy">&mdash;</td>
             </tr>
 
-            <tr class="check-row" data-id="cloth-2">
-              <td class="center">
-                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('cloth-2')">
-                  <div class="check-box">&#10003;</div>
-                </div>
+            <tr>
+              <td class="c c-check">
+                <input class="sr-only" type="checkbox" id="cloth-2" data-id="cloth-2">
+                <label class="cbox" for="cloth-2" aria-label="Daily wear"><svg aria-hidden="true">
+                    <use href="#i-tick" />
+                  </svg></label>
               </td>
-              <td><strong>Daily Wear (Shirts, T-Shirts, Jeans)</strong></td>
-              <td class="center"><span class="badge-qty">Your Choice</span></td>
-              <td><span class="price-tag india">Standard</span></td>
-              <td><span class="price-tag germany">&euro;10–&euro;25</span></td>
-              <td><span class="rec-badge de">Pack basics; buy heavy layers in DE</span></td>
-              <td class="center">&mdash;</td>
+              <td class="t-item"><span class="t-name">Daily Wear (Shirts, T-Shirts, Jeans)</span></td>
+              <td class="c" data-label="Qty"><span class="qty">Your choice</span></td>
+              <td data-label="India"><span class="price price--in"><span class="flag flag--in"></span>Standard</span>
+              </td>
+              <td data-label="Germany"><span class="price price--de"><span
+                    class="flag flag--de"></span>&euro;10&ndash;&euro;25</span></td>
+              <td data-label="Advice"><span class="rec rec--de">Pack basics; buy heavy layers in DE</span></td>
+              <td class="c" data-label="Buy">&mdash;</td>
             </tr>
 
-            <tr class="check-row" data-id="cloth-3">
-              <td class="center">
-                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('cloth-3')">
-                  <div class="check-box">&#10003;</div>
-                </div>
+            <tr>
+              <td class="c c-check">
+                <input class="sr-only" type="checkbox" id="cloth-3" data-id="cloth-3">
+                <label class="cbox" for="cloth-3" aria-label="Traditional wear"><svg aria-hidden="true">
+                    <use href="#i-tick" />
+                  </svg></label>
               </td>
-              <td><strong>Traditional Wear</strong></td>
-              <td class="center"><span class="badge-qty">1 Set</span></td>
-              <td><span class="price-tag india">&#8377;500+</span></td>
-              <td><span class="price-tag germany">&euro;60+</span></td>
-              <td><span class="rec-badge home">Pack from home (hard to find)</span></td>
-              <td class="center">&mdash;</td>
+              <td class="t-item"><span class="t-name">Traditional Wear</span></td>
+              <td class="c" data-label="Qty"><span class="qty">1 set</span></td>
+              <td data-label="India"><span class="price price--in"><span class="flag flag--in"></span>&#8377;500+</span>
+              </td>
+              <td data-label="Germany"><span class="price price--de"><span class="flag flag--de"></span>&euro;60+</span>
+              </td>
+              <td data-label="Advice"><span class="rec rec--home">Pack from home (hard to find)</span></td>
+              <td class="c" data-label="Buy">&mdash;</td>
             </tr>
 
-            <tr class="check-row" data-id="cloth-4">
-              <td class="center">
-                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('cloth-4')">
-                  <div class="check-box">&#10003;</div>
-                </div>
+            <tr>
+              <td class="c c-check">
+                <input class="sr-only" type="checkbox" id="cloth-4" data-id="cloth-4">
+                <label class="cbox" for="cloth-4" aria-label="Thermal innerwear"><svg aria-hidden="true">
+                    <use href="#i-tick" />
+                  </svg></label>
               </td>
-              <td><strong>Thermal Innerwear</strong></td>
-              <td class="center"><span class="badge-qty">1–2 Pairs</span></td>
-              <td><span class="price-tag india">&#8377;200+</span></td>
-              <td><span class="price-tag germany">&euro;15+</span></td>
-              <td><span class="rec-badge home">Pack quality thermal pairs from home</span></td>
-              <td class="center"><a href="https://www.amazon.in/dp/B07H8NGJ9B?tag=amazonquiz-21" class="btn-amazon" target="_blank" rel="noopener">Amazon &#8599;</a></td>
+              <td class="t-item"><span class="t-name">Thermal Innerwear</span></td>
+              <td class="c" data-label="Qty"><span class="qty">1&ndash;2 pairs</span></td>
+              <td data-label="India"><span class="price price--in"><span class="flag flag--in"></span>&#8377;200+</span>
+              </td>
+              <td data-label="Germany"><span class="price price--de"><span class="flag flag--de"></span>&euro;15+</span>
+              </td>
+              <td data-label="Advice"><span class="rec rec--home">Pack quality thermal pairs from home</span></td>
+              <td class="c" data-label="Buy">
+                <a class="btn--amazon" href="https://www.amazon.in/s?k=thermal+innerwear+set+winter&amp;tag=amazonquiz-21"
+                  target="_blank" rel="noopener sponsored">
+                  <svg width="13" height="13" aria-hidden="true">
+                    <use href="#i-cart" />
+                  </svg>
+                  Amazon <span class="arr">&#8599;</span>
+                </a>
+              </td>
             </tr>
 
-            <tr class="check-row" data-id="cloth-5">
-              <td class="center">
-                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('cloth-5')">
-                  <div class="check-box">&#10003;</div>
-                </div>
+            <tr>
+              <td class="c c-check">
+                <input class="sr-only" type="checkbox" id="cloth-5" data-id="cloth-5">
+                <label class="cbox" for="cloth-5" aria-label="Heavy winter jacket"><svg aria-hidden="true">
+                    <use href="#i-tick" />
+                  </svg></label>
               </td>
-              <td><strong>Heavy Winter Jacket / Parka</strong></td>
-              <td class="center"><span class="badge-qty">1</span></td>
-              <td><span class="price-tag india">&#8377;1000+</span></td>
-              <td><span class="price-tag germany">&euro;25+</span></td>
-              <td><span class="rec-badge de">Buy in Germany for sub-zero rating</span></td>
-              <td class="center"><a href="https://www.amazon.in/dp/B08153Q52Z?tag=amazonquiz-21" class="btn-amazon" target="_blank" rel="noopener">Amazon &#8599;</a></td>
+              <td class="t-item"><span class="t-name">Heavy Winter Jacket / Parka</span></td>
+              <td class="c" data-label="Qty"><span class="qty">1</span></td>
+              <td data-label="India"><span class="price price--in"><span
+                    class="flag flag--in"></span>&#8377;1000+</span></td>
+              <td data-label="Germany"><span class="price price--de"><span class="flag flag--de"></span>&euro;25+</span>
+              </td>
+              <td data-label="Advice"><span class="rec rec--de">Buy in Germany for sub-zero rating</span></td>
+              <td class="c" data-label="Buy">
+                <a class="btn--amazon" href="https://www.amazon.in/s?k=winter+jacket+parka&amp;tag=amazonquiz-21"
+                  target="_blank" rel="noopener sponsored">
+                  <svg width="13" height="13" aria-hidden="true">
+                    <use href="#i-cart" />
+                  </svg>
+                  Amazon <span class="arr">&#8599;</span>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
 
-
-    <!-- 3. ELECTRONICS & HARDWARE -->
-    <div class="guide-card category-section" data-category="electronics">
-      <div class="section-head">
-        <div class="section-head-icon">&#128187;</div>
+    <!-- ===== 3. ELECTRONICS ===== -->
+    <section class="gcard cat" data-cat="electronics" style="--tone:#1d4ed8;--tone-bg:#eaf0fe;--tone-line:#d3e0fc">
+      <div class="ghead">
+        <span class="icon-tile"><svg aria-hidden="true">
+            <use href="#i-plug" />
+          </svg></span>
         <div>
           <h2>3. Electronics &amp; Hardware</h2>
           <p>Required adapters, study hardware &amp; baggage safety guidelines.</p>
         </div>
+        <span class="gnum">03 / 05</span>
       </div>
 
-      <div class="checklist-group">
-
-        <div class="check-item" data-id="elec-1" onclick="toggleCheck('elec-1')">
-          <div class="check-box">&#10003;</div>
+      <div class="clist">
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="elec-1" data-id="elec-1">
+          <label class="cbox" for="elec-1" aria-label="Universal travel adapter"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <div class="check-row-top">
               <div class="check-title">Universal Travel Adapter (Type C/F EU)</div>
-              <a href="https://www.amazon.in/dp/B07G15P58D?tag=amazonquiz-21" class="btn-amazon" target="_blank" rel="noopener" onclick="event.stopPropagation()">View on Amazon &#8599;</a>
+              <a class="btn--amazon"
+                href="https://www.amazon.in/s?k=universal+travel+adapter+europe+type+c&amp;tag=amazonquiz-21"
+                target="_blank" rel="noopener sponsored">
+                <svg width="13" height="13" aria-hidden="true">
+                  <use href="#i-cart" />
+                </svg>
+                Amazon <span class="arr">&#8599;</span>
+              </a>
             </div>
-            <div class="check-note">Type C/F EU Standard 2-pin adapter with surge protection &amp; USB ports. Essential from day 1.</div>
+            <div class="check-note">Type C/F EU standard 2-pin adapter with surge protection &amp; USB ports. Essential
+              from day 1.</div>
           </div>
         </div>
 
-        <div class="check-item" data-id="elec-2" onclick="toggleCheck('elec-2')">
-          <div class="check-box">&#10003;</div>
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="elec-2" data-id="elec-2">
+          <label class="cbox" for="elec-2" aria-label="Multipurpose laptop table"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <div class="check-row-top">
               <div class="check-title">Multipurpose Laptop Table</div>
-              <a href="https://www.amazon.in/dp/B08DFW9QJ7?tag=amazonquiz-21" class="btn-amazon" target="_blank" rel="noopener" onclick="event.stopPropagation()">View on Amazon &#8599;</a>
+              <a class="btn--amazon"
+                href="https://www.amazon.in/s?k=foldable+laptop+table+study+desk&amp;tag=amazonquiz-21" target="_blank"
+                rel="noopener sponsored">
+                <svg width="13" height="13" aria-hidden="true">
+                  <use href="#i-cart" />
+                </svg>
+                Amazon <span class="arr">&#8599;</span>
+              </a>
             </div>
             <div class="check-note">Adjustable height with extended surface for long study sessions in dorms.</div>
           </div>
         </div>
 
-        <div class="check-item" data-id="elec-3" onclick="toggleCheck('elec-3')">
-          <div class="check-box">&#10003;</div>
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="elec-3" data-id="elec-3">
+          <label class="cbox" for="elec-3" aria-label="Laptop and accessories"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div class="check-title">Laptop &amp; Accessories <span class="badge-qty">Pack from Home</span></div>
-            <div class="check-note">Core i3/i5/i7, 8GB+ RAM, 256GB SSD, HDMI port &amp; charger. Keyboard layout differs in Germany (QWERTZ).</div>
+            <div class="check-title">Laptop &amp; Accessories <span class="qty">Pack from home</span></div>
+            <div class="check-note">Core i3/i5/i7, 8&nbsp;GB+ RAM, 256&nbsp;GB SSD, HDMI port &amp; charger. Keyboard
+              layout differs in Germany (QWERTZ).</div>
           </div>
         </div>
 
-        <div class="check-item" data-id="elec-4" onclick="toggleCheck('elec-4')">
-          <div class="check-box">&#10003;</div>
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="elec-4" data-id="elec-4">
+          <label class="cbox" for="elec-4" aria-label="Power bank"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-              <div class="check-title">Power Bank (10,000–20,000 mAh) <span class="badge-qty">Cabin Baggage ONLY</span></div>
-              <a href="https://www.amazon.in/dp/B08HV8HTVP?tag=amazonquiz-21" class="btn-amazon" target="_blank" rel="noopener" onclick="event.stopPropagation()">View on Amazon &#8599;</a>
+            <div class="check-row-top">
+              <div class="check-title">Power Bank (10,000&ndash;20,000&nbsp;mAh) <span class="qty">Cabin baggage
+                  only</span></div>
+              <a class="btn--amazon" href="https://www.amazon.in/s?k=power+bank+20000mah&amp;tag=amazonquiz-21"
+                target="_blank" rel="noopener sponsored">
+                <svg width="13" height="13" aria-hidden="true">
+                  <use href="#i-cart" />
+                </svg>
+                Amazon <span class="arr">&#8599;</span>
+              </a>
             </div>
-            <div class="check-note" style="color:var(--warn);">&#9888; Carry strictly in hand/cabin baggage. Prohibited in checked luggage by airlines.</div>
+            <div class="check-note warn">&#9888; Carry strictly in hand/cabin baggage. Prohibited in checked luggage by
+              airlines.</div>
           </div>
         </div>
 
-        <div class="check-item" data-id="elec-5" onclick="toggleCheck('elec-5')">
-          <div class="check-box">&#10003;</div>
+        <div class="check-item">
+          <input class="sr-only" type="checkbox" id="elec-5" data-id="elec-5">
+          <label class="cbox" for="elec-5" aria-label="Extension power board"><svg aria-hidden="true">
+              <use href="#i-tick" />
+            </svg></label>
           <div class="check-content">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-              <div class="check-title">Extension Power Board <span class="badge-qty">Pack from Home</span></div>
-              <a href="https://www.amazon.in/dp/B078HQK8P3?tag=amazonquiz-21" class="btn-amazon" target="_blank" rel="noopener" onclick="event.stopPropagation()">View on Amazon &#8599;</a>
+            <div class="check-row-top">
+              <div class="check-title">Extension Power Board <span class="qty">Pack from home</span></div>
+              <a class="btn--amazon"
+                href="https://www.amazon.in/s?k=extension+board+spike+guard+surge+protection&amp;tag=amazonquiz-21"
+                target="_blank" rel="noopener sponsored">
+                <svg width="13" height="13" aria-hidden="true">
+                  <use href="#i-cart" />
+                </svg>
+                Amazon <span class="arr">&#8599;</span>
+              </a>
             </div>
-            <div class="check-note">3–4 socket board with surge protection. Double-check power ratings (220V-240V supported in EU).</div>
+            <div class="check-note">3&ndash;4 socket board with surge protection. Double-check power ratings
+              (220&ndash;240&nbsp;V supported in the EU).</div>
           </div>
         </div>
-
       </div>
-    </div>
+    </section>
 
-
-    <!-- 4. KITCHENWARE & COOKWARE -->
-    <div class="guide-card category-section" data-category="kitchen">
-      <div class="section-head">
-        <div class="section-head-icon">&#127889;</div>
+    <!-- ===== 4. KITCHENWARE ===== -->
+    <section class="gcard cat" data-cat="kitchen" style="--tone:#b45309;--tone-bg:#fef4e6;--tone-line:#f8e3c0">
+      <div class="ghead">
+        <span class="icon-tile"><svg aria-hidden="true">
+            <use href="#i-pot" />
+          </svg></span>
         <div>
           <h2>4. Kitchenware &amp; Cookware</h2>
           <p>Indian cooking essentials that are expensive or hard to find in Germany.</p>
         </div>
+        <span class="gnum">04 / 05</span>
       </div>
 
-      <div class="table-container">
+      <div class="tscroll">
         <table>
           <thead>
             <tr>
-              <th>Status</th>
-              <th>Item Description</th>
-              <th class="center">Qty</th>
-              <th>India Price</th>
-              <th>Germany Price</th>
+              <th class="c"><span class="sr-only">Packed</span>&#10003;</th>
+              <th>Item description</th>
+              <th class="c">Qty</th>
+              <th>India price</th>
+              <th>Germany price</th>
               <th>Recommendation</th>
-              <th class="center">Buy / Link</th>
+              <th class="c">Buy</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="check-row" data-id="kitch-1">
-              <td class="center">
-                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('kitch-1')">
-                  <div class="check-box">&#10003;</div>
-                </div>
+            <tr>
+              <td class="c c-check">
+                <input class="sr-only" type="checkbox" id="kitch-1" data-id="kitch-1">
+                <label class="cbox" for="kitch-1" aria-label="Pressure cooker"><svg aria-hidden="true">
+                    <use href="#i-tick" />
+                  </svg></label>
               </td>
-              <td><strong>Pressure Cooker (Induction Compatible)</strong></td>
-              <td class="center"><span class="badge-qty">1</span></td>
-              <td><span class="price-tag india">&#8377;1000+</span></td>
-              <td><span class="price-tag germany">&euro;30+</span></td>
-              <td><span class="rec-badge home">Must pack from home (expensive abroad)</span></td>
-              <td class="center"><a href="https://www.amazon.in/dp/B002RL88A8?tag=amazonquiz-21" class="btn-amazon" target="_blank" rel="noopener">Amazon &#8599;</a></td>
+              <td class="t-item"><span class="t-name">Pressure Cooker (Induction Compatible)</span></td>
+              <td class="c" data-label="Qty"><span class="qty">1</span></td>
+              <td data-label="India"><span class="price price--in"><span
+                    class="flag flag--in"></span>&#8377;1000+</span></td>
+              <td data-label="Germany"><span class="price price--de"><span class="flag flag--de"></span>&euro;30+</span>
+              </td>
+              <td data-label="Advice"><span class="rec rec--home">Must pack from home (expensive abroad)</span></td>
+              <td class="c" data-label="Buy">
+                <a class="btn--amazon"
+                  href="https://www.amazon.in/s?k=induction+base+pressure+cooker&amp;tag=amazonquiz-21" target="_blank"
+                  rel="noopener sponsored">
+                  <svg width="13" height="13" aria-hidden="true">
+                    <use href="#i-cart" />
+                  </svg>
+                  Amazon <span class="arr">&#8599;</span>
+                </a>
+              </td>
             </tr>
 
-            <tr class="check-row" data-id="kitch-2">
-              <td class="center">
-                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('kitch-2')">
-                  <div class="check-box">&#10003;</div>
-                </div>
+            <tr>
+              <td class="c c-check">
+                <input class="sr-only" type="checkbox" id="kitch-2" data-id="kitch-2">
+                <label class="cbox" for="kitch-2" aria-label="Spare gaskets and safety valves"><svg aria-hidden="true">
+                    <use href="#i-tick" />
+                  </svg></label>
               </td>
-              <td><strong>Spare Gaskets &amp; Safety Valves</strong></td>
-              <td class="center"><span class="badge-qty">1–2 Sets</span></td>
-              <td><span class="price-tag india">&#8377;100+</span></td>
-              <td><span class="price-tag germany">N/A</span></td>
-              <td><span class="rec-badge home">Must pack (hard to match sizes locally)</span></td>
-              <td class="center">&mdash;</td>
+              <td class="t-item"><span class="t-name">Spare Gaskets &amp; Safety Valves</span></td>
+              <td class="c" data-label="Qty"><span class="qty">1&ndash;2 sets</span></td>
+              <td data-label="India"><span class="price price--in"><span class="flag flag--in"></span>&#8377;100+</span>
+              </td>
+              <td data-label="Germany"><span class="price price--de"><span class="flag flag--de"></span>N/A</span></td>
+              <td data-label="Advice"><span class="rec rec--home">Must pack (hard to match sizes locally)</span></td>
+              <td class="c" data-label="Buy">
+                <a class="btn--amazon"
+                  href="https://www.amazon.in/s?k=pressure+cooker+gasket+safety+valve+set&amp;tag=amazonquiz-21"
+                  target="_blank" rel="noopener sponsored">
+                  <svg width="13" height="13" aria-hidden="true">
+                    <use href="#i-cart" />
+                  </svg>
+                  Amazon <span class="arr">&#8599;</span>
+                </a>
+              </td>
             </tr>
 
-            <tr class="check-row" data-id="kitch-3">
-              <td class="center">
-                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('kitch-3')">
-                  <div class="check-box">&#10003;</div>
-                </div>
+            <tr>
+              <td class="c c-check">
+                <input class="sr-only" type="checkbox" id="kitch-3" data-id="kitch-3">
+                <label class="cbox" for="kitch-3" aria-label="Roti tawa and rolling pin"><svg aria-hidden="true">
+                    <use href="#i-tick" />
+                  </svg></label>
               </td>
-              <td><strong>Roti Tawa &amp; Rolling Pin (Belan)</strong></td>
-              <td class="center"><span class="badge-qty">1 Each</span></td>
-              <td><span class="price-tag india">&#8377;100+</span></td>
-              <td><span class="price-tag germany">&euro;5–&euro;7+</span></td>
-              <td><span class="rec-badge home">Pack from home</span></td>
-              <td class="center"><a href="https://www.amazon.in/dp/B07N8Q5SGM?tag=amazonquiz-21" class="btn-amazon" target="_blank" rel="noopener">Amazon &#8599;</a></td>
+              <td class="t-item"><span class="t-name">Roti Tawa &amp; Rolling Pin (Belan)</span></td>
+              <td class="c" data-label="Qty"><span class="qty">1 each</span></td>
+              <td data-label="India"><span class="price price--in"><span class="flag flag--in"></span>&#8377;100+</span>
+              </td>
+              <td data-label="Germany"><span class="price price--de"><span
+                    class="flag flag--de"></span>&euro;5&ndash;&euro;7+</span></td>
+              <td data-label="Advice"><span class="rec rec--home">Pack from home</span></td>
+              <td class="c" data-label="Buy">
+                <a class="btn--amazon"
+                  href="https://www.amazon.in/s?k=roti+tawa+rolling+pin+chakla+belan&amp;tag=amazonquiz-21"
+                  target="_blank" rel="noopener sponsored">
+                  <svg width="13" height="13" aria-hidden="true">
+                    <use href="#i-cart" />
+                  </svg>
+                  Amazon <span class="arr">&#8599;</span>
+                </a>
+              </td>
             </tr>
 
-            <tr class="check-row" data-id="kitch-4">
-              <td class="center">
-                <div class="check-item" style="padding:0; background:transparent; border:none;" onclick="toggleCheck('kitch-4')">
-                  <div class="check-box">&#10003;</div>
-                </div>
+            <tr>
+              <td class="c c-check">
+                <input class="sr-only" type="checkbox" id="kitch-4" data-id="kitch-4">
+                <label class="cbox" for="kitch-4" aria-label="Spice box"><svg aria-hidden="true">
+                    <use href="#i-tick" />
+                  </svg></label>
               </td>
-              <td><strong>Spice Box (Masala Container)</strong></td>
-              <td class="center"><span class="badge-qty">1</span></td>
-              <td><span class="price-tag india">&#8377;50+</span></td>
-              <td><span class="price-tag germany">N/A</span></td>
-              <td><span class="rec-badge home">Pack from home</span></td>
-              <td class="center"><a href="https://www.amazon.in/dp/B07FYPXZR7?tag=amazonquiz-21" class="btn-amazon" target="_blank" rel="noopener">Amazon &#8599;</a></td>
+              <td class="t-item"><span class="t-name">Spice Box (Masala Container)</span></td>
+              <td class="c" data-label="Qty"><span class="qty">1</span></td>
+              <td data-label="India"><span class="price price--in"><span class="flag flag--in"></span>&#8377;50+</span>
+              </td>
+              <td data-label="Germany"><span class="price price--de"><span class="flag flag--de"></span>N/A</span></td>
+              <td data-label="Advice"><span class="rec rec--home">Pack from home</span></td>
+              <td class="c" data-label="Buy">
+                <a class="btn--amazon"
+                  href="https://www.amazon.in/s?k=masala+box+stainless+steel+spice+container&amp;tag=amazonquiz-21"
+                  target="_blank" rel="noopener sponsored">
+                  <svg width="13" height="13" aria-hidden="true">
+                    <use href="#i-cart" />
+                  </svg>
+                  Amazon <span class="arr">&#8599;</span>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
 
-
-    <!-- 5. LUGGAGE DISTRIBUTION GUIDELINES -->
-    <div class="guide-card category-section" data-category="luggage">
-      <div class="section-head">
-        <div class="section-head-icon">&#129523;</div>
+    <!-- ===== 5. LUGGAGE ===== -->
+    <section class="gcard cat" data-cat="luggage" style="--tone:#be123c;--tone-bg:#fdeaef;--tone-line:#f9d3dd">
+      <div class="ghead">
+        <span class="icon-tile"><svg aria-hidden="true">
+            <use href="#i-bag" />
+          </svg></span>
         <div>
           <h2>5. Luggage Distribution Guidelines</h2>
-          <p>Airlines regulations &amp; strict baggage allocation strategy for hassle-free transit.</p>
+          <p>Airline regulations &amp; a strict baggage allocation strategy for hassle-free transit.</p>
         </div>
+        <span class="gnum">05 / 05</span>
       </div>
 
-      <div class="luggage-grid">
-        <!-- Checked Baggage -->
-        <div class="luggage-box checked-bag">
-          <div class="luggage-box-title">
-            <span>&#129523;</span> Checked Baggage (23–40 kg)
-          </div>
+      <div class="lgrid">
+        <div class="lbox">
+          <h3>
+            <svg aria-hidden="true">
+              <use href="#i-bag" />
+            </svg>
+            Checked Baggage (23&ndash;40&nbsp;kg)
+          </h3>
           <ul>
             <li>Knives, scissors, and sharp cutlery (strictly packed here).</li>
             <li>All packaged food items, spices, and heavy cookware.</li>
@@ -1127,139 +1616,236 @@
           </ul>
         </div>
 
-        <!-- Cabin Baggage -->
-        <div class="luggage-box cabin-bag">
-          <div class="luggage-box-title">
-            <span>&#127890;</span> Cabin &amp; Laptop Bag (7–10 kg)
-          </div>
+        <div class="lbox lbox--cabin">
+          <h3>
+            <svg aria-hidden="true">
+              <use href="#i-carry" />
+            </svg>
+            Cabin &amp; Laptop Bag (7&ndash;10&nbsp;kg)
+          </h3>
           <ul>
-            <li><strong>ALL original documents</strong>, passport, student visa, and cash.</li>
-            <li><strong>Power Banks</strong> (strictly prohibited in checked luggage by aviation rules).</li>
+            <li><strong>All original documents</strong>, passport, student visa, and cash.</li>
+            <li><strong>Power banks</strong> (strictly prohibited in checked luggage by aviation rules).</li>
             <li>Laptops, chargers, external hard drives, and fragile electronics.</li>
             <li>One extra pair of clothing and basic toiletries in case of transit/baggage delays.</li>
           </ul>
         </div>
       </div>
+    </section>
+
+    <!-- Empty state -->
+    <div class="empty" id="empty">
+      <svg width="40" height="40" aria-hidden="true">
+        <use href="#i-search" />
+      </svg>
+      <h3>No matching items</h3>
+      <p>Try a different word &mdash; or <button class="btn btn--ghost btn--sm" id="emptyReset"
+          style="margin-top:.8rem">clear the search</button></p>
     </div>
 
-  </div>
+    <!-- Affiliate disclosure -->
+    <p class="disclosure">
+      <svg width="17" height="17" aria-hidden="true">
+        <use href="#i-info" />
+      </svg>
+      <span><strong>Affiliate disclosure:</strong> as an Amazon Associate, GermanyDreams earns from qualifying
+        purchases. Product links open an Amazon search so you always see current, in-stock options &mdash; they cost you
+        nothing extra and help keep these guides free. Prices shown are indicative and for planning purposes only.</span>
+    </p>
+  </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <div style="max-width:900px; margin:0 auto;">
-      <p style="margin-bottom:0.5rem;">Independent Student Guidance Document &bull; Prices and details are for reference and planning purposes.</p>
-      <p>&copy; 2026 <a href="index.html">GermanyDreams</a>. All rights reserved.</p>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div style="max-width:26rem">
+          <h4>Packing &amp; Buying Guide</h4>
+          <p>An independent student guidance document. Prices and details are for reference and planning purposes.
+            Your checklist is saved in this browser only &mdash; nothing is uploaded anywhere.</p>
+        </div>
+        <div>
+          <h4 style="font-size:.9rem;margin-bottom:.9rem">More free tools</h4>
+          <p style="display:grid;gap:.42rem">
+            <a href="index.html">Home</a>
+            <a href="calculator.html">CGPA Converter</a>
+            <a href="visa.html">Visa Checklist</a>
+            <a href="estimator.html">Cost Estimator</a>
+            <a href="wgmessage.html">WG Message Generator</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer__base">
+        <p>&copy; 2026 <a href="index.html">GermanyDreams</a>. All rights reserved.</p>
+        <p>Made from Stuttgart <span class="flag flag--de"></span></p>
+      </div>
     </div>
   </footer>
 
+  <button class="to-top" aria-label="Back to top">
+    <svg class="to-top__ring" width="46" height="46" aria-hidden="true">
+      <circle cx="23" cy="23" r="21" />
+    </svg>
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+      stroke-linejoin="round" aria-hidden="true">
+      <path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" />
+    </svg>
+  </button>
 
-  <!-- JAVASCRIPT FOR CHECKLIST & SEARCH -->
+  <script src="assets/site.js"></script>
   <script>
-    const STORAGE_KEY = 'germany_packing_checklist_v1';
-    let checkedItems = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    (function () {
+      'use strict';
 
-    // Total trackable items
-    const TOTAL_ITEMS = 21;
+      var KEY = 'germany_packing_checklist_v1';
+      var boxes = Array.prototype.slice.call(document.querySelectorAll('input[type=checkbox][data-id]'));
+      var TOTAL = boxes.length;                       // derived from the DOM, never hardcoded
+      var saved = {};
 
-    function init() {
-      // Apply saved check states
-      Object.keys(checkedItems).forEach(id => {
-        if (checkedItems[id]) {
-          const elem = document.querySelector(`[data-id="${id}"]`);
-          if (elem) {
-            elem.classList.add('checked');
-          }
-        }
-      });
-      updateProgress();
-    }
+      try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
 
-    function toggleCheck(id) {
-      const elem = document.querySelector(`[data-id="${id}"]`);
-      if (!elem) return;
+      var ringFg = document.getElementById('ringFg');
+      var R = ringFg ? Number(ringFg.getAttribute('r')) : 33;
+      var LEN = 2 * Math.PI * R;
+      ringFg.style.strokeDasharray = LEN;
+      ringFg.style.strokeDashoffset = LEN;
 
-      const isChecked = elem.classList.toggle('checked');
-      checkedItems[id] = isChecked;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(checkedItems));
-      updateProgress();
-    }
+      var pctEl = document.getElementById('progPct');
+      var labelEl = document.getElementById('progLabel');
+      var titleEl = document.getElementById('progTitle');
+      var card = document.getElementById('progCard');
 
-    function updateProgress() {
-      const count = Object.values(checkedItems).filter(Boolean).length;
-      const pct = Math.round((count / TOTAL_ITEMS) * 100);
+      /* ---------------- progress ---------------- */
+      function update() {
+        var done = boxes.filter(function (b) { return b.checked; }).length;
+        var pct = TOTAL ? Math.round(done / TOTAL * 100) : 0;
 
-      const label = document.getElementById('progressLabel');
-      const fill = document.getElementById('progressFill');
-      const countDisplay = document.getElementById('progressCount');
+        ringFg.style.strokeDashoffset = LEN * (1 - done / (TOTAL || 1));
+        pctEl.textContent = pct + '%';
+        labelEl.textContent = done + ' of ' + TOTAL + ' items packed';
 
-      if (label) label.textContent = `${count} of ${TOTAL_ITEMS} items packed`;
-      if (fill) fill.style.width = `${pct}%`;
-      if (countDisplay) countDisplay.textContent = `${pct}%`;
-    }
-
-    function resetChecklist() {
-      if (confirm('Are you sure you want to reset all checked items in your packing checklist?')) {
-        checkedItems = {};
-        localStorage.removeItem(STORAGE_KEY);
-        document.querySelectorAll('.checked').forEach(el => el.classList.remove('checked'));
-        updateProgress();
-      }
-    }
-
-    function switchTab(category, btnElem) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      if (btnElem) btnElem.classList.add('active');
-
-      const sections = document.querySelectorAll('.category-section');
-      sections.forEach(sec => {
-        if (category === 'all' || sec.dataset.category === category) {
-          sec.style.display = 'block';
-        } else {
-          sec.style.display = 'none';
-        }
-      });
-    }
-
-    function filterItems() {
-      const query = document.getElementById('searchInput').value.toLowerCase().trim();
-      const allCards = document.querySelectorAll('.category-section');
-
-      if (!query) {
-        // Reset view based on active tab
-        const activeTab = document.querySelector('.tab-btn.active');
-        if (activeTab) {
-          const tabCategory = activeTab.getAttribute('onclick').match(/'([^']+)'/)[1];
-          switchTab(tabCategory, activeTab);
-        }
-        return;
+        var complete = done === TOTAL && TOTAL > 0;
+        card.classList.toggle('is-done', complete);
+        titleEl.textContent = complete ? 'All packed. You are ready 🎉' : 'Your packing progress';
       }
 
-      allCards.forEach(sec => {
-        let matchCount = 0;
-        const checkItems = sec.querySelectorAll('.check-item, .check-row, .luggage-box li');
+      /* ---------------- persistence ---------------- */
+      function save() {
+        var out = {};
+        boxes.forEach(function (b) { if (b.checked) out[b.dataset.id] = true; });
+        try { localStorage.setItem(KEY, JSON.stringify(out)); } catch (e) { /* private mode */ }
+      }
 
-        checkItems.forEach(item => {
-          const text = item.textContent.toLowerCase();
-          if (text.includes(query)) {
-            item.style.display = '';
-            matchCount++;
-          } else {
-            if (item.classList.contains('check-item') || item.classList.contains('check-row')) {
-              item.style.display = 'none';
-            }
+      boxes.forEach(function (b) {
+        if (saved[b.dataset.id]) b.checked = true;
+        b.addEventListener('change', function () { save(); update(); });
+      });
+
+      // Clicking anywhere on a row/item toggles it — except on links and the
+      // checkbox label itself, which the browser already handles.
+      document.querySelectorAll('.check-item, tbody tr').forEach(function (row) {
+        row.addEventListener('click', function (e) {
+          if (e.target.closest('a, label, input, button')) return;
+          var box = row.querySelector('input[type=checkbox][data-id]');
+          if (!box) return;
+          box.checked = !box.checked;
+          box.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+      });
+
+      document.getElementById('resetBtn').addEventListener('click', function () {
+        if (!confirm('Reset all checked items in your packing checklist?')) return;
+        boxes.forEach(function (b) { b.checked = false; });
+        try { localStorage.removeItem(KEY); } catch (e) { }
+        update();
+      });
+
+      update();
+
+      /* ---------------- category counts ---------------- */
+      document.querySelectorAll('.cat').forEach(function (sec) {
+        var el = document.getElementById('cnt-' + sec.dataset.cat);
+        if (el) el.textContent = sec.querySelectorAll('input[type=checkbox][data-id]').length;
+      });
+      var all = document.getElementById('cnt-all');
+      if (all) all.textContent = TOTAL;
+
+      /* ---------------- tabs + search ---------------- */
+      var sections = Array.prototype.slice.call(document.querySelectorAll('.cat'));
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+      var input = document.getElementById('q');
+      var clearBtn = document.getElementById('qClear');
+      var empty = document.getElementById('empty');
+      var cat = 'all';
+
+      // Rows are grouped by their section once, and their searchable text is
+      // cached. Filtering only ever toggles `display`, so checkbox state and
+      // event listeners are never disturbed.
+      var rows = sections.map(function (sec) {
+        return {
+          sec: sec,
+          items: Array.prototype.slice.call(
+            sec.querySelectorAll('.check-item, tbody tr, .lbox li')
+          ).map(function (el) {
+            return { el: el, text: el.textContent.toLowerCase().replace(/\s+/g, ' ') };
+          })
+        };
+      });
+
+      function apply() {
+        var q = input.value.trim().toLowerCase();
+        clearBtn.classList.toggle('is-on', !!q);
+
+        var anyVisible = false;
+
+        rows.forEach(function (group) {
+          if (cat !== 'all' && group.sec.dataset.cat !== cat) {
+            group.sec.style.display = 'none';
+            return;
           }
+
+          var matches = 0;
+          group.items.forEach(function (row) {
+            var hit = !q || row.text.indexOf(q) !== -1;
+            row.el.style.display = hit ? '' : 'none';
+            if (hit) matches++;
+          });
+
+          var show = !q || matches > 0;
+          group.sec.style.display = show ? '' : 'none';
+          if (show) anyVisible = true;
         });
 
-        if (matchCount > 0 || sec.textContent.toLowerCase().includes(query)) {
-          sec.style.display = 'block';
-        } else {
-          sec.style.display = 'none';
-        }
+        empty.classList.toggle('is-on', !anyVisible);
+      }
+
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () {
+          tabs.forEach(function (x) { x.classList.remove('is-active'); });
+          t.classList.add('is-active');
+          cat = t.dataset.cat;
+          apply();
+        });
       });
-    }
 
-    document.addEventListener('DOMContentLoaded', init);
+      var debounce;
+      input.addEventListener('input', function () {
+        clearTimeout(debounce);
+        debounce = setTimeout(apply, 130);
+      });
+
+      function clearSearch() { input.value = ''; apply(); input.focus(); }
+      clearBtn.addEventListener('click', clearSearch);
+      document.getElementById('emptyReset').addEventListener('click', clearSearch);
+
+      /* ---------------- sticky toolbar shadow ---------------- */
+      var bar = document.getElementById('toolbar');
+      var navH = parseInt(getComputedStyle(document.documentElement)
+        .getPropertyValue('--nav-h'), 10) || 68;
+      window.addEventListener('scroll', function () {
+        bar.classList.toggle('is-stuck', bar.getBoundingClientRect().top <= navH + 1);
+      }, { passive: true });
+    })();
   </script>
-
 </body>
+
 </html>
