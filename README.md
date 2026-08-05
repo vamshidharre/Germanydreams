@@ -1,6 +1,6 @@
 # 🇩🇪 GermanyDreams
 
-A modern, dark-themed portfolio and resource hub for international students planning their move to Germany. Built by **Vamshidhar Reddy** — Masters student in Computational Engineering at FAU Erlangen-Nürnberg, content creator, and student life guide.
+A modern, dark-themed portfolio and resource hub for international students planning their move to Germany. Built by **Vamshidhar Reddy** - Masters student in Computational Engineering at FAU Erlangen-Nürnberg, content creator, and student life guide.
 
 🔗 **Live Site:** [germanydreams](https://vamshidharre.github.io/Germanydreams/index.html#) 
 
@@ -22,31 +22,31 @@ A modern, dark-themed portfolio and resource hub for international students plan
 
 ---
 
-## 🎨 Design System — "Paper & Teal"
+## 🎨 Design System - "Paper & Teal"
 
 `index.html` and `packing.html` share a light, editorial design system in `assets/`:
 
-- `assets/theme.css` — design tokens (surfaces, ink, teal/amber accents), layered
+- `assets/theme.css` - design tokens (surfaces, ink, teal/amber accents), layered
   shadows, typography scale, nav, buttons, cards, CSS flags, animations,
   `prefers-reduced-motion` and print rules
-- `assets/site.js` — scroll progress, sticky nav + mobile sheet, staggered scroll
+- `assets/site.js` - scroll progress, sticky nav + mobile sheet, staggered scroll
   reveal, mouse-tracked card spotlights, 3D tilt, magnetic buttons, count-up numbers
 
 To roll the system out to another page, link both files and swap the page's
 markup onto the shared classes (`.nav`, `.wrap`, `.section`, `.card`, `.btn`, …).
 
 > German and Indian flags are rendered as CSS gradients (`.flag--de` / `.flag--in`),
-> not emoji — Windows has no glyph for regional-indicator flag emoji.
+> not emoji - Windows has no glyph for regional-indicator flag emoji.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **HTML5** — Semantic, accessible markup
-- **CSS3** — Custom properties, CSS Grid, Flexbox, `:has()`, `color-mix()`, scroll-driven reveals
-- **Vanilla JavaScript** — Scroll reveals, magnetic buttons, spotlights, `localStorage` persistence
-- **Google Fonts** — Bricolage Grotesque, Instrument Sans, JetBrains Mono (plus Syne / DM Sans on legacy pages)
-- **No frameworks. No build tools. No dependencies.** — Just clean, fast, static files
+- **HTML5** - Semantic, accessible markup
+- **CSS3** - Custom properties, CSS Grid, Flexbox, `:has()`, `color-mix()`, scroll-driven reveals
+- **Vanilla JavaScript** - Scroll reveals, magnetic buttons, spotlights, `localStorage` persistence
+- **Google Fonts** - Bricolage Grotesque, Instrument Sans, JetBrains Mono (plus Syne / DM Sans on legacy pages)
+- **No frameworks. No build tools. No dependencies.** - Just clean, fast, static files
 
 ---
 
@@ -56,7 +56,7 @@ markup onto the shared classes (`.nav`, `.wrap`, `.section`, `.card`, `.btn`, �
    ```bash
    git clone https://github.com/vamshidharre/Germanydreams.git
    ```
-2. Open `index.html` in your browser — that's it!
+2. Open `index.html` in your browser - that's it!
 
 No build step, no package manager, no setup required.
 

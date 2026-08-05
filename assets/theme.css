@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GermanyDreams — Design System  ·  "Paper & Teal"
+   GermanyDreams - Design System  ·  "Paper & Teal"
    Light, editorial, premium. Shared by every page.
    No build step, no dependencies. Just link it.
    ========================================================================== */
@@ -8,14 +8,14 @@
    1. TOKENS
    -------------------------------------------------------------------------- */
 :root {
-  /* Surfaces — warm paper, not clinical white */
+  /* Surfaces - warm paper, not clinical white */
   --paper: #fcfcfd;
   --paper-2: #f5f7fa;
   --paper-3: #eef2f7;
   --surface: #ffffff;
   --surface-sunk: #f8fafc;
 
-  /* Ink — deep navy, never pure black */
+  /* Ink - deep navy, never pure black */
   --ink: #091528;
   --ink-2: #2c3d55;
   --ink-3: #5c6f89;
@@ -26,7 +26,7 @@
   --line-soft: #eef2f6;
   --line-strong: #d3dbe6;
 
-  /* Brand — teal, darkened to clear AA on white */
+  /* Brand - teal, darkened to clear AA on white */
   --brand: #0b7a85;
   --brand-deep: #065a63;
   --brand-bright: #14b8c4;
@@ -34,7 +34,7 @@
   --brand-tint: #e8f7f8;
   --brand-tint-2: #d2eff2;
 
-  /* Accent — amber */
+  /* Accent - amber */
   --gold: #b45309;
   --gold-bright: #f59e0b;
   --gold-tint: #fef4e6;
@@ -61,7 +61,7 @@
   --r-2xl: 34px;
   --r-full: 999px;
 
-  /* Elevation — layered + slightly cool, the key to premium light UI */
+  /* Elevation - layered + slightly cool, the key to premium light UI */
   --sh-xs: 0 1px 2px rgba(9, 21, 40, .05);
   --sh-sm: 0 1px 3px rgba(9, 21, 40, .06), 0 1px 2px rgba(9, 21, 40, .04);
   --sh-md: 0 6px 16px -4px rgba(9, 21, 40, .08), 0 2px 6px -2px rgba(9, 21, 40, .05);
@@ -645,7 +645,7 @@ a {
   }
 }
 
-/* Pure-CSS flags — emoji flags do not render on Windows */
+/* Pure-CSS flags - emoji flags do not render on Windows */
 .flag {
   display: inline-block;
   width: 1.15em;

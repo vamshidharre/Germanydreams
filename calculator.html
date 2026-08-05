@@ -18,7 +18,7 @@
 
   <style>
     /* ======================================================================
-       GRADE CALCULATOR — Page-specific layout
+       GRADE CALCULATOR - Page-specific layout
        ====================================================================== */
 
     .phero {
@@ -647,11 +647,11 @@
       else { gradeEl.classList.add('low'); }
 
       const descEl = document.getElementById('resultDesc');
-      if (rounded <= 1.5) descEl.textContent = 'Sehr gut — Very Good! Outstanding academic record.';
-      else if (rounded <= 2.5) descEl.textContent = 'Gut — Good. Strong academic performance.';
-      else if (rounded <= 3.5) descEl.textContent = 'Befriedigend — Satisfactory result.';
-      else if (rounded <= 4.0) descEl.textContent = 'Ausreichend — Sufficient. Meets basic threshold.';
-      else descEl.textContent = 'Nicht bestanden — Does not meet passing threshold.';
+      if (rounded <= 1.5) descEl.textContent = 'Sehr gut - Very Good! Outstanding academic record.';
+      else if (rounded <= 2.5) descEl.textContent = 'Gut - Good. Strong academic performance.';
+      else if (rounded <= 3.5) descEl.textContent = 'Befriedigend - Satisfactory result.';
+      else if (rounded <= 4.0) descEl.textContent = 'Ausreichend - Sufficient. Meets basic threshold.';
+      else descEl.textContent = 'Nicht bestanden - Does not meet passing threshold.';
 
       const pct = ((rounded - 1.0) / 4.0) * 100;
       document.getElementById('gradeBar').style.width = pct + '%';

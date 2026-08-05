@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GermanyDreams — shared interaction layer
+   GermanyDreams - shared interaction layer
    Vanilla JS, no dependencies. Every behaviour degrades gracefully
    and is skipped entirely when the user prefers reduced motion.
    ========================================================================== */
@@ -196,7 +196,7 @@
   }
 
   /* ---------------------------------------------------------------------
-     Card spotlight — tracks the cursor via --mx / --my
+     Card spotlight - tracks the cursor via --mx / --my
      --------------------------------------------------------------------- */
   if (!reduce && window.matchMedia('(hover: hover)').matches) {
     $$('.spotlight').forEach(function (card) {

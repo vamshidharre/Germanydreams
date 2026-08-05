@@ -18,7 +18,7 @@
 
   <style>
     /* ======================================================================
-       COST ESTIMATOR — Page-specific layout
+       COST ESTIMATOR - Page-specific layout
        ====================================================================== */
 
     .phero {
@@ -596,7 +596,7 @@
             <div class="pt-icon">&#128084;</div>
             <div class="pt-text" style="flex:1;">
               <h4>Part-Time Income Potential</h4>
-              <p>Working 15–20 hrs/week as a Werkstudent earns &euro;12–16/hr (&euro;800–1,200/mo) &mdash; easily covering groceries and transport.</p>
+              <p>Working 15–20 hrs/week as a Werkstudent earns &euro;12–16/hr (&euro;800–1,200/mo) - easily covering groceries and transport.</p>
             </div>
             <div>
               <div class="pt-earn">&euro;960<span>avg/month</span></div>
@@ -854,14 +854,14 @@
         badge.textContent = '⚠ Slightly Over Monthly Blocked Payout';
       } else {
         badge.className = 'status-badge status-over';
-        badge.textContent = '✕ Above Blocked Account Payout — Supplement Required';
+        badge.textContent = '✕ Above Blocked Account Payout - Supplement Required';
       }
 
       const items = [
         { icon:'🏠', label:'Rent (' + accomLabels[selectedAccom] + ')', note: d.name + ' average housing price', amount: rent },
-        { icon:'🍔', label:'Food & Groceries', note: lifeLabels[selectedLife] + ' — Aldi/Lidl + Mensa', amount: food },
-        { icon:'❤️', label:'Health Insurance', note: 'Public insurance (TK, AOK) — mandatory', amount: d.insurance },
-        { icon:'🚌', label:'Transport', note: 'Deutschlandticket (€63/mo) — unlimited nationwide', amount: d.transport },
+        { icon:'🍔', label:'Food & Groceries', note: lifeLabels[selectedLife] + ' - Aldi/Lidl + Mensa', amount: food },
+        { icon:'❤️', label:'Health Insurance', note: 'Public insurance (TK, AOK) - mandatory', amount: d.insurance },
+        { icon:'🚌', label:'Transport', note: 'Deutschlandticket (€63/mo) - unlimited nationwide', amount: d.transport },
         { icon:'📱', label:'Internet & Phone', note: 'SIM plan + wifi share', amount: Math.round(misc * 0.35) },
         { icon:'🎭', label:'Leisure & Personal', note: 'Clothing, gym, social activities', amount: Math.round(misc * 0.65) },
       ];
