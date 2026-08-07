@@ -258,8 +258,8 @@
     }
 
     .pcard__stats {
-      display: grid;
-      grid-template-columns: 1fr 1px 1fr;
+      display: flex;
+      justify-content: center;
       align-items: center;
       gap: .9rem;
       margin-top: 1.3rem;
@@ -1054,14 +1054,6 @@
                 <div class="pcard__stats">
                   <div class="pstat">
                     <svg aria-hidden="true">
-                      <use href="#i-play" />
-                    </svg>
-                    <b id="yt-subs">5K+</b>
-                    <span>Subscribers</span>
-                  </div>
-                  <span class="pcard__div"></span>
-                  <div class="pstat">
-                    <svg aria-hidden="true">
                       <use href="#i-cap" />
                     </svg>
                     <b>FAU</b>
@@ -1484,34 +1476,6 @@
 
   <script src="assets/site.js"></script>
   <script>
-    /* ── YouTube subscriber count ────────────────────────────────────────
-       Left empty on purpose: this file is public, so an API key committed
-       here is a key anyone can copy and burn your quota with. To enable,
-       create a *browser-restricted* key (HTTP referrer = your domain only)
-       at console.cloud.google.com and paste it below. Until then the card
-       shows the static value in the markup. */
-    var YT_API_KEY = '';
-    var YT_CHANNEL_ID = 'UCIY3viuqfg8BR9ucyCI2e1w';
-
-    (function () {
-      var el = document.getElementById('yt-subs');
-      if (!el || !YT_API_KEY) return;
-
-      fetch('https://www.googleapis.com/youtube/v3/channels?part=statistics&id=' +
-        YT_CHANNEL_ID + '&fields=items/statistics/subscriberCount&key=' + YT_API_KEY)
-        .then(function (r) { return r.json(); })
-        .then(function (d) {
-          var n = parseInt(d && d.items && d.items[0] &&
-            d.items[0].statistics && d.items[0].statistics.subscriberCount, 10);
-          if (isNaN(n)) return;
-          el.textContent = n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
-            : n >= 1e3 ? (n / 1e3).toFixed(1).replace(/\.0$/, '') + 'K'
-              : String(n);
-          el.title = n.toLocaleString() + ' subscribers';
-        })
-        .catch(function () { /* keep the static fallback */ });
-    })();
-
     /* ── Newsletter form ─────────────────────────────────────────────────
        Don't post to a placeholder endpoint - that just dumps the visitor on
        a 404. Until a real endpoint is configured, point them somewhere useful. */
